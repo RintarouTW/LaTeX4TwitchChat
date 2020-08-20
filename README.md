@@ -1,4 +1,4 @@
-# CleanRoom Filter Extension
+# LaTeX in Twitch Chat
 
 This is a simple Chrome extension.
 
