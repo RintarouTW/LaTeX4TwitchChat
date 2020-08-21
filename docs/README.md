@@ -1,6 +1,6 @@
 # LaTeX in Twitch Chat
 
-A simple Chrome extension to rendering $\LaTeX$ in Twitch Chat messages.
+A simple Chrome extension to render and copy $\LaTeX$ in Twitch Chat messages.
 
 ## Install
 
