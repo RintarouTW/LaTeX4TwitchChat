@@ -22,7 +22,7 @@ A simple Chrome extension to rendering $\LaTeX$ in Twitch Chat messages.
 ### Inline Mode
 
 ```
-This is a inline $\LaTeX$.
+This is inline $\LaTeX$.
 ```
 
 This is inline $\LaTeX$.
@@ -34,6 +34,7 @@ This is display style: $$\LaTeX$$
 ```
 
 This is display style: 
+
 $$
 \LaTeX
 $$
