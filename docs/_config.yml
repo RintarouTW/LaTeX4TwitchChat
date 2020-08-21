@@ -6,4 +6,4 @@ github:
   tar_url: https://github.com/RintarouTW/LaTeX4TwitchChat/tarball/release
 markdown: kramdown
 kramdown:
-  math_engine: mathjax
+  input: GFM
