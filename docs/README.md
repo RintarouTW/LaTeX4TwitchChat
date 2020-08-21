@@ -33,7 +33,10 @@ This is inline $\LaTeX$.
 This is display style: $$\LaTeX$$
 ```
 
-This is display style: $$\LaTeX$$
+This is display style: 
+$$
+\LaTeX
+$$
 
 ### Copy
 
