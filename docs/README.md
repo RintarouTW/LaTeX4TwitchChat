@@ -20,4 +20,18 @@ Rendering LaTeX in Twitch Chat.
 
 ## Usage in Twitch Chat Room
 
+### Inline Mode
+
+```
 $\LaTeX$
+```
+
+### Display Mode
+
+```
+$$\LaTeX$$
+```
+
+### Copy
+
+Click on the rendered LaTeX and copy it (CMD + C or CTRL + C), the original LaTeX would be copied to the clipboard.
