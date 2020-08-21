@@ -4,5 +4,6 @@ google_analytics: UA-1860703-10
 github:
   zip_url: https://github.com/RintarouTW/LaTeX4TwitchChat/zipball/release
   tar_url: https://github.com/RintarouTW/LaTeX4TwitchChat/tarball/release
+markdown: kramdown
 kramdown:
   math_engine: mathjax
