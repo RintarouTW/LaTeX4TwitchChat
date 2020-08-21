@@ -35,7 +35,7 @@ $$\LaTeX$$
 
 ### Copy
 
-Click on the rendered $\LaTeX$ and copy it (CMD + C or CTRL + C), the original <pre>$\LaTeX$</pre> would be copied to the clipboard.
+Click on the rendered $\LaTeX$ and copy it (CMD + C or CTRL + C), the original ```$\LaTeX$``` would be copied to the clipboard.
 
 <script>
 function loadCSS(url) {
@@ -46,12 +46,14 @@ function loadCSS(url) {
   (document.head || document.documentElement).appendChild(link);
 }
 
-function loadScript(url, onload, async = false) {
+function loadScript(url, onload = null, async = false) {
   var s = document.createElement('script');
   s.type = "text/javascript";
   s.src = url;
   s.async = async;
-  s.onload = onload
+  if(onload) {
+    s.onload = onload
+  }
   (document.head || document.documentElement).appendChild(s);
 }
 
@@ -86,7 +88,7 @@ loadCSS("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css")
 loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js")
 loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js")
 loadCSS("https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.css")
-loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.js", function() {
+loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.js", () => {
   renderMathInElement(document.body, options);
 })
 
