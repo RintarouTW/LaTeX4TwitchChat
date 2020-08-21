@@ -60,18 +60,25 @@ function hook() {
     wait(1000).then(hook);
     return;
   }
+  
+  observer = new MutationObserver(mutations =>{
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (node.className == "chat-line__message") {
+	  // console.log(node)
+          texts = node.getElementsByClassName("text-fragment")
+          for ( let text of texts)
+            text && text.textContent && katex && renderMathInElement(text, options)        
+	  node.scrollIntoView()
+	}
+      })
+    })
+  })
 
-  container.addEventListener("DOMNodeInserted", (evt) => {
+  let config = {childList: true}
+  observer.observe(container, config)
 
-      if (evt.target.className == "chat-line__message") {
-        texts = evt.target.getElementsByClassName("text-fragment")
-        for ( let text of texts)
-          text && text.textContent && katex && renderMathInElement(text, options)        
-      }
-
-  }, false)
-
-  // console.log("LaTeX4TwitchChat Installed")
+ // console.log("LaTeX4TwitchChat Installed")
 }
 
 hook();
