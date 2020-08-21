@@ -37,7 +37,6 @@ $$\LaTeX$$
 
 Click on the rendered $\LaTeX$ and copy it (CMD + C or CTRL + C), the original ```$\LaTeX$``` would be copied to the clipboard.
 
-<!--
 <script>
 function loadCSS(url) {
   const link = document.createElement('link');
@@ -94,4 +93,3 @@ loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.
 })
 
 </script>
--->
