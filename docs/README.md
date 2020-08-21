@@ -2,7 +2,7 @@
 
 This is a simple Chrome extension.
 
-Rendering \$$ \LaTeX $$ in Twitch Chat.
+Rendering LaTeX in Twitch Chat.
 
 ## Install
 
@@ -35,4 +35,4 @@ $$\LaTeX$$
 
 ### Copy
 
-Click on the rendered \$$ \LaTeX $$ and copy it (CMD + C or CTRL + C), the original $\LaTeX$ would be copied to the clipboard.
+Click on the rendered **LaTeX** and copy it (CMD + C or CTRL + C), the original $\LaTeX$ would be copied to the clipboard.
