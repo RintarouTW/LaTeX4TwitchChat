@@ -8,10 +8,11 @@ function loadCSS(url) {
   (document.head || document.documentElement).appendChild(link);
 }
 
-function loadScript(url) {
+function loadScript(url, async = false) {
   var s = document.createElement('script');
   s.type = "text/javascript";
   s.src = url;
+  s.async = async;
   s.onload = function () {
     this.remove();
   };
