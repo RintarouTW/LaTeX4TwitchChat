@@ -86,7 +86,7 @@ loadCSS("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css")
 loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js")
 loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js")
 loadCSS("https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.css")
-loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.js", () => {
+loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.js", function() {
   renderMathInElement(document.body, options);
 })
 
