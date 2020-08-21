@@ -69,6 +69,7 @@ function hook() {
           texts = node.getElementsByClassName("text-fragment")
           for ( let text of texts)
             text && text.textContent && katex && renderMathInElement(text, options)        
+	  node.scrollIntoView()
 	}
       })
     })
