@@ -44,6 +44,8 @@ const options = {
         "\\def": "\\gdef", // def only work in local context, make it global
         "\\cal": "\\mathcal",
         "\\pmatrix": "\\begin{pmatrix}#1\\end{pmatrix}",
+        "\\vmatrix": "\\begin{vmatrix}#1\\end{vmatrix}",
+        "\\bmatrix": "\\begin{bmatrix}#1\\end{bmatrix}",
         "\\cases": "\\begin{cases}#1\\end{cases}",
         "\\align": "\\begin{aligned}#1\\end{aligned}",
         "\\eqalign": "\\begin{aligned}#1\\end{aligned}",
