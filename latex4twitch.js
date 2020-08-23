@@ -26,53 +26,53 @@ loadCSS("https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.css")
 loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.js")
 
 const options = {
-      delimiters: [
-        { left: "$$", right: "$$", display: true },
-        { left: "$", right: "$", display: false },
-        { left: "\\(", right: "\\)", display: false },
-        { left: "\\[", right: "\\]", display: true }
-      ],
-      trust: true,
-      strict: "ignore",
-      macros: {
-        "\\eqref": "\\href{#1}{}",   // not support yet
-        "\\label": "\\href{#1}{}",   // not support yet
-        "\\require": "\\href{#1}{}", // not support yet
-        "\\tag": "\\href{#1}{}",     // not support yet
-        "\\hfil": "\\space",         // not support yet
-        "\\style": "\\href{#1}{}",   // not support yet
-        "\\def": "\\gdef", // def only work in local context, make it global
-        "\\cal": "\\mathcal",
-        "\\pmatrix": "\\begin{pmatrix}#1\\end{pmatrix}",
-        "\\vmatrix": "\\begin{vmatrix}#1\\end{vmatrix}",
-        "\\bmatrix": "\\begin{bmatrix}#1\\end{bmatrix}",
-        "\\cases": "\\begin{cases}#1\\end{cases}",
-        "\\align": "\\begin{aligned}#1\\end{aligned}",
-        "\\eqalign": "\\begin{aligned}#1\\end{aligned}",
-        "\\array": "\\begin{array}#1\\end{array}",
-        "\\gather": "\\begin{gathered}#1\\end{gathered}",
-      }
-    }
+  delimiters: [
+    { left: "$$", right: "$$", display: true },
+    { left: "$", right: "$", display: false },
+    { left: "\\(", right: "\\)", display: false },
+    { left: "\\[", right: "\\]", display: true }
+  ],
+  trust: true,
+  strict: "ignore",
+  macros: {
+    "\\eqref": "\\href{#1}{}",   // not support yet
+    "\\label": "\\href{#1}{}",   // not support yet
+    "\\require": "\\href{#1}{}", // not support yet
+    "\\tag": "\\href{#1}{}",     // not support yet
+    "\\hfil": "\\space",         // not support yet
+    "\\style": "\\href{#1}{}",   // not support yet
+    "\\def": "\\gdef", // def only work in local context, make it global
+    "\\cal": "\\mathcal",
+    "\\pmatrix": "\\begin{pmatrix}#1\\end{pmatrix}",
+    "\\vmatrix": "\\begin{vmatrix}#1\\end{vmatrix}",
+    "\\bmatrix": "\\begin{bmatrix}#1\\end{bmatrix}",
+    "\\cases": "\\begin{cases}#1\\end{cases}",
+    "\\align": "\\begin{aligned}#1\\end{aligned}",
+    "\\eqalign": "\\begin{aligned}#1\\end{aligned}",
+    "\\array": "\\begin{array}#1\\end{array}",
+    "\\gather": "\\begin{gathered}#1\\end{gathered}",
+  }
+}
 
 function hook() {  
-  
+
   container = document.getElementsByClassName("chat-scrollable-area__message-container")[0]  
 
   if (!container) {
     wait(1000).then(hook);
     return;
   }
-  
+
   observer = new MutationObserver(mutations =>{
     mutations.forEach(mutation => {
       mutation.addedNodes.forEach(node => {
         if (node.className == "chat-line__message") {
-	  // console.log(node)
+          // console.log(node)
           texts = node.getElementsByClassName("text-fragment")
           for ( let text of texts)
             text && text.textContent && katex && renderMathInElement(text, options)        
-	  node.scrollIntoView()
-	}
+          node.scrollIntoView()
+        }
       })
     })
   })
@@ -80,7 +80,7 @@ function hook() {
   let config = {childList: true}
   observer.observe(container, config)
 
- // console.log("LaTeX4TwitchChat Installed")
+  // console.log("LaTeX4TwitchChat Installed")
 }
 
 hook();
