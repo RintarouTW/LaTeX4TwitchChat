@@ -3,11 +3,11 @@
   "version": "1.0",
   "description": "Support LaTeX in Twitch Chat",
   
-  "permissions": ["https://www.twitch.tv/*"],
+  "permissions": ["https://*.twitch.tv/*"],
 
   "content_scripts": [
     {
-      "matches": ["https://www.twitch.tv/*"],
+      "matches": ["https://*.twitch.tv/*"],
       "run_at": "document_idle",
       "all_frames": true,
       "js": ["loader.js"]
