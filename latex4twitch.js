@@ -1,28 +1,12 @@
 'use strict';
 
-const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+import { matrix } from "./matrix.js"
+import { wait, loadCSS, loadScript } from "./common.js"
+import { graph, dot, plot } from "./graph.js"
+import { show_image } from "./show_image.js"
+import { code } from "./code.js"
 
-function loadCSS(url) {
-	const link = document.createElement('link');
-	link.href = url;
-	link.type = 'text/css';
-	link.rel = 'stylesheet';
-	(document.head || document.documentElement).appendChild(link);
-}
-
-function loadScript(url, async = false) {
-	var s = document.createElement('script');
-	s.type = "text/javascript";
-	s.src = url;
-	s.async = async;
-	/*
-	s.onload = function () {
-		//this.remove();
-		//console.log(url + "is loaded");
-	};*/
-	(document.head || document.documentElement).appendChild(s);
-}
-
+// KaTeX for LaTeX rendering
 loadCSS("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css")
 loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js")
 loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js")
@@ -33,8 +17,18 @@ loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.
 loadCSS("https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraph.css")
 loadScript("https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraphcore.js")
 
+// viz.js for dot, graph and digraph
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/viz.js/2.1.2/viz.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/viz.js/2.1.2/lite.render.js")
 
-const options = {
+// code beautify
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.0/beautify.js")
+
+// highlight.js
+loadCSS("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/tomorrow-night.min.css")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js")
+
+const katex_options = {
 	delimiters: [
 		{ left: "$$", right: "$$", display: true },
 		{ left: "$", right: "$", display: false },
@@ -63,47 +57,23 @@ const options = {
 	}
 }
 
-function makeid(length) {
-	var result           = '';
-	var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-	var charactersLength = characters.length;
-	for ( var i = 0; i < length; i++ ) {
-		result += characters.charAt(Math.floor(Math.random() * charactersLength));
-	}
-	return result;
-}
-
-function plot(text, fnStr) {
-	let randID = makeid(10);
-	let g = document.createElement('div');
-	g.setAttribute("id", randID);
-	g.setAttribute("style", "width: 350px; height:350px;background-color:#fff;");
-	text.appendChild(g);
-	const board = JXG.JSXGraph.initBoard(randID, {
-		boundingbox: [-5, 5, 5, -5], axis:true, showCopyright:false, showNavigation:true
-	});
-
-	let f = board.jc.snippet(fnStr, true, 'x', true);
-  let curve = board.create('functiongraph',[f,
-		function(){
-			var c = new JXG.Coords(JXG.COORDS_BY_SCREEN,[0,0],board);
-			return c.usrCoords[1];
-		},
-		function(){
-			var c = new JXG.Coords(JXG.COORDS_BY_SCREEN,[board.canvasWidth,0],board);
-			return c.usrCoords[1];
-		}
-	],{name:'', withLabel:false});
-
-}
-
 function hook() {  
+
+	let hooks = [
+		["!plot", " x + cos(x) - sin(x)", plot /* command handler */, false /*option*/],
+		["!dot", " digraph {1->2->3}", dot /* command handler */, false /*option*/],
+		["!digraph", " {1->2->3}", graph /* command handler */, true /*option*/],
+		["!graph", " {1--2--3}", graph /* command handler */, false /*option*/],
+		["!matrix", " [1,2,3], [4,5,6]", matrix /* command handler */, false /*option*/],
+		["!gauss", " [1,2,3], [4,5,6]", matrix /* command handler */, true /*option*/],
+		["!code", " function hello_world() { console.log(\"hello world\") } ", code, false ]
+	]
 
 	let container = document.getElementsByClassName("chat-scrollable-area__message-container")  
 
 	if (!container || !(container[0])) {
-		wait(1000).then(hook);
-		return;
+		wait(1000).then(hook)
+		return
 	}
 
 	container = container[0]
@@ -112,18 +82,27 @@ function hook() {
 		mutations.forEach(mutation => {
 			mutation.addedNodes.forEach(node => {
 				if (node.className == "chat-line__message") {
-					// console.log(node)
+
+					let username = node.getElementsByClassName("chat-author__intl-login")
+					if (username[0]) {
+						username = username[0].innerText.replace(/[\( \)]/g, '')
+						show_image(node, username)
+					}
+
 					let texts = node.getElementsByClassName("text-fragment")
 					for ( let text of texts) {
 						let tokens = text.textContent.split(" ")
-						if (tokens[0] == "!plot") {
-							let fnStr = text.textContent.replace(/!plot/,'')
-							//console.log(fnStr)
-							if(fnStr.length > 0)
-								plot(text, fnStr);
-						} else {
-							text && text.textContent && katex && renderMathInElement(text, options)        
-						}
+						hooks.map( h => {
+							if (tokens[0] == h[0]) {
+								let fnStr = text.textContent.replace(h[0], '') /* get the user command payload */
+								if (fnStr.length == 0) {
+									fnStr = h[1]
+									text.textContent += fnStr 
+								}
+								(h[2])(text, fnStr, h[3], username, node) // call command handler
+							}
+						})
+						text && text.textContent && katex && renderMathInElement(text, katex_options)        
 					}
 					node.scrollIntoView()
 				}
@@ -131,9 +110,7 @@ function hook() {
 		})
 	})
 
-	let config = {childList: true}
-	observer.observe(container, config)
-
+	observer.observe(container, {childList: true})
 	// console.log("LaTeX4TwitchChat Installed")
 }
 
