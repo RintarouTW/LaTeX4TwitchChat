@@ -1,6 +1,6 @@
 'user strict';
 
-var userlist = ["rintaroutw", "freemin7", "taftaff"]
+var userlist = ["rintaroutw"]
 
 function show_image(node, username) {
 
