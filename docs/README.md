@@ -43,6 +43,42 @@ $$
 
 Click on the rendered $\LaTeX$ and copy it (CMD + C or CTRL + C), the original ```$\LaTeX$``` would be copied to the clipboard.
 
+### Commands
+
+#### Plot and Graph
+
+Plotting simple functions.
+
+```
+!plot x + cos(x) - sin(x)
+```
+
+Draw graph and directed graph.
+
+```
+!graph {a--b--c}
+!digraph {a->b->c}
+!dot digraph {a->b->c}
+```
+check https://graphviz.org/gallery/ for more examples.
+
+### Matrix
+
+Matrix and Gauss elimination.
+
+```
+!matrix [1,2,3],[4,5,6]
+!gauss [1,2,3],[4,5,6]
+```
+
+### Code
+
+Beautify and highlight the source code.
+
+```
+!code function hello() { console.log("hello world") }
+```
+
 <script>
 function loadCSS(url) {
   const link = document.createElement('link');
