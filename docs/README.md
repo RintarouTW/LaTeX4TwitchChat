@@ -10,7 +10,7 @@ A simple Chrome extension to render and copy $\LaTeX$ in Twitch Chat messages.
 2. In your Chrome URL, type `chrome://extensions/`, it'll lead you to the extensions management page.
 
    在 Chrome URL 中輸入 `chrome://extensions/`，進入延伸套件管理頁面。
-3. Toun on the **Developer Mode** with the toggle on the top right corner of the page.
+3. Turn on the **Developer Mode** with the toggle on the top right corner of the page.
 
    開啟右上角 **開發人員模式**。
 4. Click on `Load unpacked`  button and choose the decompressed directory.
