@@ -23,4 +23,4 @@ function show_image(node, username) {
 	console.log(g)
 }
 
-export { pic }
+export { show_image }
