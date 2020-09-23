@@ -43,9 +43,9 @@ $$
 
 Click on the rendered $\LaTeX$ and copy it (CMD + C or CTRL + C), the original ```$\LaTeX$``` would be copied to the clipboard.
 
-### Commands
+## Commands
 
-#### Plot and Graph
+### Plot and Graph
 
 Plotting simple functions.
 
@@ -77,6 +77,17 @@ Beautify and highlight the source code.
 
 ```
 !code function hello() { console.log("hello world") }
+```
+
+HTML
+```
+!html <html><body><h1>Hello World</h1></body></html>
+```
+
+
+CSS
+```
+!css body { background-color: #666666 }
 ```
 
 <script>
