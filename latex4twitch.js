@@ -30,6 +30,9 @@ loadScript("https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.0/beautify-h
 loadCSS("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/tomorrow-night.min.css")
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js")
 
+// mathjs
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.2.0/math.min.js")
+
 const katex_options = {
 	delimiters: [
 		{ left: "$$", right: "$$", display: true },
