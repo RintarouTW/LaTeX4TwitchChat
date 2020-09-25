@@ -5,16 +5,16 @@ class Row {
 		this.vector = vec
 	}
 	add(vec) {
-		return this.vector.map((item, idx) => this.vector[idx] + vec[idx])
+		return this.vector.map( (item, idx) => math.add(this.vector[idx] ,vec[idx]) )
 	}
 	addTo(vec) {
-		this.vector.forEach((item, idx) => this.vector[idx] += vec[idx])
+		this.vector.forEach( (item, idx) => this.vector[idx] = math.add(this.vector[idx], vec[idx]) )
 	}
 	mult(scaler) {
-		return this.vector.map( x => x * scaler)
+		return this.vector.map( x => math.multiply(x ,scaler) )
 	}
 	multTo(scaler) {
-		this.vector.forEach( (x, idx) => this.vector[idx] = x * scaler)
+		this.vector.forEach( (x, idx) => this.vector[idx] = math.multiply(x ,scaler) )
 	}
 	valueByIndex(idx) {
 		return this.vector[idx]
@@ -23,7 +23,13 @@ class Row {
 		return this.vector.length
 	}
 	toString(separator = ',') {
-		return this.vector.join(separator)
+		return this.vector.map( x => {
+			let str = x.toString()
+			if (str.indexOf('.') == -1)
+				return str
+			// return in fraction format
+			return "\\dfrac{" + math.format(x, {fraction: 'ratio'}).split('/').join('}{') + "}"
+		}).join(separator)
 	}
 }
 
@@ -33,19 +39,23 @@ class Matrix {
 			this.rows = []
 			// clean spaces
 			let rows_list = rows.replace(/\s/g, '')
-			// find rows by ',[' as separator
-			rows_list = rows_list.split(/,\[/g)
+			// find rows by ';' as separator
+			rows_list = rows_list.split(/;/g)
 			rows_list.map( row => {
+				row = row.replace(/(\[|\])/g, '')
 				// extract the numbers separated by ','
-				let numbers_list = row.match(/-?\d*(\.?\d*)?(,-?\d*(\.?\d*)?)*/g)
-				numbers_list.map( l => {
-					if (l.length) {
-						let numbers = l.split(',')
-						// convert the string to real number type
-						let vector = numbers.map( str => Number(str))
-						this.rows.push(new Row(vector))
+				let numbers = row.split(',')
+				// convert the string to math.Fraction type
+				let vector = numbers.map( str => {
+					try {
+						let f = math.fraction(str)
+						return f
+					}
+					catch(err) {
+						return str
 					}
 				})
+				this.rows.push(new Row(vector))
 			})
 		} else {
 			this.rows = rows.map( x => new Row(x) )
@@ -99,24 +109,28 @@ class Matrix {
 	toString(separator) {
 		return this.rows.map( row => row.toString()).join(separator)
 	}
-	toLaTeX() {
+	toTeX() {
 		let prefix = "\\pmatrix{", postfix = "}"
-		return prefix + this.rows.map( row => row.toString('\&')).join('\\\\') + postfix
+		return prefix + this.rows.map( row => row.toString('\&')).join('\\\\[6pt]') + postfix
 	}
 }
 
-function matrix(text, fnStr, gauss = false) {
-	let m = new Matrix(fnStr)
-	text.textContent += "$$" + m.toLaTeX() + "$$"
-	if (gauss) {
-		m.gauss()
-		text.textContent += " $$\\Downarrow$$ $$" + m.toLaTeX() + "$$"
-	}
+function matrix(textNode, text) {
+	let m = new Matrix(text)
+	textNode.textContent += "$$" + m.toTeX() + "$$"
 }
+
+function gauss(textNode, fnStr) {
+	let m = new Matrix(fnStr)
+	textNode.textContent += "$$" + m.toTeX() + "$$"
+	m.gauss()
+	textNode.textContent += " $$\\Downarrow$$ $$" + m.toTeX() + "$$"
+}
+
 
 // Usage Examples:
 /*
-// init with array
+	// init with array
 m = new Matrix([[1,-1,0,0,1], [1,5,1,0,2], [1,2,1,0,-3], [1,1,1,1,3]])
 console.log(m.toLaTeX())
 m.gauss()
@@ -131,4 +145,4 @@ console.log(m.toString('\n'))
 console.log(m.toLaTeX())
 */
 
-export { matrix }
+export { matrix, gauss }
