@@ -1,6 +1,7 @@
 # LaTeX in Twitch Chat
 
 A simple Chrome extension to render and copy $\LaTeX$ in Twitch Chat messages.
+Some functions via commands, ex: plotting a function, draw graphs, matrix calculation, etc.
 
 ## Install
 
@@ -64,11 +65,16 @@ check https://graphviz.org/gallery/ for more examples.
 
 ### Matrix
 
-Matrix and Gauss elimination.
+Present a Matrix
 
 ```
-!matrix [1,2,3],[4,5,6]
-!gauss [1,2,3],[4,5,6]
+!matrix [a,b,c; d,e,f]
+```
+
+Do Gauss elimination.
+
+```
+!gauss [1,2,3; 4,5,6]
 ```
 
 ### Code
@@ -88,6 +94,17 @@ HTML
 CSS
 ```
 !css body { background-color: #666666 }
+```
+
+### Math Calculator
+
+Calculate the math for you.
+
+```
+!mc m = [1,2;3,4]
+!mc m^2
+!mc 128^3
+!mc clear
 ```
 
 <script>
