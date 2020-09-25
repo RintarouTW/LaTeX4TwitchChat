@@ -1,10 +1,11 @@
 'use strict';
 
-import { matrix } from "./matrix.js"
 import { wait, loadCSS, loadScript } from "./common.js"
-import { graph, dot, plot } from "./graph.js"
+import { code, html, css, highlight } from "./code.js"
+import { matrix, gauss } from "./matrix.js"
+import { dot, graph, digraph, plot } from "./graph.js"
 import { show_image } from "./show_image.js"
-import { code, html, css } from "./code.js"
+import { calc } from "./calc.js"
 
 // KaTeX for LaTeX rendering
 loadCSS("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css")
@@ -62,18 +63,35 @@ const katex_options = {
 	}
 }
 
+function help(text) {
+	highlight(text, `
+	!plot : plotting ur function
+	!dot : draw graph via dot language
+	!graph : undirected graph
+	!digraph : directed graph
+	!matrix : fast way to present a matrix
+	!gauss : Gauss elimenate a matrix
+	!mc : math calculator
+	!code : beautify and highlight ur code
+	!html : present html source
+	!css : present css source
+	`)
+}
+
 function hook() {  
 
 	let hooks = [
-		["!plot", " x + cos(x) - sin(x)", plot /* command handler */, false /*option*/],
-		["!dot", " digraph {1->2->3}", dot /* command handler */, false /*option*/],
-		["!digraph", " {1->2->3}", graph /* command handler */, true /*option*/],
-		["!graph", " {1--2--3}", graph /* command handler */, false /*option*/],
-		["!matrix", " [1,2,3], [4,5,6]", matrix /* command handler */, false /*option*/],
-		["!gauss", " [1,2,3], [4,5,6]", matrix /* command handler */, true /*option*/],
-		["!code", " function hello_world() { console.log(\"hello world\") } ", code, false ],
-		["!html", " <html><body><h1>Hello World</h1></body></html>", html, false ],
-		["!css", " body { background-color: #666666 } ", css, false ]
+		["!plot", " x + cos(x) - sin(x)", plot /* command handler */],
+		["!dot", " digraph {1->2->3}", dot /* command handler */],
+		["!digraph", " {1->2->3}", digraph /* command handler */],
+		["!graph", " {1--2--3}", graph /* command handler */],
+		["!matrix", " [1,2,3], [4,5,6]", matrix /* command handler */],
+		["!gauss", " [1,2,3], [4,5,6]", gauss /* command handler */],
+		["!mc", " m=[1,2,3;4,5,6]", calc /* command handler */],
+		["!code", " function hello_world() { console.log(\"hello world\") } ", code],
+		["!html", " <html><body><h1>Hello World</h1></body></html>", html],
+		["!css", " body { background-color: #666666 } ", css],
+		["!help", "", help/* command handler */]
 	]
 
 	let container = document.getElementsByClassName("chat-scrollable-area__message-container")
@@ -97,20 +115,25 @@ function hook() {
 					}
 
 					let texts = node.getElementsByClassName("text-fragment")
-					for ( let text of texts) {
-						let tokens = text.textContent.split(" ")
+					let cmd = texts[0]
+
+					if (cmd) {
+						let tokens = cmd.textContent.split(" ")
 						hooks.map( h => {
 							if (tokens[0] == h[0]) {
-								let fnStr = text.textContent.replace(h[0], '') /* get the user command payload */
-								if (fnStr.length == 0) {
-									fnStr = h[1]
-									text.textContent += fnStr 
+								let payload = cmd.textContent.replace(h[0], '') /* get the user command payload */
+								if (payload.length == 0) {
+									payload = h[1]
+									cmd.textContent += payload
 								}
-								(h[2])(text, fnStr, h[3], username, node) // call command handler
+								(h[2])(cmd, payload) // call command handler
 							}
 						})
-						text && text.textContent && katex && renderMathInElement(text, katex_options)        
 					}
+
+					for ( let text of texts) 
+						text && text.textContent && katex && renderMathInElement(text, katex_options)        
+
 					node.scrollIntoView()
 				}
 			})

@@ -2,13 +2,13 @@
 
 import { makeid } from "./common.js"
 
-function plot(text, fnStr) {
+function plot(textNode, text) {
 
 	let randID = makeid(10);
 	let g = document.createElement('div');
 	g.setAttribute("id", randID);
 	g.setAttribute("style", "width: 350px; height:350px");
-	text.appendChild(g);
+	textNode.appendChild(g);
 
 	const board = JXG.JSXGraph.initBoard(randID, {
 		boundingbox: [-5, 5, 5, -5], axis:false, showCopyright:false, showNavigation:true
@@ -49,7 +49,7 @@ function plot(text, fnStr) {
 	});
 
 	// draw function
-	let f = board.jc.snippet(fnStr, true, 'x', true);
+	let f = board.jc.snippet(text, true, 'x', true);
 	let curve = board.create('functiongraph',[f,
 		function(){
 			var c = new JXG.Coords(JXG.COORDS_BY_SCREEN,[0,0],board);
@@ -62,24 +62,27 @@ function plot(text, fnStr) {
 	], {name:'', withLabel:false, strokeColor:'white'});
 }
 
-function dot(text, fnStr) {
+function dot(textNode, text) {
 	let g = document.createElement('div');
 	g.setAttribute("style", "width: 350px;");
 
 	let viz = new Viz()
-	viz.renderSVGElement(fnStr)
+	viz.renderSVGElement(text)
 		.then(function(element) {
 			g.appendChild(element);
-			text.appendChild(g);
-			text.scrollIntoView();
+			textNode.appendChild(g);
+			textNode.scrollIntoView();
 		})
 }
 
-function graph(text, fnStr, is_digraph = false) {
-	let type = is_digraph ? "digraph" : "graph"
-	let prefix = type + " { graph [bgcolor=transparent]; node[fontcolor=white;color=white]; edge [color=white]; "
-	let str = prefix + fnStr + "}"
-	dot(text, str)
+function graph(textNode, text) {
+	let prefix = "graph { graph [bgcolor=transparent]; node[fontcolor=white;color=white]; edge [color=white]; "
+	dot(textNode, prefix + text + "}")
 }
 
-export { plot, dot, graph }
+function digraph(textNode, text) {
+	let prefix = "digraph { graph [bgcolor=transparent]; node[fontcolor=white;color=white]; edge [color=white]; "
+	dot(textNode, prefix + text + "}")
+}
+
+export { plot, dot, graph, digraph }

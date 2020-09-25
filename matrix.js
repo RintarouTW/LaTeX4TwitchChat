@@ -101,20 +101,24 @@ class Matrix {
 	toString(separator) {
 		return this.rows.map( row => row.toString()).join(separator)
 	}
-	toLaTeX() {
+	toTeX() {
 		let prefix = "\\pmatrix{", postfix = "}"
 		return prefix + this.rows.map( row => row.toString('\&')).join('\\\\[6pt]') + postfix
 	}
 }
 
-function matrix(text, fnStr, gauss = false) {
-	let m = new Matrix(fnStr)
-	text.textContent += "$$" + m.toLaTeX() + "$$"
-	if (gauss) {
-		m.gauss()
-		text.textContent += " $$\\Downarrow$$ $$" + m.toLaTeX() + "$$"
-	}
+function matrix(textNode, text) {
+	let m = new Matrix(text)
+	textNode.textContent += "$$" + m.toTeX() + "$$"
 }
+
+function gauss(textNode, fnStr) {
+	let m = new Matrix(fnStr)
+	textNode.textContent += "$$" + m.toTeX() + "$$"
+	m.gauss()
+	textNode.textContent += " $$\\Downarrow$$ $$" + m.toTeX() + "$$"
+}
+
 
 // Usage Examples:
 /*
@@ -133,4 +137,4 @@ console.log(m.toString('\n'))
 console.log(m.toLaTeX())
 */
 
-export { matrix }
+export { matrix, gauss }

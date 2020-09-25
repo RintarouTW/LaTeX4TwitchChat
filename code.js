@@ -20,7 +20,18 @@ const option = {
 	"indent_empty_lines": false
 }
 
-function beautify(text, type = "code") {
+function highlight(textNode, text) {
+	let g = document.createElement('code')
+	g.innerText = text
+
+	let pre = document.createElement('pre')
+	pre.appendChild(g)
+	textNode.appendChild(pre)
+
+	hljs.highlightBlock(pre)
+}
+
+function beautify(textNode, type = "code") {
 
 	const func_map = {
 		"code": js_beautify,
@@ -28,9 +39,9 @@ function beautify(text, type = "code") {
 		"css": css_beautify
 	}
 
-	let plaintext = text.textContent.replace(/^!(code|css|html)\s*/, '')
-	text.textContent = "!" + type
-	let currNode = text.nextElementSibling
+	let plaintext = textNode.textContent.replace(/^!(code|css|html)\s*/, '')
+	textNode.textContent = "!" + type
+	let currNode = textNode.nextElementSibling
 	while (currNode) {
 		plaintext += currNode.innerText
 		let nextNode = currNode.nextElementSibling
@@ -40,26 +51,19 @@ function beautify(text, type = "code") {
 
 	let beautified = (func_map[type])(plaintext, option)
 
-	let g = document.createElement('code')
-	g.innerText = beautified
-
-	let pre = document.createElement('pre')
-	pre.appendChild(g)
-	text.appendChild(pre)
-
-	hljs.highlightBlock(pre)
+	highlight(textNode, beautified, type)
 }
 
-function code(text) {
-	beautify(text, "code")
+function code(textNode) {
+	beautify(textNode, "code")
 }
 
-function html(text) {
-	beautify(text, "html")
+function html(textNode) {
+	beautify(textNode, "html")
 }
 
-function css(text) {
-	beautify(text, "css")
+function css(textNode) {
+	beautify(textNode, "css")
 }
 
-export { code, html, css }
+export { code, html, css, highlight }
