@@ -39,14 +39,22 @@ class Matrix {
 			this.rows = []
 			// clean spaces
 			let rows_list = rows.replace(/\s/g, '')
-			// find rows by ',[' as separator
-			rows_list = rows_list.split(/,\[/g)
+			// find rows by ';' as separator
+			rows_list = rows_list.split(/;/g)
 			rows_list.map( row => {
 				row = row.replace(/(\[|\])/g, '')
 				// extract the numbers separated by ','
 				let numbers = row.split(',')
 				// convert the string to math.Fraction type
-				let vector = numbers.map( str => math.fraction(str))
+				let vector = numbers.map( str => {
+					try {
+						let f = math.fraction(str)
+						return f
+					}
+					catch(err) {
+						return str
+					}
+				})
 				this.rows.push(new Row(vector))
 			})
 		} else {

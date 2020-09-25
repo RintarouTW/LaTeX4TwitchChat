@@ -71,7 +71,7 @@ function help(text) {
 	!digraph : directed graph
 	!matrix : fast way to present a matrix
 	!gauss : Gauss elimenate a matrix
-	!mc : math calculator
+	!mc : math calculator, check http://mathjs.org
 	!code : beautify and highlight ur code
 	!html : present html source
 	!css : present css source
@@ -85,8 +85,8 @@ function hook() {
 		["!dot", " digraph {1->2->3}", dot /* command handler */],
 		["!digraph", " {1->2->3}", digraph /* command handler */],
 		["!graph", " {1--2--3}", graph /* command handler */],
-		["!matrix", " [1,2,3], [4,5,6]", matrix /* command handler */],
-		["!gauss", " [1,2,3], [4,5,6]", gauss /* command handler */],
+		["!matrix", " [a,b,c; d,e,f]", matrix /* command handler */],
+		["!gauss", " [1,2,3; 4,5,6]", gauss /* command handler */],
 		["!mc", " m=[1,2,3;4,5,6]", calc /* command handler */],
 		["!code", " function hello_world() { console.log(\"hello world\") } ", code],
 		["!html", " <html><body><h1>Hello World</h1></body></html>", html],
