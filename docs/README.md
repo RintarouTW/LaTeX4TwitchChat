@@ -46,6 +46,14 @@ Click on the rendered $\LaTeX$ and copy it (CMD + C or CTRL + C), the original `
 
 ## Commands
 
+###
+
+Help for commands list
+
+```
+!help
+```
+
 ### Plot and Graph
 
 Plotting simple functions.
@@ -104,6 +112,7 @@ Calculate the math for you.
 !mc m = [1,2;3,4]
 !mc m^2
 !mc 128^3
+!mc inv(m)
 !mc clear
 ```
 
