@@ -2,6 +2,7 @@
 
 import { wait, loadCSS, loadScript } from "./common.js"
 import { code, html, css, highlight } from "./code.js"
+import { renderMath } from "./render_math.js"
 import { matrix, gauss } from "./matrix.js"
 import { dot, graph, digraph, plot } from "./graph.js"
 import { show_image } from "./show_image.js"
@@ -33,35 +34,6 @@ loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight
 
 // mathjs
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.2.0/math.min.js")
-
-const katex_options = {
-	delimiters: [
-		{ left: "$$", right: "$$", display: true },
-		{ left: "$", right: "$", display: false },
-		{ left: "\\(", right: "\\)", display: false },
-		{ left: "\\[", right: "\\]", display: true }
-	],
-	trust: true,
-	strict: "ignore",
-	macros: {
-		"\\eqref": "\\href{#1}{}",   // not support yet
-		"\\label": "\\href{#1}{}",   // not support yet
-		"\\require": "\\href{#1}{}", // not support yet
-		"\\tag": "\\href{#1}{}",     // not support yet
-		"\\hfil": "\\space",         // not support yet
-		"\\style": "\\href{#1}{}",   // not support yet
-		"\\def": "\\gdef", // def only work in local context, make it global
-		"\\cal": "\\mathcal",
-		"\\pmatrix": "\\begin{pmatrix}#1\\end{pmatrix}",
-		"\\vmatrix": "\\begin{vmatrix}#1\\end{vmatrix}",
-		"\\bmatrix": "\\begin{bmatrix}#1\\end{bmatrix}",
-		"\\cases": "\\begin{cases}#1\\end{cases}",
-		"\\align": "\\begin{aligned}#1\\end{aligned}",
-		"\\eqalign": "\\begin{aligned}#1\\end{aligned}",
-		"\\array": "\\begin{array}#1\\end{array}",
-		"\\gather": "\\begin{gathered}#1\\end{gathered}",
-	}
-}
 
 function help(text) {
 	highlight(text, `
@@ -131,8 +103,8 @@ function hook() {
 						})
 					}
 
-					for ( let text of texts) 
-						text && text.textContent && katex && renderMathInElement(text, katex_options)        
+					for ( let textNode of texts) 
+						textNode && textNode.textContent && katex && renderMath(textNode)
 
 					node.scrollIntoView()
 				}
