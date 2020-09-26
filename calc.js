@@ -1,6 +1,10 @@
 'use strict';
 
+import { loadScript } from "./common.js"
 import { highlight } from "./code.js"
+
+// mathjs
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.2.0/math.min.js")
 
 var parser
 

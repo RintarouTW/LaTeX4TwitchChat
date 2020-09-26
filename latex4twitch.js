@@ -8,33 +8,6 @@ import { dot, graph, digraph, plot } from "./graph.js"
 import { show_image } from "./show_image.js"
 import { calc } from "./calc.js"
 
-// KaTeX for LaTeX rendering
-loadCSS("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css")
-loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js")
-loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js")
-loadCSS("https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.css")
-loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.js")
-
-// jsxgraph for plotting simple function
-loadCSS("https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraph.css")
-loadScript("https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraphcore.js")
-
-// viz.js for dot, graph and digraph
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/viz.js/2.1.2/viz.js")
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/viz.js/2.1.2/lite.render.js")
-
-// code beautify
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.0/beautify.js")
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.0/beautify-css.js")
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.0/beautify-html.js")
-
-// highlight.js
-loadCSS("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/tomorrow-night.min.css")
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js")
-
-// mathjs
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.2.0/math.min.js")
-
 function help(text) {
 	highlight(text, `
 	!plot : plotting ur function

@@ -1,7 +1,15 @@
 'use strict';
 
-import { makeid } from "./common.js"
+import { makeid, loadCSS, loadScript } from "./common.js"
 import { highlight } from "./code.js"
+
+// jsxgraph for plotting simple function
+loadCSS("https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraph.css")
+loadScript("https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraphcore.js")
+
+// viz.js for dot, graph and digraph
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/viz.js/2.1.2/viz.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/viz.js/2.1.2/lite.render.js")
 
 function plot(textNode, text) {
 
