@@ -1,6 +1,7 @@
 'use strict';
 
 import { makeid } from "./common.js"
+import { highlight } from "./code.js"
 
 function plot(textNode, text) {
 
@@ -72,6 +73,8 @@ function dot(textNode, text) {
 			g.appendChild(element);
 			textNode.appendChild(g);
 			textNode.scrollIntoView();
+		}, function(err) {
+			highlight(textNode, err.toString())
 		})
 }
 
