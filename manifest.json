@@ -14,7 +14,7 @@
     }
   ],
 
-  "web_accessible_resources": ["latex4twitch.js", "common.js", "graph.js", "matrix.js", "show_image.js", "code.js", "calc.js"],
+  "web_accessible_resources": ["latex4twitch.js", "common.js", "graph.js", "matrix.js", "show_image.js", "code.js", "calc.js", "render_math.js"],
 
   "icons": {
       "16": "images/logo-16.png",
