@@ -77,11 +77,11 @@ function dot(textNode, text) {
 
 	let viz = new Viz()
 	viz.renderSVGElement(text)
-		.then(function(element) {
+		.then( element => {
 			g.appendChild(element);
 			textNode.appendChild(g);
 			textNode.scrollIntoView();
-		}, function(err) {
+		}, err => {
 			highlight(textNode, err.toString())
 		})
 }

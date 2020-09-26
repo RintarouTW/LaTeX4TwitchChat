@@ -40,6 +40,7 @@ function highlight(textNode, text) {
 	textNode.appendChild(pre)
 
 	hljs.highlightBlock(pre)
+	textNode.scrollIntoView()
 }
 
 function beautify(textNode, type = "code") {
