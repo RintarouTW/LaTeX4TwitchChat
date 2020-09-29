@@ -2,14 +2,14 @@
 
 import { wait, loadCSS, loadScript } from "./common.js"
 import { code, html, css, highlight } from "./code.js"
-import { renderMath } from "./render_math.js"
+import { renderMath, tex, cheat } from "./render_math.js"
 import { matrix, gauss } from "./matrix.js"
 import { dot, graph, digraph, plot } from "./graph.js"
 import { show_image } from "./show_image.js"
 import { calc } from "./calc.js"
 
 function help(text) {
-	highlight(text, `
+	highlight(text, String.raw`
 	!plot : plotting ur function
 	!dot : draw graph via dot language
 	!graph : undirected graph
@@ -36,7 +36,9 @@ function hook() {
 		["!code", " function hello_world() { console.log(\"hello world\") } ", code],
 		["!html", " <html><body><h1>Hello World</h1></body></html>", html],
 		["!css", " body { background-color: #666666 } ", css],
-		["!help", "", help/* command handler */]
+		["!tex", " \\TeX", tex],
+		["!help", "", help /* command handler */],
+		["!cheat", "", cheat /* command handler */]
 	]
 
 	let container = document.getElementsByClassName("chat-scrollable-area__message-container")
@@ -76,8 +78,15 @@ function hook() {
 						})
 					}
 
-					for ( let textNode of texts) 
-						textNode && textNode.textContent && katex && renderMath(textNode)
+					for (let textNode of texts) {
+						if (textNode && textNode.textContent && katex) {
+							renderMath(textNode)
+							/*
+							let svgTexts = textNode.getElementsByTagName('text')
+							for (let text of svgTexts) renderMath(text)
+							*/
+						}
+					}
 
 					node.scrollIntoView()
 				}
