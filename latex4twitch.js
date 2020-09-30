@@ -7,6 +7,7 @@ import { matrix, gauss } from "./matrix.js"
 import { dot, graph, digraph, plot } from "./graph.js"
 import { show_image } from "./show_image.js"
 import { calc } from "./calc.js"
+import { sage } from "./sage.js"
 
 function help(text) {
 	highlight(text, String.raw`
@@ -38,7 +39,8 @@ function hook() {
 		["!css", " body { background-color: #666666 } ", css],
 		["!tex", " \\TeX", tex],
 		["!help", "", help /* command handler */],
-		["!cheat", "", cheat /* command handler */]
+		["!cheat", "", cheat /* command handler */],
+		["!sage", " Posets.DivisorLattice(30)", sage /* command handler */]
 	]
 
 	let container = document.getElementsByClassName("chat-scrollable-area__message-container")
