@@ -2,41 +2,60 @@
 
 import { wait, loadCSS, loadScript } from "./common.js"
 import { code, html, css, highlight } from "./code.js"
-import { renderMath } from "./render_math.js"
+import { renderMath, tex, cheat } from "./render_math.js"
 import { matrix, gauss } from "./matrix.js"
 import { dot, graph, digraph, plot } from "./graph.js"
 import { show_image } from "./show_image.js"
 import { calc } from "./calc.js"
+import { sage } from "./sage.js"
 
-function help(text) {
-	highlight(text, `
-	!plot : plotting ur function
-	!dot : draw graph via dot language
+function help(textNode) {
+	highlight(textNode, String.raw`
+	--[ LaTeX ]-- 
+	$\LaTeX$ : inline mode; $$\LaTeX$$ : display mode
+	!matrix : fast way to present a matrix
+	!tex : show the parse error of ur tex string.
+	!cheat : some used often symbols
+
+	--[ Code ]-- 
+	!code : beautify and highlight ur code
+	!css : present css source
+	!html : present html source
+	
+	--[ Graphics ]-- 
+	!plot : plotting ur function (JSXGraph)
+	!dot : draw graph via dot language (Graphviz)
 	!graph : undirected graph
 	!digraph : directed graph
-	!matrix : fast way to present a matrix
-	!gauss : Gauss elimenate a matrix
-	!mc : math calculator, check http://mathjs.org
-	!code : beautify and highlight ur code
-	!html : present html source
-	!css : present css source
+
+	--[ Calculation ]-- 
+	!gauss : Gauss elimenates a matrix
+	!mc : math calculator, (http://mathjs.org)
+	!sage : SageMath (http://sagemath.org)
 	`)
 }
 
 function hook() {  
 
 	let hooks = [
-		["!plot", " x + cos(x) - sin(x)", plot /* command handler */],
-		["!dot", " digraph {1->2->3}", dot /* command handler */],
-		["!digraph", " {1->2->3}", digraph /* command handler */],
-		["!graph", " {1--2--3}", graph /* command handler */],
-		["!matrix", " [a,b,c; d,e,f]", matrix /* command handler */],
-		["!gauss", " [1,2,3; 4,5,6]", gauss /* command handler */],
-		["!mc", " m=[1,2,3;4,5,6]", calc /* command handler */],
-		["!code", " function hello_world() { console.log(\"hello world\") } ", code],
-		["!html", " <html><body><h1>Hello World</h1></body></html>", html],
-		["!css", " body { background-color: #666666 } ", css],
-		["!help", "", help/* command handler */]
+		["!matrix" /* command */ , " [a,b,c; d,e,f]" /* usage example */, matrix /* handler */],
+		["!tex", " \\TeX", tex ],
+		["!cheat", "", cheat ],
+
+   	["!code", " function hello_world() { console.log(\"hello world\") } ", code ],
+		["!html", " <html><body><h1>Hello World</h1></body></html>", html ],
+		["!css", " body { background-color: #666666 } ", css ],
+
+		["!plot" , " x + cos(x) - sin(x)" , plot ],
+		["!dot", " digraph {1->2,3->6}", dot ],
+		["!digraph", " {1->2,3->6}", digraph ],
+		["!graph", " {1--2,3--6}", graph ],
+	
+		["!gauss", " [1,2,3; 4,5,6]", gauss ],
+		["!mc", " m=[1,2,3;4,5,6]", calc ],
+		["!sage", " Posets.DivisorLattice(30)", sage ],
+
+		["!help", "", help ]
 	]
 
 	let container = document.getElementsByClassName("chat-scrollable-area__message-container")
@@ -76,8 +95,15 @@ function hook() {
 						})
 					}
 
-					for ( let textNode of texts) 
-						textNode && textNode.textContent && katex && renderMath(textNode)
+					for (let textNode of texts) {
+						if (textNode && textNode.textContent && katex) {
+							renderMath(textNode)
+							/*
+							let svgTexts = textNode.getElementsByTagName('text')
+							for (let text of svgTexts) renderMath(text)
+							*/
+						}
+					}
 
 					node.scrollIntoView()
 				}

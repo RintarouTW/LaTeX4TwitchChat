@@ -11,11 +11,13 @@ loadCSS("https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.css")
 loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.js")
 
 let katex_options = {
+	//output: "html", /* keep mathml for copy-tex to work */
 	delimiters: [
 		{ left: "$$", right: "$$", display: true },
 		{ left: "$", right: "$", display: false },
 		{ left: "\\(", right: "\\)", display: false },
-		{ left: "\\[", right: "\\]", display: true }
+		{ left: "\\[", right: "\\]", display: true },
+		{ left: "\\begin{equation}", right: "\\end{equation}", display: true}
 	],
 	trust: true,
 	strict: "ignore",
@@ -39,6 +41,15 @@ let katex_options = {
 	},
 }
 
+function tex(textNode, payload) {
+	try {
+		textNode.innerHTML = katex.renderToString(payload, katex_options)
+	} catch (err) {
+		let msg = err.toString().replace(' KaTeX parse error:', '')
+		highlight(textNode, msg)
+	}
+}
+
 function renderMath(textNode) {
 
 	katex_options.errorCallback = function (err) {
@@ -50,4 +61,43 @@ function renderMath(textNode) {
 	renderMathInElement(textNode, katex_options)
 }
 
-export { renderMath }
+function cheat(textNode) {
+	textNode.textContent += String.raw`
+	$$\LaTeX \text{ Symbols }$$
+	$$
+	\begin{array}{r|r|r|r}
+	\land & land & \lor & lor\\
+	\cup & cup & \cap & cap\\
+	\lt & lt & \gt & gt\\
+	\leq & leq & \geq & geq\\
+	= & = & \neq & neq\\
+	\subset & subset & \supset & supset\\
+	\subseteq & subseteq & \supseteq & supseteq\\
+	\varnothing & varnothing\\
+	\preceq & preceq & \succeq & succeq\\
+	\approx & approx\\
+	\equiv & equiv &
+	\cong & cong\\
+	\simeq & simeq\\
+	\forall & forall & \exists & exists\\
+	\in & in& \ni & ni\\
+	\notin & notin\\
+	\end{array}
+	$$
+	`
+	const links = [
+		{ text: 'more examples', url: 'https://hackmd.io/@RintarouTW/LaTeX_%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98'},
+		{ text: 'Graphviz Graph Attributes', url: 'https://graphviz.org/doc/info/attrs.html'}
+	]
+	links.map( a => {
+		let p = document.createElement('p')
+		let g = document.createElement('a')
+		g.innerText = a.text
+		g.setAttribute('href', a.url)
+		p.appendChild(g)
+		textNode.appendChild(p)
+	})
+}
+
+
+export { renderMath, tex, cheat }

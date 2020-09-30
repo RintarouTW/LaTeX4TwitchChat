@@ -87,12 +87,23 @@ function dot(textNode, text) {
 }
 
 function graph(textNode, text) {
-	let prefix = "graph { graph [bgcolor=transparent]; node[fontcolor=white;color=white]; edge [color=white]; "
+	let rankdir = ""
+	if (/^\s?-i\s+/.test(text)) {
+		rankdir = ";rankdir=BT"
+		text = text.replace(/^\s?-i\s+/, '')
+	}
+	let prefix = "graph { graph [bgcolor=transparent" + rankdir + "]; node[fontcolor=white;color=white]; edge [color=white]; "
+
 	dot(textNode, prefix + text + "}")
 }
 
 function digraph(textNode, text) {
-	let prefix = "digraph { graph [bgcolor=transparent]; node[fontcolor=white;color=white]; edge [color=white]; "
+	let rankdir = ""
+	if (/^\s?-i\s+/.test(text)) {
+		rankdir = ";rankdir=BT"
+		text = text.replace(/^\s?-i\s+/, '')
+	}
+	let prefix = "digraph { graph [bgcolor=transparent" + rankdir + "]; node[fontcolor=white;color=white]; edge [color=white]; "
 	dot(textNode, prefix + text + "}")
 }
 
