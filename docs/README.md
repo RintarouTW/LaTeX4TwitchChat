@@ -48,10 +48,47 @@ Click on the rendered $\LaTeX$ and copy it (CMD + C or CTRL + C), the original `
 
 ###
 
-Help for commands list
+Help for the commands list
 
 ```
 !help
+```
+
+### Tex
+
+Show the error in ur tex string.
+
+```
+!tex \LaTeX
+```
+
+
+### Cheat Sheet
+
+Most used often $\LaTeX$ symbols
+
+```
+!cheat
+```
+
+### Code
+
+Beautify and highlight the source code.
+
+```
+!code function hello() { console.log("hello world") }
+```
+
+HTML
+
+```
+!html <html><body><h1>Hello World</h1></body></html>
+```
+
+
+CSS
+```
+!css body { background-color: #666666 }
 ```
 
 ### Plot and Graph
@@ -65,8 +102,10 @@ Plotting simple functions.
 Draw graph and directed graph.
 
 ```
-!graph {a--b--c}
-!digraph {a->b->c}
+!graph {1--2--3}
+!graph -i {1--2--3} // inverse order, bottom up.
+!digraph {1->2,3->6}
+!digraph -i {1->2,3->6} // inverse order, bottom up.
 !dot digraph {a->b->c}
 ```
 check https://graphviz.org/gallery/ for more examples.
@@ -85,36 +124,28 @@ Do Gauss elimination.
 !gauss [1,2,3; 4,5,6]
 ```
 
-### Code
-
-Beautify and highlight the source code.
-
-```
-!code function hello() { console.log("hello world") }
-```
-
-HTML
-```
-!html <html><body><h1>Hello World</h1></body></html>
-```
-
-
-CSS
-```
-!css body { background-color: #666666 }
-```
-
 ### Math Calculator
 
 Calculate the math for you.
 
 ```
-!mc m = [1,2;3,4]
+!mc m = [1,2; 3,4]
 !mc m^2
 !mc 128^3
 !mc inv(m)
+!mc det(m)
 !mc clear
 ```
+
+check https://mathjs.org for more usages.
+
+### SageMath
+
+```
+!sage Prosets.DivisorLattice(30)
+```
+
+check https://sagemath.org for more usages.
 
 <script>
 function loadCSS(url) {
