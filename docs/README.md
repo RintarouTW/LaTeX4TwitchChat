@@ -46,8 +46,6 @@ Click on the rendered $\LaTeX$ and copy it (CMD + C or CTRL + C), the original `
 
 ## Commands
 
-###
-
 Help for the commands list
 
 ```
