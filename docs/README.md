@@ -145,4 +145,4 @@ check https://mathjs.org for more usages.
 
 check https://sagemath.org for more usages.
 
-<script src="/assets/latex_render.js"></script>
+<script src="./assets/latex_render.js"></script>
