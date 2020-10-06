@@ -8,7 +8,7 @@ loadScript("https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.0/beautify-c
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.0/beautify-html.js")
 
 // highlight.js
-loadCSS("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/tomorrow-night.min.css")
+loadCSS("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/tomorrow-night-bright.min.css")
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js")
 
 const option = {

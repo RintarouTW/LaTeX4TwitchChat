@@ -50,6 +50,22 @@ function tex(textNode, payload) {
 	}
 }
 
+function previewMath(textNode) {
+
+	katex_options.errorCallback = function (err) {
+		let msg = err.toString().replace('KaTeX auto-render:', '')
+		msg = msg.replace(/ with $/, '')
+		textNode.textContent = ""
+		highlight(textNode, msg)
+	}
+
+	try {
+		renderMathInElement(textNode, katex_options)
+	} catch (err) {
+		//console.log(err)
+	}
+}
+
 function renderMath(textNode) {
 
 	katex_options.errorCallback = function (err) {
@@ -100,4 +116,4 @@ function cheat(textNode) {
 }
 
 
-export { renderMath, tex, cheat }
+export { renderMath, tex, cheat, previewMath }
