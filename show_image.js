@@ -6,19 +6,19 @@ function show_image(node, username) {
 
 	if (userlist.indexOf(username) == -1) return
 
-	let url = node.getElementsByClassName('tw-link')
-	if (url.length == 0) return
+	let url = node.querySelector('.tw-link')
+	if (!url) return
 
-	let matched = url[0].innerText.match(/(https:)([/|.|\w|\s|-])*\.(?:jpeg|jpg|gif|png|svg)/) 
+	let matched = url.innerText.match(/(https:)([/|.|\w|\s|-])*\.(?:jpeg|jpg|gif|png|svg)/) 
 	if (!matched || matched.length == 0) return
 
 	let g = document.createElement('img')
 	g.setAttribute("style", "max-width: 350px;");
-	g.setAttribute("src", url[0].innerText);
+	g.setAttribute("src", url.innerText);
 	g.onload = function() {
 		node.scrollIntoView()
 	}
-	url[0].appendChild(g)
+	url.appendChild(g)
 
 	console.log(g)
 }
