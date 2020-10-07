@@ -1,7 +1,7 @@
 'use strict';
 
 import { makeid, loadCSS, loadScript } from "./common.js"
-import { highlight } from "./code.js"
+import { highlightText } from "./code.js"
 
 // jsxgraph for plotting simple function
 loadCSS("https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraph.css")
@@ -82,7 +82,7 @@ function dot(textNode, text) {
 			textNode.appendChild(g);
 			textNode.scrollIntoView();
 		}, err => {
-			highlight(textNode, err.toString())
+			highlightText(textNode, err.toString())
 		})
 }
 

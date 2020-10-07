@@ -2,17 +2,17 @@
 
 import { wait, loadCSS, loadScript } from "./common.js"
 import { TWChatButtonsContainer, TWChatInput } from "./tw_elements_finder.js"
-import { code, html, css, highlight } from "./code.js"
+import { code, html, css, highlightText, pre } from "./code.js"
 import { renderMath, tex, cheat, previewMath } from "./render_math.js"
 import { matrix, gauss } from "./matrix.js"
 import { dot, graph, digraph, plot } from "./graph.js"
 import { show_image } from "./show_image.js"
 import { calc } from "./calc.js"
 import { sage } from "./sage.js"
-import { codeEditor, pre } from "./code_editor.js"
+import { popupButtonForEditor } from "./code_editor.js"
 
 function help(textNode) {
-	highlight(textNode, String.raw`
+	highlightText(textNode, String.raw`
 	--[ LaTeX ]-- 
 	$\LaTeX$ : inline mode; $$\LaTeX$$ : display mode
 	!matrix : fast way to present a matrix
@@ -51,7 +51,7 @@ function hookup() {
 
 		["!plot" , " x + cos(x) - sin(x)" , plot ],
 		["!dot", " digraph {1->2,3->6}", dot ],
-		["!digraph", " {1->2,3->6}", digraph ],
+		["!digraph", " -i {1->2,3,5;2->6,10;3->6,15;5->10,15;6,10,15->30}", digraph ],
 		["!graph", " {1--2,3--6}", graph ],
 	
 		["!gauss", " [1,2,3; 4,5,6]", gauss ],
@@ -61,23 +61,21 @@ function hookup() {
 		["!help", "", help ]
 	]
 
-	let container = document.getElementsByClassName("chat-scrollable-area__message-container")
+	let container = document.querySelector(".chat-scrollable-area__message-container")
 
-	if (!container || !(container[0]) || (typeof CodeMirror == 'undefined')) {
+	if (!container || (typeof CodeMirror == 'undefined')) {
 		wait(1000).then(hookup)
 		return
 	}
-
-	container = container[0]
 
 	let observer = new MutationObserver(mutations =>{
 		mutations.forEach(mutation => {
 			mutation.addedNodes.forEach(node => {
 				if (node.className == "chat-line__message") {
 
-					let username = node.getElementsByClassName("chat-author__intl-login")
-					if (username[0]) {
-						username = username[0].innerText.replace(/[\( \)]/g, '')
+					let username = node.querySelector(".chat-author__intl-login")
+					if (username) {
+						username = username.innerText.replace(/[\( \)]/g, '')
 						show_image(node, username)
 					}
 
@@ -124,8 +122,7 @@ function hookup() {
 	let chatInput = TWChatInput()
 	let chatButtonsContainer = TWChatButtonsContainer()
 	let preview = document.createElement("div")
-	preview.setAttribute("style", "margin: 0px 5px 0px 5px;width:140px")
-	preview.setAttribute("class", "tw-align-items-center tw-align-middle")
+	preview.setAttribute("class", "tw-align-items-center tw-overflow-hidden tw-flex")
 
 	chatButtonsContainer.insertBefore(preview, chatButtonsContainer.childNodes[1])
 	chatInput.addEventListener("input", (evt) => {
@@ -143,8 +140,8 @@ function hookup() {
 		}
 	})
 
-	// the code editor
-	let popupButton = codeEditor()
+	// the popup button of the code editor
+	let popupButton = popupButtonForEditor()
   chatButtonsContainer.insertBefore(popupButton, preview)
 }
 

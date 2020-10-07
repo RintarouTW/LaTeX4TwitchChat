@@ -9,7 +9,7 @@ function show_image(node, username) {
 	let url = node.getElementsByClassName('tw-link')
 	if (url.length == 0) return
 
-	let matched = url[0].innerText.match(/(https:)([/|.|\w|\s|-])*\.(?:jpg|gif|png|svg)/) 
+	let matched = url[0].innerText.match(/(https:)([/|.|\w|\s|-])*\.(?:jpeg|jpg|gif|png|svg)/) 
 	if (!matched || matched.length == 0) return
 
 	let g = document.createElement('img')

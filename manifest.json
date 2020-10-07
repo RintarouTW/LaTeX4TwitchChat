@@ -3,7 +3,7 @@
   "version": "1.0",
   "description": "Support LaTeX in Twitch Chat",
   
-  "permissions": ["https://*.twitch.tv/*"],
+  "permissions": ["https://*.twitch.tv/*", "clipboardRead", "clipboardWrite"],
 
   "content_scripts": [
     {
@@ -14,7 +14,7 @@
     }
   ],
 
-  "web_accessible_resources": ["latex4twitch.js", "common.js", "graph.js", "matrix.js", "show_image.js", "code.js", "calc.js", "render_math.js", "sage.js", "code_editor.js", "code_server.js", "tw_elements_finder.js"],
+  "web_accessible_resources": ["latex4twitch.js", "common.js", "graph.js", "matrix.js", "show_image.js", "code.js", "calc.js", "render_math.js", "sage.js", "code_editor.js", "code_editor_view.js", "code_server.js", "tw_elements_finder.js", "latex4twitch.css"],
 
   "icons": {
       "16": "images/logo-16.png",
