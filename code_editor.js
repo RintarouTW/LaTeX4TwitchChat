@@ -22,7 +22,7 @@ loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/displ
 //loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/keymap/sublime.min.js")
 
 var _cmInstance; /* code mirror editor */
-var _editorWindow;
+var _window;
 
 /*
  * Controller
@@ -35,8 +35,7 @@ function newHashFromServer(hashLabel, sendButton) {
 		sendButton.disabled = false // enable send button
 	}).catch(error => {
 		console.error(error)
-		alert(error.message)
-		sendButton.disabled = false // enable send button
+		alert("Failed to connect the server, please reload the page and try again.")
 	})
 }
 
@@ -44,7 +43,7 @@ function codeEditor() {
 
 	let content_container = document.querySelector(".chat-room__content")
 
-	_editorWindow = createEditorWindow()
+	_window = createEditorWindow()
 	let textarea = document.createElement("textarea")
 	textarea.value = "Edit the code here.."
 	let panel = createPanel()
@@ -52,14 +51,13 @@ function codeEditor() {
 	let hashLabel = createHashLabel()
 	let sendButton = createSendButton()
 
-	_editorWindow.appendChild(textarea)
+	_window.appendChild(textarea)
 
 	panel.appendChild(closeButton)
 	panel.appendChild(sendButton)
 	panel.appendChild(hashLabel)
-	//_editorWindow.appendChild(panel)
 
-	content_container.appendChild(_editorWindow)
+	content_container.appendChild(_window)
 
 	newHashFromServer(hashLabel, sendButton)
 
@@ -68,22 +66,22 @@ function codeEditor() {
 		mode: {name: "javascript"},
 		//mode: {name: "python"},
 		//keymap: "vim",
-		autoRefresh: true,
+		//autoRefresh: true,
 		autofocus: true,
 		tabSize: 2,
 		indentUnit: 2,
 		lineNumbers: true,
 		theme: "tomorrow-night-bright"
 	})
+	//window._cmInstance = _cmInstance /* for debug */
 	_cmInstance.execCommand("selectAll")
 	_cmInstance.addPanel(panel, { position : "bottom" })
 	_cmInstance.setSize("100%", 300)
-	//window._cmInstance = _cmInstance
 	_cmInstance.refresh() 
 
 	closeButton.addEventListener("click", evt => {
-		_editorWindow.classList.toggle("tw-hide")
-		if(!_editorWindow.classList.contains("tw-hide")) {
+		_window.classList.toggle("tw-hide")
+		if(!_window.classList.contains("tw-hide")) {
 			_cmInstance.refresh()
 			_cmInstance.focus()
 		}
@@ -96,7 +94,7 @@ function codeEditor() {
 		sendButton.disabled = true
 		postCode(hashLabel.innerHTML, {code : _cmInstance.getValue()}).then( json => {
 			hashLabel.innerHTML = json.newHash
-			_editorWindow.classList.toggle("tw-hide")
+			_window.classList.toggle("tw-hide")
 			sendButton.disabled = false
 			twChatInput.focus()
 			twChatInput.select()
@@ -125,11 +123,11 @@ function popupButtonForEditor() {
 
 	// for development, new instance once popup is clicked.
 	popupButton.addEventListener("click", evt => {
-		if (_editorWindow) {
-			_editorWindow.parentNode.removeChild(_editorWindow)
+		if (_window) {
+			_window.parentNode.removeChild(_window)
 		}
 		codeEditor()
-		_editorWindow.classList.toggle("tw-hide")
+		_window.classList.toggle("tw-hide")
 		_cmInstance.refresh()
 		_cmInstance.focus()
 	});
@@ -139,8 +137,8 @@ function popupButtonForEditor() {
 	codeEditor()
 
 	popupButton.addEventListener("click", evt => {
-		_editorWindow.classList.toggle("tw-hide")
-		if(!_editorWindow.classList.contains("tw-hide")){
+		_window.classList.toggle("tw-hide")
+		if(!_window.classList.contains("tw-hide")){
 			_cmInstance.refresh()
 			_cmInstance.focus()
 		}

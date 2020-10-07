@@ -2,7 +2,14 @@
 // ✉ : envelop
 // ⚙ : gear
 /* 
- * View 
+ * View : Code Editor View Structure
+ *  - Code Editor Window(div)
+ *   - Code Mirror(textarea)
+ *    - Panel(div)
+ *     - Send Button(button)
+ *     - Close Button(button)
+ *     - Hash Label
+ * Use Twitch defined classes as possible.
  */
 
 /* border radius */
@@ -15,6 +22,7 @@ const tw_relative = "tw-relative tw-inline-flex "
 const tw_absolute_left = "tw-absolute tw-left-0 "
 const tw_absolute_right = "tw-absolute tw-mg-r-1 tw-right-0 "
 const tw_overflow_hidden = "tw-overflow-hidden "
+
 /* interactive button */
 const tw_button_primary = "tw-interactive tw-core-button tw-core-button--primary " + tw_border_radius_medium + tw_align_center + tw_overflow_hidden
 const tw_button_icon = "tw-interactive tw-button-icon tw-button-icon--small tw-button-icon--secondary tw-core-button tw-core-button--small " + tw_align_center + tw_border_radius_small + tw_overflow_hidden
@@ -31,6 +39,7 @@ function createSendButton() {
 	let sendButton = document.createElement("button")
 	sendButton.setAttribute("class", "l4t-send-button " + tw_button_primary + tw_relative)
 	sendButton.innerHTML = "✓"
+	sendButton.disabled = true // default disabled
 	return sendButton
 }
 // close button

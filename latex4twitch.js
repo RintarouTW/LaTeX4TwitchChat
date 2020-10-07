@@ -86,7 +86,8 @@ function hookup() {
 						let tokens = cmd.textContent.split(" ")
 						hooks.map( h => {
 							if (tokens[0] == h[0]) {
-								let payload = cmd.textContent.replace(h[0], '') /* get the user command payload */
+								/* get the user command payload */
+								let payload = cmd.textContent.replace(h[0], '') 
 								if (payload.length == 0) {
 									payload = h[1]
 									cmd.textContent += payload
@@ -142,7 +143,7 @@ function hookup() {
 
 	// the popup button of the code editor
 	let popupButton = popupButtonForEditor()
-  chatButtonsContainer.insertBefore(popupButton, preview)
+	chatButtonsContainer.insertBefore(popupButton, preview)
 }
 
 hookup();
