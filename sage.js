@@ -1,11 +1,22 @@
 'use strict';
 
-import { loadScript, loadCSS, makeid } from "./common.js"
+import { isDebug, loadScript, loadCSS, makeid } from "./common.js"
+import { highlightText } from "./code.js"
 
-loadCSS("https://sagecell.sagemath.org/static/sagecell_embed.css")
-loadScript("https://sagecell.sagemath.org/static/embedded_sagecell.js")
+if (isDebug()) {
+	loadCSS("https://sagecell.sagemath.org/static/sagecell_embed.css")
+	loadScript("https://sagecell.sagemath.org/static/embedded_sagecell.js")
+}
 
 function sage(textNode, payload) {
+	if (!isDebug()) {
+		/* SageMath is big and heavy, causing failure to load often
+		 * Only supported in debug mode
+		 * */
+		highlightText(textNode, "SageMath is not stable enough to be used in product")
+		return
+	}
+
 	let id = makeid(10) 
 	let g = document.createElement('div')
 	g.setAttribute('id', id)
@@ -18,9 +29,9 @@ function sage(textNode, payload) {
 	sagecell.makeSagecell({
 		inputLocation:  '#' + id,
 		template: {hide: ["files", "permalink"]},
-    //template:       sagecell.templates.minimal, // minimal template won't show the code editor.
-    evalButtonText: 'Evaluate'
+		//template:       sagecell.templates.minimal, // minimal template won't show the code editor.
+		evalButtonText: 'Evaluate'
 	});
 }
 
-export {sage}
+export { sage }
