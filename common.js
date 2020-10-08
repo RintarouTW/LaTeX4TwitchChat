@@ -3,7 +3,11 @@
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 function isDebug() {
-	//return true
+//	return true
+	return false
+}
+
+function isExperimental() {
 	return false
 }
 
@@ -38,4 +42,4 @@ function makeid(length) {
 	return result;
 }
 
-export { isDebug, wait, makeid, loadCSS, loadScript }
+export { isExperimental, isDebug, wait, makeid, loadCSS, loadScript }
