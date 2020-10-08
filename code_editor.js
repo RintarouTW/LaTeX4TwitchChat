@@ -16,6 +16,9 @@ import {
 loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.min.css")
 loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/theme/tomorrow-night-bright.min.css")
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/display/placeholder.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/display/panel.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/display/autorefresh.min.js")
 
 /* Languages */
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/javascript/javascript.min.js")
@@ -24,9 +27,6 @@ loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/css/cs
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/shell/shell.min.js")
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/julia/julia.min.js")
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/clike/clike.min.js")
-
-/* Panel */
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/display/panel.min.js")
 
 /* Keymaps */
 //loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/keymap/vim.min.js")
@@ -56,7 +56,6 @@ function codeEditor() {
 
 	_window = createEditorWindow()
 	let textarea = document.createElement("textarea")
-	textarea.value = "Edit the code here.."
 	let panel = createPanel()
 	let closeButton = createCloseButton()
 	let hashLabel = createHashLabel()
@@ -77,26 +76,21 @@ function codeEditor() {
 		mode: {name: "javascript"},
 		//mode: {name: "python"},
 		//keymap: "vim",
-		//autoRefresh: true,
+		autoRefresh: true,
 		autofocus: true,
 		tabSize: 2,
 		indentUnit: 2,
 		lineNumbers: true,
+		placeholder: "Edit and send your code...",
 		theme: "tomorrow-night-bright"
 	})
 	if (isDebug())
 		window._cmInstance = _cmInstance /* for debug */
 	_cmInstance.execCommand("selectAll")
 	_cmInstance.addPanel(panel, { position : "bottom" })
-	_cmInstance.setSize("100%", 300)
-	_cmInstance.refresh() 
 
 	closeButton.addEventListener("click", evt => {
 		_window.classList.toggle("tw-hide")
-		if(!_window.classList.contains("tw-hide")) {
-			_cmInstance.refresh()
-			_cmInstance.focus()
-		}
 	})
 
 	let twChatInput = TWChatInput()
@@ -153,7 +147,6 @@ function popupButtonForEditor() {
 	popupButton.addEventListener("click", evt => {
 		_window.classList.toggle("tw-hide")
 		if(!_window.classList.contains("tw-hide")){
-			_cmInstance.refresh()
 			_cmInstance.focus()
 		}
 	});
