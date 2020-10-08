@@ -63,10 +63,13 @@ function createEditorWindow() {
 }
 // create the popup button in the chat buttons container
 function createPopupButton() {
+	let buttonContainer = document.createElement("div")
+	buttonContainer.setAttribute("class", "tw-align-content-center tw-align-items-center tw-flex tw-flex-row tw-mg-l-05")
 	let popupButton = document.createElement("button")
 	popupButton.setAttribute("class", "l4t-popup-button " + tw_button_primary + tw_relative)
 	popupButton.innerHTML = "✑"
-	return popupButton
+	buttonContainer.appendChild(popupButton)
+	return [buttonContainer, popupButton]
 }
 
 export {
