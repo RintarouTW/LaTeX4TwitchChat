@@ -1,7 +1,7 @@
 'use strict';
 
 import { loadScript } from "./common.js"
-import { highlight } from "./code.js"
+import { highlightText } from "./code.js"
 
 // mathjs
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.2.0/math.min.js")
@@ -26,7 +26,7 @@ function calc(text, fnStr) {
 		text.textContent += "$$" + tex + "$$"
 	}
 	catch (err) {
-		highlight(text, err.toString())
+		highlightText(text, err.toString())
 	}
 }
 

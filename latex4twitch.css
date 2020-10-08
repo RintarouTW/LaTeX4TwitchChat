@@ -1,0 +1,74 @@
+
+.l4t-popup-button {
+	font-size: large !important;
+	font-weight: 100 !important;
+	min-width: 35px !important;
+}
+
+.l4t-send-button {
+	font-size: x-large !important;
+	font-weight: 100 !important;
+	min-width: 40px !important;
+	margin: 5px 0px 5px 0px !important;
+	padding: 0px 5px 0px 5px !important;
+}
+
+.l4t-send-button:disabled {
+	filter: grayscale(1) !important;
+	font-size: x-large !important;
+	font-weight: 100 !important;
+	min-width: 40px !important;
+	margin: 5px 0px 5px 0px !important;
+	padding: 0px 5px 0px 5px !important;
+}
+
+.l4t-close-button {
+	font-size: large !important;
+	font-weight: 100 !important;
+	margin: 5px 0px 5px 0px !important;
+	padding: 0px 5px 0px 5px !important;
+}
+
+.l4t-panel {
+	background: #000 !important;
+}
+
+.l4t-hash-label {
+  font-family: monospace !important;
+  color: #666666 !important;
+  padding-top: 8px !important;
+}
+
+.l4t-editor-window {
+	height: 300px;
+  min-height: 300px !important;
+}
+
+.l4t-copy-code-button {
+	float: right;
+}
+
+.l4t-copy-code-button[show=true] {
+	float: right;
+	filter: invert(100%); 
+}
+
+.l4t-copy-code-button:active {
+	filter: invert(70%) !important;
+	float: right;
+}
+
+/* override tomorrow night bright's theme setup */
+.cm-s-tomorrow-night-bright.CodeMirror {
+	min-height: 300px !important;
+	background: #191028 !important;
+}
+
+.cm-s-tomorrow-night-bright .CodeMirror-cursor {
+  border-left: 1px solid #fff !important;
+}
+
+/* wrap the line of code */
+pre, code {
+    white-space: pre-wrap;
+}

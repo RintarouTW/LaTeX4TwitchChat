@@ -1,7 +1,7 @@
 'use strict';
 
 import { loadCSS, loadScript } from "./common.js"
-import {highlight} from "./code.js"
+import { highlightText } from "./code.js"
 
 // KaTeX for LaTeX rendering
 loadCSS("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css")
@@ -46,7 +46,23 @@ function tex(textNode, payload) {
 		textNode.innerHTML = katex.renderToString(payload, katex_options)
 	} catch (err) {
 		let msg = err.toString().replace(' KaTeX parse error:', '')
-		highlight(textNode, msg)
+		highlightText(textNode, msg)
+	}
+}
+
+function previewMath(textNode) {
+
+	katex_options.errorCallback = function (err) {
+		let msg = err.toString().replace('KaTeX auto-render:', '')
+		msg = msg.replace(/ with $/, '')
+		textNode.textContent = ""
+		highlightText(textNode, msg)
+	}
+
+	try {
+		renderMathInElement(textNode, katex_options)
+	} catch (err) {
+		//console.log(err)
 	}
 }
 
@@ -55,7 +71,7 @@ function renderMath(textNode) {
 	katex_options.errorCallback = function (err) {
 		let msg = err.toString().replace('KaTeX auto-render:', '')
 		msg = msg.replace(/ with $/, '')
-		highlight(textNode, msg)
+		highlightText(textNode, msg)
 	}
 
 	renderMathInElement(textNode, katex_options)
@@ -100,4 +116,4 @@ function cheat(textNode) {
 }
 
 
-export { renderMath, tex, cheat }
+export { renderMath, tex, cheat, previewMath }

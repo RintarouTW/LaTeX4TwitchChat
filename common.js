@@ -2,6 +2,11 @@
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+function isDebug() {
+	//return true
+	return false
+}
+
 function loadCSS(url) {
 	const link = document.createElement('link');
 	link.href = url;
@@ -33,4 +38,4 @@ function makeid(length) {
 	return result;
 }
 
-export { wait, makeid, loadCSS, loadScript }
+export { isDebug, wait, makeid, loadCSS, loadScript }
