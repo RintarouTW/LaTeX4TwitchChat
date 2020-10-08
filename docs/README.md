@@ -3,6 +3,24 @@
 A simple Chrome extension to render and copy $\LaTeX$ in Twitch Chat messages.
 Some functions via commands, ex: plotting a function, draw graphs, matrix calculation, etc.
 
+I'm from Taiwan, sry for my poor English. You may check [my twitch channel](https://twitch.tv/RintarouTW) to see the live demo.
+
+## Features
+
+### Major
+
+- Preview $\LaTeX$ locally and render them in the chat.
+- Code editor for uploading your code being highlighted in original format to the chat.
+ - Highlight the uploaded code and you can copy them by clicking the copy button.
+- Graphviz support
+- Plotting function
+- Math Calculator
+- Speech the chat messages by clicking for different languages learning.
+
+### Experimental
+
+- SageMath cell support
+
 ## Install
 
 1. [Download](https://github.com/RintarouTW/LaTeX4TwitchChat/zipball/release) the release branch as a zip and decompress it to a folder.
@@ -83,10 +101,16 @@ HTML
 !html <html><body><h1>Hello World</h1></body></html>
 ```
 
-
 CSS
+
 ```
 !css body { background-color: #666666 }
+```
+
+Show and highlight the uploaded code(by hash) in the original format.
+
+```
+!pre #hash of the uploaded code#
 ```
 
 ### Plot and Graph
@@ -138,6 +162,8 @@ Calculate the math for you.
 check https://mathjs.org for more usages.
 
 ### SageMath
+
+SageMath cell is kind of heavey and only supported in debug mode now.
 
 ```
 !sage Prosets.DivisorLattice(30)
