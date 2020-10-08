@@ -1,6 +1,6 @@
 'use strict';
 
-import { loadCSS, loadScript } from "./common.js"
+import { isDebug, loadCSS, loadScript } from "./common.js"
 import { TWChatInput, TWChatSendButton } from "./tw_elements_finder.js"
 import { getHash, postCode, getCode } from "./code_server.js"
 import {
@@ -12,12 +12,23 @@ import {
 	createPopupButton
 } from "./code_editor_view.js"
 
+/* Core and Theme*/
 loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.min.css")
 loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/theme/tomorrow-night-bright.min.css")
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.min.js")
+
+/* Languages */
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/javascript/javascript.min.js")
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/python/python.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/css/css.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/shell/shell.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/julia/julia.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/clike/clike.min.js")
+
+/* Panel */
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/display/panel.min.js")
+
+/* Keymaps */
 //loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/keymap/vim.min.js")
 //loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/keymap/sublime.min.js")
 
@@ -73,7 +84,8 @@ function codeEditor() {
 		lineNumbers: true,
 		theme: "tomorrow-night-bright"
 	})
-	//window._cmInstance = _cmInstance /* for debug */
+	if (isDebug())
+		window._cmInstance = _cmInstance /* for debug */
 	_cmInstance.execCommand("selectAll")
 	_cmInstance.addPanel(panel, { position : "bottom" })
 	_cmInstance.setSize("100%", 300)
@@ -119,21 +131,23 @@ function codeEditor() {
 
 function popupButtonForEditor() {
 
-	let popupButton = createPopupButton()
+	let [buttonContainer, popupButton] = createPopupButton()
 
 	// for development, new instance once popup is clicked.
-	popupButton.addEventListener("click", evt => {
-		if (_window) {
-			_window.parentNode.removeChild(_window)
-		}
-		codeEditor()
-		_window.classList.toggle("tw-hide")
-		_cmInstance.refresh()
-		_cmInstance.focus()
-	});
+	if (isDebug()) {
+		popupButton.addEventListener("click", evt => {
+			if (_window) {
+				_window.parentNode.removeChild(_window)
+			}
+			codeEditor()
+			_window.classList.toggle("tw-hide")
+			_cmInstance.refresh()
+			_cmInstance.focus()
+		});
+		return buttonContainer
+	}
 
 	// for deployment, single instance only.
-	/*
 	codeEditor()
 
 	popupButton.addEventListener("click", evt => {
@@ -143,7 +157,6 @@ function popupButtonForEditor() {
 			_cmInstance.focus()
 		}
 	});
-	*/
 	return popupButton
 }
 
