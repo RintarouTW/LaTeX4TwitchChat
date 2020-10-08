@@ -11,6 +11,14 @@ loadScript("https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.0/beautify-h
 // highlight.js
 loadCSS("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/tomorrow-night-bright.min.css")
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js")
+/* Languages */
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/javascript.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/bash.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/cpp.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/css.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/json.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/julia.min.js")
 
 const option = {
 	"indent_size": "2",
