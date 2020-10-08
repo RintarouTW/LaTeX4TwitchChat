@@ -163,7 +163,8 @@ check https://mathjs.org for more usages.
 
 ### SageMath
 
-SageMath cell is kind of heavey and only supported in debug mode now.
+SageMath cell is kind of heavey and only supported in experimental mode now.
+You may enable it by changing the isExperimental() return value to true.
 
 ```
 !sage Prosets.DivisorLattice(30)

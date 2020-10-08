@@ -1,15 +1,15 @@
 'use strict';
 
-import { isDebug, loadScript, loadCSS, makeid } from "./common.js"
+import { isExperimental, loadScript, loadCSS, makeid } from "./common.js"
 import { highlightText } from "./code.js"
 
-if (isDebug()) {
+if (isExperimental()) {
 	loadCSS("https://sagecell.sagemath.org/static/sagecell_embed.css")
 	loadScript("https://sagecell.sagemath.org/static/embedded_sagecell.js")
 }
 
 function sage(textNode, payload) {
-	if (!isDebug()) {
+	if (!isExperimental()) {
 		/* SageMath is big and heavy, causing failure to load often
 		 * Only supported in debug mode
 		 * */
