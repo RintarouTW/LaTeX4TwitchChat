@@ -68,3 +68,7 @@
   border-left: 1px solid #fff !important;
 }
 
+/* wrap the line of code */
+pre, code {
+    white-space: pre-wrap;
+}
