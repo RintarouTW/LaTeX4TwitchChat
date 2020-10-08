@@ -150,7 +150,7 @@ function popupButtonForEditor() {
 			_cmInstance.focus()
 		}
 	});
-	return popupButton
+	return buttonContainer
 }
 
 export { popupButtonForEditor }

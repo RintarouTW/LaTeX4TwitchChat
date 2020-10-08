@@ -124,6 +124,8 @@ function hookup() {
 	let chatButtonsContainer = TWChatButtonsContainer()
 	let preview = document.createElement("div")
 	preview.setAttribute("class", "tw-align-items-center tw-overflow-hidden tw-flex")
+  /* don't wrap on white space, also prevent the flex box eating the white spaces */
+	preview.setAttribute("style", "white-space: pre; margin-left: .7em;") 
 
 	chatButtonsContainer.insertBefore(preview, chatButtonsContainer.childNodes[1])
 	chatInput.addEventListener("input", (evt) => {
