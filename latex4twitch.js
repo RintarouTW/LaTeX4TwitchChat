@@ -5,7 +5,7 @@ import { hookL4TComponents } from "./components.js"
 import { code, html, css, highlightText, pre } from "./highlight.js"
 import { renderMath, tex, cheat } from "./render_math.js"
 import { matrix, gauss } from "./matrix.js"
-import { dot, graph, digraph, plot } from "./graph.js"
+import { dot, ddot, graph, digraph, plot } from "./graph.js"
 import { show_image } from "./show_image.js"
 import { calc } from "./calc.js"
 import { sage } from "./sage.js"
@@ -27,6 +27,7 @@ function help(textNode) {
 	--[ Graphics ]-- 
 	!plot : plotting ur function (JSXGraph)
 	!dot : draw graph via dot language (Graphviz)
+	!ddot : draw graph via dot language in dark mode
 	!graph : undirected graph
 	!digraph : directed graph
 
@@ -51,6 +52,7 @@ function hookup() {
 
 		["!plot" , " x + cos(x) - sin(x)" , plot ],
 		["!dot", " digraph {1->2,3->6}", dot ],
+		["!ddot", " digraph {1->2,3->6}", ddot ],
 		["!digraph", " -i {1->2,3,5;2->6,10;3->6,15;5->10,15;6,10,15->30}", digraph ],
 		["!graph", " {1--2,3--6}", graph ],
 	
@@ -73,6 +75,7 @@ function hookup() {
 			mutation.addedNodes.forEach(node => {
 				if (node.className == "chat-line__message") {
 
+					/* show image by url directly, privileged users only */
 					let username = node.querySelector(".chat-author__intl-login")
 					if (username) {
 						username = username.innerText.replace(/[\( \)]/g, '')
@@ -82,7 +85,7 @@ function hookup() {
 					let texts = node.getElementsByClassName("text-fragment")
 					let cmd = texts[0]
 
-					if (cmd) {
+					if (cmd) { /* commands handling */
 						let tokens = cmd.textContent.split(" ")
 						hooks.map( h => {
 							if (tokens[0] == h[0]) {
@@ -98,10 +101,12 @@ function hookup() {
 					}
 
 					for (let textNode of texts) {
+						/* LaTeX rendering in chat messages */
 						if (textNode && textNode.textContent && katex) {
 							renderMath(textNode)
 						}
 
+						/* TTS */
 						textNode.addEventListener("click", () => {
 							/* speech for pure text only */
 							if (textNode.childElementCount > 0) return
