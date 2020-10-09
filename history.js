@@ -15,13 +15,13 @@ function messageByIndex(index) {
 
 /* exports */
 function prevMessage() {
-	if (currentIndex == 0) return false
+	if (currentIndex == 0) return null
 	currentIndex -= 1
 	return messageByIndex(currentIndex)
 }
 
 function nextMessage() {
-	if (currentIndex == history.length) return false
+	if (currentIndex == history.length) return null
 	currentIndex += 1
 	return messageByIndex(currentIndex)
 }
