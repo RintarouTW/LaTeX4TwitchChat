@@ -16,14 +16,12 @@ function messageByIndex(index) {
 /* exports */
 function prevMessage() {
 	if (currentIndex == 0) return null
-	currentIndex -= 1
-	return messageByIndex(currentIndex)
+	return messageByIndex(--currentIndex)
 }
 
 function nextMessage() {
 	if (currentIndex == history.length) return null
-	currentIndex += 1
-	return messageByIndex(currentIndex)
+	return messageByIndex(++currentIndex)
 }
 
 function updateBuffer(msg) {
