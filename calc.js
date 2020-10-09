@@ -10,8 +10,7 @@ var parser
 
 function calc(text, fnStr) {
 
-	if (!parser)
-		parser = math.parser()
+	if (!parser) parser = math.parser()
 
 	if (fnStr.replace(/\s*/g, '') == "clear") {
 		parser.clear()
@@ -24,10 +23,9 @@ function calc(text, fnStr) {
 		let resStr = math.format(res, { precision: 14 })
 		let tex = math.parse(resStr).toTex()
 		text.textContent += "$$" + tex + "$$"
-	}
-	catch (err) {
+	}	catch (err) {
 		highlightText(text, err.toString())
 	}
 }
 
-export {calc}
+export { calc }

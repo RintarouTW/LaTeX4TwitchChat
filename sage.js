@@ -11,15 +11,15 @@ if (isExperimental()) {
 function sage(textNode, payload) {
 	if (!isExperimental()) {
 		/* SageMath is big and heavy, causing failure to load often
-		 * Only supported in debug mode
-		 * */
-		highlightText(textNode, "SageMath is not stable enough to be used in product")
+		 * Only supported in debug mode */
+		highlightText(textNode, "SageMath is not stable enough to be used by end users yet.")
 		return
 	}
 
 	let id = makeid(10) 
 	let g = document.createElement('div')
 	g.setAttribute('id', id)
+	
 	let script = document.createElement('script')
 	script.setAttribute('type','text/x-sage')
 	script.innerText = payload
@@ -29,7 +29,8 @@ function sage(textNode, payload) {
 	sagecell.makeSagecell({
 		inputLocation:  '#' + id,
 		template: {hide: ["files", "permalink"]},
-		//template:       sagecell.templates.minimal, // minimal template won't show the code editor.
+		/* minimal template won't show the code editor. */
+		//template:       sagecell.templates.minimal, 
 		evalButtonText: 'Evaluate'
 	});
 }

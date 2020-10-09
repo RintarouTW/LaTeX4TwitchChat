@@ -11,6 +11,7 @@ import { calc } from "./calc.js"
 import { sage } from "./sage.js"
 
 function help(textNode) {
+
 	highlightText(textNode, String.raw`
 	--[ LaTeX ]-- 
 	$\LaTeX$ : inline mode; $$\LaTeX$$ : display mode
