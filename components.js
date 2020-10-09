@@ -4,7 +4,7 @@ import { TWChatInput, TWChatButtonsContainer } from "./tw_elements_finder.js"
 import { popupButtonForEditor } from "./code_editor.js"
 import { previewMath } from "./render_math.js"
 import {
-	updateUnsentMessage,
+	updateBuffer,
 	sendMessage,
 	getPrevMessage,
 	getNextMessage
@@ -33,7 +33,7 @@ function hookL4TComponents() {
 	let chatInput = TWChatInput()
 
 	chatInput.addEventListener("input", evt => {
-		updateUnsentMessage(evt.target.value)
+		updateBuffer(evt.target.value)
 		if (!(/\$.*\$/.test(chatInput.value))) {
 			previewBox.innerHTML = ""
 			return

@@ -3,12 +3,12 @@
 /* current index */
 let currentMessageIndex = 0
 /* unsent message */
-let unsentMessage = ''
+let unsentBuffer = ''
 /* sent messages */
 let sentMessageHistory = []
 
 function getMessageByIndex(index) {
-	if (currentMessageIndex == sentMessageHistory.length) return unsentMessage
+	if (currentMessageIndex == sentMessageHistory.length) return unsentBuffer 
 	return sentMessageHistory[index]
 }
 
@@ -25,19 +25,19 @@ function getNextMessage() {
 	return getMessageByIndex(currentMessageIndex)
 }
 
-function updateUnsentMessage(msg) {
+function updateBuffer(msg) {
 	if (currentMessageIndex < sentMessageHistory.length) return
-	unsentMessage = msg
+	unsentBuffer = msg
 }
 
 function sendMessage(msg) {
-	updateUnsentMessage('')
+	updateBuffer('')
 	sentMessageHistory.push(msg)
 	currentMessageIndex = sentMessageHistory.length
 }
 
 export {
-	updateUnsentMessage,
+	updateBuffer,
 	sendMessage,
 	getPrevMessage,
 	getNextMessage
