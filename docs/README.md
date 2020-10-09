@@ -16,6 +16,7 @@ I'm from Taiwan, sry for my poor English. You may check [my twitch channel](http
 - Plotting function
 - Math Calculator
 - Speech the chat messages by clicking for different languages learning.
+- Up/Down keys to travese the history of messages your've sent.
 
 ### Experimental
 
