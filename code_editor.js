@@ -93,6 +93,7 @@ function codeEditor() {
 		_window.classList.toggle("tw-hide")
 	})
 
+	/* Todo: up/down to get the prev/next sent messages */
 	let twChatInput = TWChatInput()
 	let twChatSendButton = TWChatSendButton()
 

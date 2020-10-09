@@ -1,15 +1,14 @@
 'use strict';
 
 import { wait, loadCSS, loadScript } from "./common.js"
-import { TWChatButtonsContainer, TWChatInput } from "./tw_elements_finder.js"
+import { hookL4TComponents } from "./components.js"
 import { code, html, css, highlightText, pre } from "./code.js"
-import { renderMath, tex, cheat, previewMath } from "./render_math.js"
+import { renderMath, tex, cheat } from "./render_math.js"
 import { matrix, gauss } from "./matrix.js"
 import { dot, graph, digraph, plot } from "./graph.js"
 import { show_image } from "./show_image.js"
 import { calc } from "./calc.js"
 import { sage } from "./sage.js"
-import { popupButtonForEditor } from "./code_editor.js"
 
 function help(textNode) {
 	highlightText(textNode, String.raw`
@@ -119,33 +118,7 @@ function hookup() {
 
 	observer.observe(container, {childList: true})
 
-	/* Preview the user input for LaTeX locally */
-	let chatInput = TWChatInput()
-	let chatButtonsContainer = TWChatButtonsContainer()
-	let preview = document.createElement("div")
-	preview.setAttribute("class", "tw-align-items-center tw-overflow-hidden tw-flex")
-  /* don't wrap on white space, also prevent the flex box eating the white spaces */
-	preview.setAttribute("style", "white-space: pre; margin-left: .7em;") 
-
-	chatButtonsContainer.insertBefore(preview, chatButtonsContainer.childNodes[1])
-	chatInput.addEventListener("input", (evt) => {
-		if (!(/\$.*\$/.test(chatInput.value))) {
-			preview.innerHTML = ""
-			return
-		}
-		preview.innerHTML = chatInput.value
-		previewMath(preview)
-	})
-
-	chatInput.addEventListener("keydown", (evt) => {
-		if (evt.code == 'Enter') {
-			preview.innerHTML = ""
-		}
-	})
-
-	// the popup button of the code editor
-	let popupButton = popupButtonForEditor()
-	chatButtonsContainer.insertBefore(popupButton, preview)
+	hookL4TComponents()
 }
 
 hookup();

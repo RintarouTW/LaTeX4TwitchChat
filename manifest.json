@@ -18,6 +18,7 @@
 	  "common.js",
 	  "latex4twitch.js",
 	  "latex4twitch.css",
+	  "tw_elements_finder.js",
 	  "graph.js",
 	  "matrix.js",
 	  "show_image.js",
@@ -28,7 +29,8 @@
 	  "code_editor.js",
 	  "code_editor_view.js",
 	  "code_server.js",
-	  "tw_elements_finder.js"
+	  "components.js",
+	  "history.js"
   ],
 
   "icons": {
