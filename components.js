@@ -51,7 +51,7 @@ function hookL4TComponents() {
 			case 'ArrowUp':
 				if (cursorLineNo(target) == 1) {
 					let msg = prevMessage()
-					if (msg) {
+					if (msg != null) {
 						target.focus()
 						target.select()
 						document.execCommand("insertText", true, msg)
@@ -61,7 +61,7 @@ function hookL4TComponents() {
 			case 'ArrowDown':
 				if (cursorLineNo(target) == totalLines(target)) {
 					let msg = nextMessage()
-					if (msg) {
+					if (msg != null) {
 						target.focus()
 						target.select()
 						document.execCommand("insertText", true, msg)
