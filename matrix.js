@@ -130,7 +130,7 @@ function gauss(textNode, fnStr) {
 
 // Usage Examples:
 /*
-	// init with array
+// init with array
 m = new Matrix([[1,-1,0,0,1], [1,5,1,0,2], [1,2,1,0,-3], [1,1,1,1,3]])
 console.log(m.toLaTeX())
 m.gauss()

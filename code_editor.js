@@ -12,13 +12,12 @@ import {
 	createPopupButton
 } from "./code_editor_view.js"
 
-/* Core and Theme*/
+/* Core, Theme, addons */
 loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.min.css")
 loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/theme/tomorrow-night-bright.min.css")
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.min.js")
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/display/placeholder.min.js")
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/display/panel.min.js")
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/display/autorefresh.min.js")
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/display/placeholder.min.js")
 
 /* Languages */
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/javascript/javascript.min.js")
@@ -27,26 +26,25 @@ loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/css/cs
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/shell/shell.min.js")
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/julia/julia.min.js")
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/clike/clike.min.js")
-
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/display/autorefresh.min.js")
 /* Keymaps */
 //loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/keymap/vim.min.js")
 //loadScript("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/keymap/sublime.min.js")
 
-var _cmInstance; /* code mirror editor */
-var _window;
+var _cmInstance /* code mirror editor */
+var _window
 
 /*
  * Controller
  */
 
 function newHashFromServer(hashLabel, sendButton) {
-	// get new hash
 	getHash().then( json => {
 		hashLabel.innerHTML = json.hash
 		sendButton.disabled = false // enable send button
 	}).catch(error => {
 		console.error(error)
-		alert("Failed to connect the server, please reload the page and try again.")
+		alert("Failed to connect the server, please reload and try again.")
 	})
 }
 
@@ -54,13 +52,13 @@ function codeEditor() {
 
 	let content_container = document.querySelector(".chat-room__content")
 
-	_window = createEditorWindow()
 	let textarea = document.createElement("textarea")
 	let panel = createPanel()
 	let closeButton = createCloseButton()
 	let hashLabel = createHashLabel()
 	let sendButton = createSendButton()
 
+	_window = createEditorWindow()
 	_window.appendChild(textarea)
 
 	panel.appendChild(closeButton)
@@ -84,8 +82,9 @@ function codeEditor() {
 		placeholder: "Edit and send your code...",
 		theme: "tomorrow-night-bright"
 	})
-	if (isDebug())
-		window._cmInstance = _cmInstance /* for debug */
+
+	if (isDebug()) window._cmInstance = _cmInstance /* for debug */
+
 	_cmInstance.execCommand("selectAll")
 	_cmInstance.addPanel(panel, { position : "bottom" })
 
@@ -106,19 +105,18 @@ function codeEditor() {
 			twChatInput.select()
 			// the original hash is returned if the code was posted success
 			document.execCommand("insertText", true, "!pre " + json.hash) 
-			// copy to clipboard for firefox which is strict to insertText support.
-			// <textarea> is not supported by insertText, only support <div> with contenteditable.
+			// copy to clipboard for Firefox which is strict to insertText support.
+			// <textarea> is not supported by insertText, <div> with contenteditable only.
 			navigator.clipboard.writeText("!pre " + json.hash).then(function() {
 				/* clipboard successfully set */
 				twChatSendButton.click()
 			}, function() {
-				console.error("write to clipboard failed")
 				/* clipboard write failed */
 				twChatSendButton.click()
+				console.error("write to clipboard failed")
 			})
 		}).catch( error => {
 			console.log(error)
-			//alert(error.message)
 		})
 	})
 }
@@ -149,7 +147,7 @@ function popupButtonForEditor() {
 		if(!_window.classList.contains("tw-hide")){
 			_cmInstance.focus()
 		}
-	});
+	})
 	return buttonContainer
 }
 
