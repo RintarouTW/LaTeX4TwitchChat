@@ -1,7 +1,7 @@
 'use strict';
 
 import { makeid, loadCSS, loadScript } from "./common.js"
-import { highlightText } from "./code.js"
+import { highlightText } from "./highlight.js"
 
 // jsxgraph for plotting simple function
 loadCSS("https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraph.css")

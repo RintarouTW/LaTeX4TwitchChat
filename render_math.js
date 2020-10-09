@@ -1,7 +1,7 @@
 'use strict';
 
 import { loadCSS, loadScript } from "./common.js"
-import { highlightText } from "./code.js"
+import { highlightText } from "./highlight.js"
 
 // KaTeX for LaTeX rendering
 loadCSS("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css")

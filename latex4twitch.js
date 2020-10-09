@@ -2,7 +2,7 @@
 
 import { wait, loadCSS, loadScript } from "./common.js"
 import { hookL4TComponents } from "./components.js"
-import { code, html, css, highlightText, pre } from "./code.js"
+import { code, html, css, highlightText, pre } from "./highlight.js"
 import { renderMath, tex, cheat } from "./render_math.js"
 import { matrix, gauss } from "./matrix.js"
 import { dot, graph, digraph, plot } from "./graph.js"

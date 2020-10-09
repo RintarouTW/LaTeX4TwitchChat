@@ -22,7 +22,7 @@
 	  "graph.js",
 	  "matrix.js",
 	  "show_image.js",
-	  "code.js",
+	  "highlight.js",
 	  "calc.js",
 	  "render_math.js",
 	  "sage.js",

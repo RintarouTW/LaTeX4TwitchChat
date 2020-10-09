@@ -17,6 +17,7 @@ function createPreviewBox() {
 function totalLines(textarea) {
 	return textarea.value.split('\n').length
 }
+
 /* current lineNo of the cursor */
 function cursorLineNo(textarea) {
 	return textarea.value.substr(0, textarea.selectionStart).split('\n').length
