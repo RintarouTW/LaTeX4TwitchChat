@@ -6,8 +6,8 @@ import { previewMath } from "./render_math.js"
 import {
 	updateBuffer,
 	sendMessage,
-	getPrevMessage,
-	getNextMessage
+	prevMessage,
+	nextMessage
 } from "./history.js"
 
 function createPreviewBox() {
@@ -54,7 +54,7 @@ function hookL4TComponents() {
 				break
 			case 'ArrowUp':
 				if (cursorLineNo(target) == 1) {
-					let msg = getPrevMessage()
+					let msg = prevMessage()
 					if (typeof(msg) == 'string') {
 						target.focus()
 						target.select()
@@ -64,7 +64,7 @@ function hookL4TComponents() {
 				break
 			case 'ArrowDown':
 				if (cursorLineNo(target) == totalLines(target)) {
-					let msg = getNextMessage()
+					let msg = nextMessage()
 					if (typeof(msg) == 'string') {
 						target.focus()
 						target.select()

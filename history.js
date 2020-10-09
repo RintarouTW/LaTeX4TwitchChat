@@ -1,44 +1,45 @@
 'use strict';
 
-/* current index */
-let currentMessageIndex = 0
 /* unsent message */
 let unsentBuffer = ''
-/* sent messages */
-let sentMessageHistory = []
 
-function getMessageByIndex(index) {
-	if (currentMessageIndex == sentMessageHistory.length) return unsentBuffer 
-	return sentMessageHistory[index]
+/* current index */
+let currentIndex = 0
+/* history of sent messages */
+let history = []
+
+function messageByIndex(index) {
+	if (currentIndex == history.length) return unsentBuffer 
+	return history[index]
 }
 
 /* exports */
-function getPrevMessage() {
-	if (currentMessageIndex == 0) return false
-	currentMessageIndex -= 1
-	return getMessageByIndex(currentMessageIndex)
+function prevMessage() {
+	if (currentIndex == 0) return false
+	currentIndex -= 1
+	return messageByIndex(currentIndex)
 }
 
-function getNextMessage() {
-	if (currentMessageIndex == sentMessageHistory.length) return false
-	currentMessageIndex += 1
-	return getMessageByIndex(currentMessageIndex)
+function nextMessage() {
+	if (currentIndex == history.length) return false
+	currentIndex += 1
+	return messageByIndex(currentIndex)
 }
 
 function updateBuffer(msg) {
-	if (currentMessageIndex < sentMessageHistory.length) return
+	if (currentIndex < history.length) return
 	unsentBuffer = msg
 }
 
 function sendMessage(msg) {
 	updateBuffer('')
-	sentMessageHistory.push(msg)
-	currentMessageIndex = sentMessageHistory.length
+	history.push(msg)
+	currentIndex = history.length
 }
 
 export {
 	updateBuffer,
 	sendMessage,
-	getPrevMessage,
-	getNextMessage
+	prevMessage,
+	nextMessage
 }
