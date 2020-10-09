@@ -86,13 +86,21 @@ function dot(textNode, text) {
 		})
 }
 
+function ddot(textNode,text) {
+	let theme_setting = String.raw`graph [bgcolor=transparent]; node[fontcolor=white;color=white]; edge [color=white];`
+	let loc_bracket = text.indexOf('{') + 1
+	let prefix = text.substr(0, loc_bracket)
+	let postfix = text.substr(loc_bracket, text.length)
+
+	dot(textNode, prefix + theme_setting + postfix)
+}
+
 function graph(textNode, text) {
 	let rankdir = ""
 	if (/^\s?-i\s+/.test(text)) {
 		rankdir = ";rankdir=BT"
 		text = text.replace(/^\s?-i\s+/, '')
 	}
-	let prefix = "graph { graph [bgcolor=transparent" + rankdir + "]; node[fontcolor=white;color=white]; edge [color=white]; "
 
 	dot(textNode, prefix + text + "}")
 }
@@ -107,4 +115,4 @@ function digraph(textNode, text) {
 	dot(textNode, prefix + text + "}")
 }
 
-export { plot, dot, graph, digraph }
+export { plot, dot, ddot, graph, digraph }
