@@ -9,6 +9,7 @@ import { dot, ddot, graph, digraph, plot } from "./graph.js"
 import { show_image } from "./show_image.js"
 import { calc } from "./calc.js"
 import { sage } from "./sage.js"
+import { speak } from "./speech.js"
 
 function help(textNode) {
 
@@ -110,9 +111,7 @@ function hookup() {
 						textNode.addEventListener("click", () => {
 							/* speech for pure text only */
 							if (textNode.childElementCount > 0) return
-							let utterThis = new SpeechSynthesisUtterance(textNode.innerHTML)
-							utterThis.voice = speechSynthesis.getVoices()[66]
-							speechSynthesis.speak(utterThis)
+							speak(textNode, textNode.innerHTML)
 						})
 					}
 

@@ -3,7 +3,7 @@
 A simple Chrome extension to render and copy $\LaTeX$ in Twitch Chat messages.
 Some functions via commands, ex: plotting a function, draw graphs, matrix calculation, etc.
 
-I'm from Taiwan, sry for my poor English. You may check [my twitch channel](https://twitch.tv/RintarouTW) to see the live demo.
+I'm from Taiwan, sorry for my poor English. You may check [my Twitch channel](https://twitch.tv/RintarouTW) to see the live demo.
 
 ## Features
 
@@ -15,7 +15,7 @@ I'm from Taiwan, sry for my poor English. You may check [my twitch channel](http
 - Graphviz support
 - Plotting function
 - Math Calculator
-- Speech the chat messages by clicking for different languages learning.
+- Speech the chat messages by clicking for learning different languages.
 - Up/Down keys to travese the history of messages your've sent.
 
 ### Experimental

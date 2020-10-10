@@ -21,5 +21,36 @@ function loadCSS(src) {
 	(document.head || document.documentElement).appendChild(link);
 }
 
-loadCSS("latex4twitch.css");
-loadScript("latex4twitch.js");
+function updateOptions(data) {
+	let evt = new CustomEvent("UpdateOptions", { detail: data });
+	document.dispatchEvent(evt);
+}
+
+function setup(default_options) {
+	document.addEventListener("LoadOptions", (evt) => {
+		chrome.storage.local.get(Object.keys(default_options), (data) => {
+			let options = default_options
+			for (let key in data) options[key] = data[key]
+			updateOptions(options)
+		})
+	})
+
+	/* Config changed by Popup/Option page */
+	chrome.storage.onChanged.addListener((changes, namespace) => {
+		if(namespace != "local") return
+
+		let data = {}
+		for (var key in changes)
+			data[key] = changes[key].newValue
+		updateOptions(data)
+	})
+}
+
+let default_options = {
+	speechLang : "disabled"
+}
+
+setup(default_options)
+
+loadCSS("latex4twitch.css")
+loadScript("latex4twitch.js")
