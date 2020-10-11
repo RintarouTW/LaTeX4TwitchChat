@@ -1,32 +1,32 @@
 {
-	"name": "LaTeX for TwitchChat Extension",
-	"version": "1.0",
-	"description": "Support LaTeX in Twitch Chat",
+  "name": "LaTeX for TwitchChat Extension",
+  "version": "1.0",
+  "description": "Support LaTeX in Twitch Chat",
 
-	"permissions": ["https://*.twitch.tv/*", "clipboardRead", "clipboardWrite", "activeTab", "declarativeContent", "storage"],
+  "permissions": ["https://*.twitch.tv/*", "clipboardRead", "clipboardWrite", "activeTab", "declarativeContent", "storage"],
 
-	"options_ui": {
-		"page": "setup.html",
-		"open_in_tab": true
-	},
+  "options_ui": {
+    "page": "setup.html",
+    "open_in_tab": true
+  },
 
-	"content_scripts": [
-		{
-			"matches": ["https://*.twitch.tv/*"],
-			"run_at": "document_idle",
-			"all_frames": true,
-			"js": ["loader.js"]
-		}
-	],
+  "content_scripts": [
+    {
+      "matches": ["https://*.twitch.tv/*"],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "js": ["loader.js"]
+    }
+  ],
 
-	"web_accessible_resources": [ "*.js", "/styles/*.css"],
+  "web_accessible_resources": [ "*.js", "/styles/*.css"],
 
-	"icons": {
-		"16": "images/logo-16.png",
-		"32": "images/logo-32.png",
-		"48": "images/logo-48.png",
-		"128": "images/logo-128.png"
-	},
+  "icons": {
+    "16": "images/logo-16.png",
+    "32": "images/logo-32.png",
+    "48": "images/logo-48.png",
+    "128": "images/logo-128.png"
+  },
 
-	"manifest_version": 2
+  "manifest_version": 2
 }
