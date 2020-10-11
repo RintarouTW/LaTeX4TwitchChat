@@ -1,38 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-div {
-  width : 400px;
-  padding: 10px;
-}
-body {
-  margin: 0;
-  padding: 0;
-  background: #efefef;
-}
-label{
-    cursor: pointer;
-    min-width: 60px;
-    font-weight: medium;
-    font-size: small;
-}
-input.toggle {
-    display: none;
-}
-.toggle-left  {
-    border-right: 0;
-}
-.toggle-right {
-    margin-left: -30px;
-}
-    </style>
+		<link href="styles/setup.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div class="box">
 			<label for="speechLang">Click to Speech Language</label>
 			<select id="speechLang" name="speechLang" class=""></select>
-    </div>
+			<br>
+  		<label for="showUserImage">The user list to be allow to show image automatically by link</label>
+			<input id="showUserImage" name="showUserImage" class=""></input>
+  </div>
     <script src="setup.js"></script>
   </body>
 </html>

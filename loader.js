@@ -1,6 +1,6 @@
 function loadScript(src) {
   /* Insert the final install script to the head */
-  var s = document.createElement('script');
+  let s = document.createElement('script');
   s.type = "module";
   s.src = chrome.runtime.getURL(src);
 	/*
@@ -40,7 +40,7 @@ function setup(default_options) {
 		if(namespace != "local") return
 
 		let data = {}
-		for (var key in changes)
+		for (let key in changes)
 			data[key] = changes[key].newValue
 		updateOptions(data)
 	})

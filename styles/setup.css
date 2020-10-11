@@ -1,0 +1,21 @@
+div {
+	width : 500px;
+	padding: 10px;	
+}
+body {
+	margin: 20px 0px 20px 0px;
+	padding: 10px;
+	color:white;
+	background: #2a2a2a;
+	font-size: medium;
+}
+select, label{
+	margin: 20px 0px 20px 0px;
+	cursor: pointer;
+	min-width: 100px;
+	font-size: inherit;
+}
+input {
+	width : 400px;
+}
+
