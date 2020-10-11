@@ -52,5 +52,5 @@ let default_options = {
 
 setup(default_options)
 
-loadCSS("latex4twitch.css")
+loadCSS("./styles/latex4twitch.css")
 loadScript("latex4twitch.js")

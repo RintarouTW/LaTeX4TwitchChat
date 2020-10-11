@@ -19,7 +19,7 @@
 		}
 	],
 
-	"web_accessible_resources": [ "*.js", "*.css"],
+	"web_accessible_resources": [ "*.js", "/styles/*.css"],
 
 	"icons": {
 		"16": "images/logo-16.png",
