@@ -3,7 +3,14 @@
 function handleChange(evt) {
   let target = evt.target
 	let data = {}
-	data[target.name] = target.options[target.selectedIndex].value
+	switch(target.type) {
+		case 'select-one':
+			data[target.name] = target.options[target.selectedIndex].value
+			break
+		case 'text':
+			data[target.name] = target.value
+			break
+	}
 	// save to the storage
 	chrome.storage.local.set(data, () => {
 		//console.log("saved")
@@ -12,16 +19,18 @@ function handleChange(evt) {
 
 function langList() {
 	speechSynthesis.cancel()
-	let langs = ["disabled"]
+	let langs = []
 	speechSynthesis.getVoices()
 		.map( x => x.lang)
 		.map( x => !langs.includes(x) && langs.push(x))
+
+	langs.sort().unshift("Disabled")
 	return langs
 }
 
 function init() {
 	let langs = langList()
-	console.log(langs)
+
 	let speech = document.getElementById('speechLang')
 	speech.innerHTML = "" // remove all children first
 	langs.map( lang => {
@@ -32,6 +41,7 @@ function init() {
 	})
 
 	speech.onchange = handleChange
+	document.getElementById('showImageUserList').onchange = handleChange
 
 	getSavedOptions()
 }
@@ -39,16 +49,22 @@ function init() {
 function getSavedOptions() {
 
 	let option_keys = [
-		"speechLang"
+		"speechLang",
+		"showImageUserList"
 	];
 
 	chrome.storage.local.get(option_keys, data => {
 		for (let key in data) {
 			let element = document.getElementById(key);
-			if (element.type == 'select-one') {
-				document.querySelector('#' + key + ' [value="' + data[key] + '"]').selected = true
-				console.log("data[" + key +"] = " + data[key])
+			switch(element.type) {
+				case 'select-one':
+					document.querySelector('#' + key + ' [value="' + data[key] + '"]').selected = true
+					break
+				case 'text':
+					document.querySelector('#' + key).value = data[key]
+					break
 			}
+			// console.log("data[" + key +"] = " + data[key])
 		}
 	})
 }

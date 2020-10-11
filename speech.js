@@ -19,7 +19,7 @@ function voicesBy(lang) {
 }
 
 function speak(textNode, text) {
-	if (userOptions.speechLang == "disabled") return
+	if (userOptions.speechLang == "Disabled") return
 	let utterthis = new SpeechSynthesisUtterance(text)
 	let voiceIndex = voicesBy(userOptions.speechLang)[0].index
 	utterthis.voice = allVoices[voiceIndex]

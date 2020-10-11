@@ -1,10 +1,10 @@
 'user strict';
 
-var userlist = ["rintaroutw", "taftaff", "Renly", "Filmzy_"]
+import { userOptions } from "./options.js"
 
 function show_image(node, username) {
 
-	if (userlist.indexOf(username) == -1) return
+	if (userOptions.showImageUserList.indexOf(username) == -1) return
 
 	let url = node.querySelector('.tw-link')
 	if (!url) return
@@ -15,12 +15,8 @@ function show_image(node, username) {
 	let g = document.createElement('img')
 	g.setAttribute("style", "max-width: 350px;");
 	g.setAttribute("src", url.innerText);
-	g.onload = function() {
-		node.scrollIntoView()
-	}
+	g.onload = () => node.scrollIntoView()
 	url.appendChild(g)
-
-	console.log(g)
 }
 
 export { show_image }
