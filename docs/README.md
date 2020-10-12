@@ -7,8 +7,6 @@ I'm from Taiwan, sorry for my poor English. You may check [my Twitch channel](ht
 
 ## Features
 
-### Major
-
 - Preview $\LaTeX$ locally and render them in the chat.
 - Code editor for uploading your code being highlighted in original format to the chat.
  - Highlight the uploaded code and you can copy them by clicking the copy button.
