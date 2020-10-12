@@ -61,7 +61,7 @@ $$
 
 ### Copy
 
-Click on the rendered $\LaTeX$ and copy it (<kbd>Command/Ctrl<kbd> + <kbd>C</kbd>), the original ```$\LaTeX$``` would be copied to the clipboard.
+Click on the rendered $\LaTeX$ and copy it (<kbd>Command/Ctrl</kbd> + <kbd>C</kbd>), the original ```$\LaTeX$``` would be copied to the clipboard.
 
 ## Commands
 
