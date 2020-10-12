@@ -3,11 +3,9 @@
 A simple Chrome extension to render and copy $\LaTeX$ in Twitch Chat messages.
 Some functions via commands, ex: plotting a function, draw graphs, matrix calculation, etc.
 
-I'm from Taiwan, sry for my poor English. You may check [my twitch channel](https://twitch.tv/RintarouTW) to see the live demo.
+I'm from Taiwan, sorry for my poor English. You may check [my Twitch channel](https://twitch.tv/RintarouTW) to see the live demo.
 
 ## Features
-
-### Major
 
 - Preview $\LaTeX$ locally and render them in the chat.
 - Code editor for uploading your code being highlighted in original format to the chat.
@@ -15,8 +13,9 @@ I'm from Taiwan, sry for my poor English. You may check [my twitch channel](http
 - Graphviz support
 - Plotting function
 - Math Calculator
-- Speech the chat messages by clicking for different languages learning.
-- Up/Down keys to travese the history of messages your've sent.
+- Click the chat message to speech for learning different languages.
+- <kbd>Up</kbd>/<kbd>Down</kbd> keys to traverse the history of messages your have sent.
+- Auto load the image below the link of URL for the white listed users which is configured in the extension options.
 
 ### Experimental
 
@@ -61,7 +60,7 @@ $$
 
 ### Copy
 
-Click on the rendered $\LaTeX$ and copy it (CMD + C or CTRL + C), the original ```$\LaTeX$``` would be copied to the clipboard.
+Click on the rendered $\LaTeX$ and copy it (<kbd>Cmd/Ctrl</kbd> + <kbd>C</kbd>), the original ```$\LaTeX$``` would be copied to the clipboard.
 
 ## Commands
 

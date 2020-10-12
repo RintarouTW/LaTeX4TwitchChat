@@ -9,6 +9,7 @@ import { dot, ddot, graph, digraph, plot } from "./graph.js"
 import { show_image } from "./show_image.js"
 import { calc } from "./calc.js"
 import { sage } from "./sage.js"
+import { speak } from "./speech.js"
 
 function help(textNode) {
 
@@ -23,7 +24,7 @@ function help(textNode) {
 	!code : beautify and highlight ur code
 	!css : present css source
 	!html : present html source
-	
+
 	--[ Graphics ]-- 
 	!plot : plotting ur function (JSXGraph)
 	!dot : draw graph via dot language (Graphviz)
@@ -45,7 +46,7 @@ function hookup() {
 		["!tex", " \\TeX", tex ],
 		["!cheat", "", cheat ],
 
-   	["!code", " function hello_world() { console.log(\"hello world\") } ", code ],
+		["!code", " function hello_world() { console.log(\"hello world\") } ", code ],
 		["!html", " <html><body><h1>Hello World</h1></body></html>", html ],
 		["!css", " body { background-color: #666666 } ", css ],
 		["!pre", " hash code", pre ],
@@ -55,7 +56,7 @@ function hookup() {
 		["!ddot", " digraph {1->2,3->6}", ddot ],
 		["!digraph", " -i {1->2,3,5;2->6,10;3->6,15;5->10,15;6,10,15->30}", digraph ],
 		["!graph", " {1--2,3--6}", graph ],
-	
+
 		["!gauss", " [1,2,3; 4,5,6]", gauss ],
 		["!mc", " m=[1,2,3;4,5,6]", calc ],
 		["!sage", " Posets.DivisorLattice(30)", sage ],
@@ -110,9 +111,7 @@ function hookup() {
 						textNode.addEventListener("click", () => {
 							/* speech for pure text only */
 							if (textNode.childElementCount > 0) return
-							let utterThis = new SpeechSynthesisUtterance(textNode.innerHTML)
-							utterThis.voice = speechSynthesis.getVoices()[66]
-							speechSynthesis.speak(utterThis)
+							speak(textNode, textNode.innerHTML)
 						})
 					}
 

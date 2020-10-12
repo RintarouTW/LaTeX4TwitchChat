@@ -1,9 +1,14 @@
 {
-  "name": "LaTeX for TwitchChat Extension",
+  "name": "LaTeX for Twitch Chat Extension",
   "version": "1.0",
-  "description": "Support LaTeX in Twitch Chat",
-  
-  "permissions": ["https://*.twitch.tv/*", "clipboardRead", "clipboardWrite"],
+  "description": "Support LaTeX, plotting, graph, math calculation, highlight source, etc.. in Twitch Chat",
+
+  "permissions": ["https://*.twitch.tv/*", "clipboardRead", "clipboardWrite", "storage"],
+
+  "options_ui": {
+    "page": "setup.html",
+    "open_in_tab": true
+  },
 
   "content_scripts": [
     {
@@ -14,31 +19,14 @@
     }
   ],
 
-  "web_accessible_resources": [
-	  "common.js",
-	  "latex4twitch.js",
-	  "latex4twitch.css",
-	  "tw_elements_finder.js",
-	  "graph.js",
-	  "matrix.js",
-	  "show_image.js",
-	  "highlight.js",
-	  "calc.js",
-	  "render_math.js",
-	  "sage.js",
-	  "code_editor.js",
-	  "code_editor_view.js",
-	  "code_server.js",
-	  "components.js",
-	  "history.js"
-  ],
+  "web_accessible_resources": [ "*.js", "/styles/*.css"],
 
   "icons": {
-      "16": "images/logo-16.png",
-      "32": "images/logo-32.png",
-      "48": "images/logo-48.png",
-      "128": "images/logo-128.png"
+    "16": "images/logo-16.png",
+    "32": "images/logo-32.png",
+    "48": "images/logo-48.png",
+    "128": "images/logo-128.png"
   },
-  
+
   "manifest_version": 2
 }

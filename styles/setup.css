@@ -1,0 +1,26 @@
+div {
+	width : 500px;
+	padding: 10px;	
+}
+body {
+	margin: 10px 0px 20px 0px;
+	padding: 10px;
+	color:white;
+	background: #2a2a2a;
+	font-size: medium;
+	font-family: serif;
+}
+select {
+	margin: 5px 0px 20px 0px;
+	cursor: pointer;
+	min-width: 100px;
+	font-size: inherit;
+}
+p {
+	max-width: 400px;
+}
+input {
+	margin-top: 5px;
+	width : 400px;
+}
+
