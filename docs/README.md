@@ -16,7 +16,7 @@ I'm from Taiwan, sorry for my poor English. You may check [my Twitch channel](ht
 - Plotting function
 - Math Calculator
 - Speech the chat messages by clicking for learning different languages.
-- Up/Down keys to travese the history of messages your've sent.
+- Up/Down keys to traverse the history of messages your have sent.
 
 ### Experimental
 
@@ -61,7 +61,7 @@ $$
 
 ### Copy
 
-Click on the rendered $\LaTeX$ and copy it (CMD + C or CTRL + C), the original ```$\LaTeX$``` would be copied to the clipboard.
+Click on the rendered $\LaTeX$ and copy it (<kbd>Command/Ctrl<kbd> + <kbd>C</kbd>), the original ```$\LaTeX$``` would be copied to the clipboard.
 
 ## Commands
 

@@ -1,9 +1,9 @@
 {
-  "name": "LaTeX for TwitchChat Extension",
+  "name": "LaTeX for Twitch Chat Extension",
   "version": "1.0",
-  "description": "Support LaTeX in Twitch Chat",
+  "description": "Support LaTeX, plotting, graph, math calculation, highlight source, etc.. in Twitch Chat",
 
-  "permissions": ["https://*.twitch.tv/*", "clipboardRead", "clipboardWrite", "activeTab", "declarativeContent", "storage"],
+  "permissions": ["https://*.twitch.tv/*", "clipboardRead", "clipboardWrite", "storage"],
 
   "options_ui": {
     "page": "setup.html",
