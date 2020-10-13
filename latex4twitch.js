@@ -9,7 +9,7 @@ import { dot, ddot, graph, digraph, plot } from "./graph.js"
 import { show_image } from "./show_image.js"
 import { calc } from "./calc.js"
 import { sage } from "./sage.js"
-import { speak } from "./speech.js"
+import { speak, say, shutup } from "./speech.js"
 
 function help(textNode) {
 
@@ -60,7 +60,9 @@ function hookup() {
 		["!gauss", " [1,2,3; 4,5,6]", gauss ],
 		["!mc", " m=[1,2,3;4,5,6]", calc ],
 		["!sage", " Posets.DivisorLattice(30)", sage ],
-
+    
+		["!say", " tw 你好", say ],
+		["!shutup", "", shutup ],
 		["!help", "", help ]
 	]
 
