@@ -36,6 +36,10 @@ function help(textNode) {
 	!gauss : Gauss elimenates a matrix
 	!mc : math calculator, (http://mathjs.org)
 	!sage : SageMath (http://sagemath.org)
+
+  --[ Speech ]--
+  !say : say the words in the specified language.
+  !shutup : stop the speech right away.
 	`)
 }
 
@@ -61,7 +65,7 @@ function hookup() {
 		["!mc", " m=[1,2,3;4,5,6]", calc ],
 		["!sage", " Posets.DivisorLattice(30)", sage ],
     
-		["!say", " tw 你好", say ],
+		["!say", " zh 你好", say ],
 		["!shutup", "", shutup ],
 		["!help", "", help ]
 	]
