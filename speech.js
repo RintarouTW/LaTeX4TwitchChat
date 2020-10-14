@@ -40,11 +40,11 @@ function speak(textNode, text) {
 
 function say(textNode, text) {
 	if (userOptions.speechLang == "Disabled") return
-  let iso = text.replace(/^\s*/,'').split(' ')[0].toLowerCase()
+  let iso = text.replace(/^\s*/,'').split(' ')[0]
   if(iso.length != 2) return
   let str = text.replace(iso, '').replace(/(^\s*|\s*$)/, '')
   if(str.length == 0) return
-  let voices = voicesByIso(iso)
+  let voices = voicesByIso(iso.toLowerCase())
   if(voices.length == 0) return
 	let voiceIndex = voices[0].index
 	let utterthis = new SpeechSynthesisUtterance(str)
