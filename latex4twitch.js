@@ -32,7 +32,6 @@ function help(textNode) {
   --[ Calculation ]-- 
   !gauss : Gauss elimenates a matrix
   !mc : math calculator, (http://mathjs.org)
-  !sage : SageMath (http://sagemath.org)
   --[ Speech ]--
   !say : say the words in the specified language.
   !shutup : stop the speech right away.
@@ -59,7 +58,7 @@ function help(textNode) {
 
     ["!gauss", " [1,2,3; 4,5,6]", gauss ],
     ["!mc", " m=[1,2,3;4,5,6]", calc ],
-    ["!sage", " Posets.DivisorLattice(30)", sage ],
+    // ["!sage", " Posets.DivisorLattice(30)", sage ],
     
     ["!say", " zh 你好", say ],
     ["!shutup", "", shutup ],
@@ -103,16 +102,13 @@ function help(textNode) {
 
           for (let textNode of texts) {
             /* LaTeX rendering in chat messages */
-            if (textNode && textNode.textContent && katex) {
+            if (textNode && textNode.textContent && katex) 
               renderMath(textNode)
-            }
 
             /* TTS */
-            if (textNode.childElementCount == 0) {
-              textNode.classList.toggle('l4t-speechable', true)
+            if (textNode.childElementCount == 0) { /* speech for pure text only */
+              textNode.classList.add('l4t-speechable')
               textNode.addEventListener("click", () => {
-                /* speech for pure text only */
-                // if (textNode.childElementCount > 0) return
                 speak(textNode, textNode.innerHTML)
               })
             }
