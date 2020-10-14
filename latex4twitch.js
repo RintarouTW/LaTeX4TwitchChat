@@ -108,11 +108,14 @@ function help(textNode) {
             }
 
             /* TTS */
-            textNode.addEventListener("click", () => {
-              /* speech for pure text only */
-              if (textNode.childElementCount > 0) return
-              speak(textNode, textNode.innerHTML)
-            })
+            if (textNode.childElementCount == 0) {
+              textNode.classList.toggle('l4t-speechable', true)
+              textNode.addEventListener("click", () => {
+                /* speech for pure text only */
+                // if (textNode.childElementCount > 0) return
+                speak(textNode, textNode.innerHTML)
+              })
+            }
           }
           node.scrollIntoView()
         }
