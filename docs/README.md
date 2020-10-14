@@ -161,6 +161,20 @@ Calculate the math for you.
 
 check https://mathjs.org for more usages.
 
+### Speech
+
+Speak the words in the specified language.
+
+```
+!say en hello
+```
+
+Stop the speech right away.
+
+```
+!shutup
+```
+
 ### SageMath
 
 SageMath cell is kind of heavey and only supported in experimental mode now.

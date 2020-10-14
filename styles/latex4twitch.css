@@ -58,10 +58,16 @@
 	float: right;
 }
 
+.l4t-speechable:hover {
+  color: #ff7a59;
+  border: #6d3535 solid 1px;
+  background:#313131;
+}
+
 /* override tomorrow night bright's theme setup */
 .cm-s-tomorrow-night-bright.CodeMirror {
-	min-height: 300px !important;
-	background: #191028 !important;
+  min-height: 300px !important;
+  background: #191028 !important;
 }
 
 .cm-s-tomorrow-night-bright .CodeMirror-cursor {
@@ -70,5 +76,5 @@
 
 /* wrap the line of code */
 pre, code {
-    white-space: pre-wrap;
+  white-space: pre-wrap;
 }
