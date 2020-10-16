@@ -1,48 +1,44 @@
 'use strict';
 
-const _serverURL = "https://plaintext-code.glitch.me"
+import { fetchURL } from './common.js'
 
-function doFetch(url, init) {
-	return new Promise((resolve, reject) => {
-		fetch(url, init).then(response => {
-			return response.json()
-		}).then(json => { // response from server
-			if (json.error) {
-				//console.log(json)
-				reject(json.error)
-				return
-			}
-			resolve(json)
-		}).catch( error => {
-			//console.error(error)
-			reject(error)
-		})
-	})
+// const _serverURL = "https://plaintext-code.glitch.me"
+const _serverURL = "https://fathomless-brushlands-18222.herokuapp.com"
+
+/*
+ * resolve({ code: "function..." })
+ * reject({ error : {
+ *            code : integer,
+ *            message : string
+ *         }})
+ */
+
+function stdGetHeader() {
+  return {
+    method: 'GET',
+    headers: new Headers({'Content-Type': 'text/plain'})
+  }
+}
+
+function isoFromText(text) {
+  let params = { text : text }
+  return fetchURL(_serverURL + '/?' + new URLSearchParams(params), stdGetHeader())
 }
 
 function getHash() {
-	return doFetch(_serverURL + '/hash', {
-		method: 'GET',
-		headers: new Headers({'Content-Type': 'text/plain'})
-	})
-}
-
-/*
- * codeObject : { code: "function..." }
- */
-function postCode(hash, codeObject) {
-	return doFetch(_serverURL + '/code/' + hash, {
-		method: 'POST',
-		body: JSON.stringify(codeObject),
-		headers: new Headers({'Content-Type': 'application/json'})
-	})
+  return fetchURL(_serverURL + '/hash', stdGetHeader())
 }
 
 function getCode(hash) {
-	return doFetch(_serverURL + '/code/' + hash, {
-		method: 'GET',
-		headers: new Headers({'Content-Type': 'text/plain'})
-	})
+  return fetchURL(_serverURL + '/code/' + hash, stdGetHeader())
 }
 
-export { getHash, postCode, getCode }
+function postCode(hash, codeObject) {
+  return fetchURL(_serverURL + '/code/' + hash, {
+    method: 'POST',
+    body: JSON.stringify(codeObject),
+    headers: new Headers({'Content-Type': 'application/json'})
+  })
+}
+
+export { getHash, postCode, getCode, isoFromText }
