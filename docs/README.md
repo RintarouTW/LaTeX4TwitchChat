@@ -14,6 +14,7 @@ I'm from Taiwan, sorry for my poor English. You may check [my Twitch channel](ht
 - Plotting function
 - Math Calculator
 - Click the chat message to speech for learning different languages.
+  (default disabled, you can enable this in the option page of the extension)
 - <kbd>Up</kbd>/<kbd>Down</kbd> keys to traverse the history of messages your have sent.
 - Auto load the image below the link of URL for the white listed users which is configured in the extension options.
 
@@ -77,7 +78,6 @@ Show the error in ur tex string.
 ```
 !tex \LaTeX
 ```
-
 
 ### Cheat Sheet
 
@@ -166,7 +166,7 @@ check https://mathjs.org for more usages.
 Speak the words in the specified language.
 
 ```
-!say en hello
+!say hello
 ```
 
 Stop the speech right away.
@@ -175,7 +175,7 @@ Stop the speech right away.
 !shutup
 ```
 
-### SageMath
+### SageMath (Experimental)
 
 SageMath cell is kind of heavey and only supported in experimental mode now.
 You may enable it by changing the isExperimental() return value to true.
