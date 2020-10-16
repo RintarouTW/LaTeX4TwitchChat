@@ -24,3 +24,12 @@ input {
 	width : 400px;
 }
 
+a {
+  color: aqua;
+}
+
+a,i.small {
+  font-size: small;
+}
+
+

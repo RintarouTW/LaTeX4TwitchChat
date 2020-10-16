@@ -23,7 +23,7 @@ function help(textNode) {
   !code : beautify and highlight ur code
   !css : present css source
   !html : present html source
-  --[ Graphics ]-- 
+  --[ Plotting and Graph ]-- 
   !plot : plotting ur function (JSXGraph)
   !dot : draw graph via dot language (Graphviz)
   !ddot : draw graph via dot language in dark mode
@@ -109,6 +109,7 @@ function help(textNode) {
             if (textNode.childElementCount == 0) { /* speech for pure text only */
               textNode.classList.add('l4t-speechable')
               textNode.addEventListener("click", () => {
+                navigator.clipboard.writeText(textNode.innerText)/*.then( () => { console.log('copied') }) */
                 speak(textNode, textNode.innerHTML)
               })
             }

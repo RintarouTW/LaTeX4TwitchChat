@@ -24,7 +24,7 @@ function langList() {
 		.map( x => x.lang)
 		.map( x => !langs.includes(x) && langs.push(x))
 
-	langs.sort().unshift("Disabled")
+	langs.sort().unshift("Auto", "Disabled")
 	return langs
 }
 
