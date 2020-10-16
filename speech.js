@@ -1,17 +1,7 @@
 'use strict';
 
 import { userOptions } from "./options.js"
-import { fetchURL } from './common.js'
-
-const _translateServerURL = "https://fathomless-brushlands-18222.herokuapp.com/?"
-
-function isoFromText(text) {
-  let params = { text : text }
-	return fetchURL(_translateServerURL + new URLSearchParams(params), {
-		method: 'GET',
-		headers: new Headers({'Content-Type': 'text/plain'})
-	})
-}
+import { isoFromText } from './code_server.js'
 
 var allVoices = []
 
