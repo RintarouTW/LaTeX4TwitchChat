@@ -2,7 +2,8 @@
 
 import { fetchURL } from './common.js'
 
-const _serverURL = "https://plaintext-code.glitch.me"
+// const _serverURL = "https://plaintext-code.glitch.me"
+const _serverURL = "https://fathomless-brushlands-18222.herokuapp.com"
 
 function getHash() {
 	return fetchURL(_serverURL + '/hash', {
