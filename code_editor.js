@@ -2,7 +2,7 @@
 
 import { isDebug, loadCSS, loadScript } from "./common.js"
 import { TWChatInput, TWChatSendButton } from "./tw_elements_finder.js"
-import { getHash, postCode } from "./code_server.js"
+import { getHash, postCode } from "./server.js"
 import {
 	createPanel,
 	createSendButton,

@@ -1,7 +1,7 @@
 'use strict';
 
 import { userOptions } from "./options.js"
-import { isoFromText } from './code_server.js'
+import { isoFromText } from './server.js'
 
 var allVoices = []
 

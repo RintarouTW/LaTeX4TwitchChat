@@ -22,11 +22,11 @@ function stdGetHeader() {
 
 function isoFromText(text) {
   let params = { text : text }
-  return fetchURL(_serverURL + '/?' + new URLSearchParams(params), stdGetHeader())
+  return fetchURL(_serverURL + '/isoFromText?' + new URLSearchParams(params), stdGetHeader())
 }
 
 function getHash() {
-  return fetchURL(_serverURL + '/hash', stdGetHeader())
+  return fetchURL(_serverURL + '/code/hash', stdGetHeader())
 }
 
 function getCode(hash) {
