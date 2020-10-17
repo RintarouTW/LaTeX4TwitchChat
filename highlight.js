@@ -1,7 +1,7 @@
 'use strict';
 
 import { loadCSS, loadScript } from "./common.js"
-import { getCode } from "./code_server.js"
+import { getCode } from "./server.js"
 
 // code beautify
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.0/beautify.js")
