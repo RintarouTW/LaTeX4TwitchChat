@@ -1,9 +1,6 @@
-'use strict';
+'use strict'
 
-var userOptions = { 
-	speechLang : navigator.language,
-	showImageUserList : []
-}
+let userOptions = {}
 
 function updateOptions(data) {
 	for (const key in data) {
