@@ -7,7 +7,6 @@ var userOptions = {
 
 function updateOptions(data) {
 	for (const key in data) {
-		//console.log(key)
 		//if ( typeof (userOptions[key]) == typeof (data[key]) ) 
 		switch(key){
 			case 'speechLang':

@@ -43,7 +43,8 @@ function setup(default_options) {
 }
 
 let default_options = {
-	speechLang : "disabled"
+	speechLang : "disabled",
+  showImageUserList : []
 }
 
 setup(default_options)
