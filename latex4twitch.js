@@ -60,6 +60,7 @@ function help(textNode) {
     ["!mc", " m=[1,2,3;4,5,6]", calc ],
     // ["!sage", " Posets.DivisorLattice(30)", sage ],
     
+    ["!im", "", say ],
     ["!say", " zh 你好", say ],
     ["!shutup", "", shutup ],
     ["!help", "", help ]
