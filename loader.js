@@ -1,3 +1,5 @@
+'use strict'
+
 function loadScript(src) {
   /* Insert the final install script to the head */
   let s = document.createElement('script');
@@ -22,32 +24,29 @@ function updateOptions(data) {
 	document.dispatchEvent(evt);
 }
 
-function setup(default_options) {
+(async function() {
+
+  const { defaultOptions } = await import('./default.js')
+
 	document.addEventListener("LoadOptions", (evt) => {
-		chrome.storage.local.get(Object.keys(default_options), (data) => {
-			let options = default_options
+		chrome.storage.local.get(Object.keys(defaultOptions), (data) => {
+			let options = Object.assign({}, defaultOptions)
 			for (let key in data) options[key] = data[key]
 			updateOptions(options)
 		})
 	})
 
-	/* Config changed by Popup/Option page */
-	chrome.storage.onChanged.addListener((changes, namespace) => {
-		if(namespace != "local") return
+  /* Config changed by Popup/Option page */
+  chrome.storage.onChanged.addListener((changes, namespace) => {
+    if(namespace != "local") return
 
-		let data = {}
-		for (let key in changes)
-			data[key] = changes[key].newValue
-		updateOptions(data)
-	})
-}
+    let data = {}
+    for (let key in changes)
+      data[key] = changes[key].newValue
+    updateOptions(data)
+  })
 
-let default_options = {
-	speechLang : "disabled",
-  showImageUserList : []
-}
+  loadCSS("./styles/latex4twitch.css")
+  loadScript("latex4twitch.js")
+})()
 
-setup(default_options)
-
-loadCSS("./styles/latex4twitch.css")
-loadScript("latex4twitch.js")
