@@ -95,9 +95,7 @@ function codeEditor() {
   _cmInstance.execCommand("selectAll")
   _cmInstance.addPanel(panel, { position : "bottom" })
 
-  closeButton.addEventListener("click", evt => {
-    _window.classList.toggle("tw-hide")
-  })
+  closeButton.addEventListener("click", evt => _window.classList.toggle("tw-hide"))
 
   let twChatInput = TWChatInput()
   let twChatSendButton = TWChatSendButton()
@@ -114,36 +112,32 @@ function codeEditor() {
       document.execCommand("insertText", true, "!pre " + json.hash) 
       // copy to clipboard for Firefox which is strict to insertText support.
       // <textarea> is not supported by insertText, <div> with contenteditable only.
-      navigator.clipboard.writeText("!pre " + json.hash).then(function() {
-        /* clipboard successfully set */
-        twChatSendButton.click()
-      }, function() {
-        /* clipboard write failed */
+      navigator.clipboard.writeText("!pre " + json.hash).then( () => {
+        twChatSendButton.click() /* clipboard successfully set */
+      }, () => { /* clipboard write failed */
         twChatSendButton.click()
         console.error("write to clipboard failed")
       })
-    }).catch( error => {
-      console.log(error)
-    })
+    }).catch( error => console.log(error) )
   })
 
   // Observe the theme change
   let chatTheme = document.querySelector("[data-a-target=chat-theme-light]")
   if (!chatTheme) chatTheme = document.querySelector("[data-a-target=chat-theme-dark]")
-  if (!chatTheme) 
+  if (!chatTheme) {
     console.log("failt to locate the chat theme section")
-  else {
-    updateTheme(chatTheme.getAttribute("data-a-target"))
-    let themeObserver = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        if(mutation.attributeName == 'data-a-target') {
-          let theme = chatTheme.getAttribute('data-a-target')
-          updateTheme(theme)
-        }
-      })
-    })
-    themeObserver.observe(chatTheme, {attributes : true})
+    return
   }
+  updateTheme(chatTheme.getAttribute("data-a-target"))
+  let themeObserver = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      if(mutation.attributeName == 'data-a-target') {
+        let theme = chatTheme.getAttribute('data-a-target')
+        updateTheme(theme)
+      }
+    })
+  })
+  themeObserver.observe(chatTheme, {attributes : true})
 }
 
 function popupButtonForEditor() {
