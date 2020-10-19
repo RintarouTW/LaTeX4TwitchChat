@@ -73,6 +73,24 @@ function help(textNode) {
     return
   }
 
+  // Observe the theme change
+  let chatTheme = document.querySelector("[data-a-target=chat-theme-light]")
+  if (!chatTheme) chatTheme = document.querySelector("[data-a-target=chat-theme-dark]")
+  if (!chatTheme) console.log("failt to locate the chat theme section")
+  if (chatTheme) {
+    let themeObserver = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if(mutation.attributeName == 'data-a-target') {
+          let theme = chatTheme.getAttribute('data-a-target')
+          console.log(theme)
+          let event = new CustomEvent('TwitchThemeChange', {detail : theme})
+          document.dispatchEvent(event)
+        }
+      })
+    })
+    themeObserver.observe(chatTheme, {attributes : true})
+  }
+
   let observer = new MutationObserver(mutations =>{
     mutations.forEach(mutation => {
       mutation.addedNodes.forEach(node => {
