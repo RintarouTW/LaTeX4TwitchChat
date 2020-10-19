@@ -48,107 +48,132 @@ function newHashFromServer(hashLabel, sendButton) {
 	})
 }
 
+function updateTheme(themeName) {
+  if(themeName == "chat-theme-light")
+    _cmInstance.setOption("theme", "default")
+  else
+    _cmInstance.setOption("theme", "tomorrow-night-bright")
+}
+
 function codeEditor() {
 
-	let content_container = document.querySelector(".chat-room__content")
+  let content_container = document.querySelector(".chat-room__content")
 
-	let textarea = document.createElement("textarea")
-	let panel = createPanel()
-	let closeButton = createCloseButton()
-	let hashLabel = createHashLabel()
-	let sendButton = createSendButton()
+  let textarea = document.createElement("textarea")
+  let panel = createPanel()
+  let closeButton = createCloseButton()
+  let hashLabel = createHashLabel()
+  let sendButton = createSendButton()
 
-	_window = createEditorWindow()
-	_window.appendChild(textarea)
+  _window = createEditorWindow()
+  _window.appendChild(textarea)
 
-	panel.appendChild(closeButton)
-	panel.appendChild(sendButton)
-	panel.appendChild(hashLabel)
+  panel.appendChild(closeButton)
+  panel.appendChild(sendButton)
+  panel.appendChild(hashLabel)
 
-	content_container.appendChild(_window)
+  content_container.appendChild(_window)
 
-	newHashFromServer(hashLabel, sendButton)
+  newHashFromServer(hashLabel, sendButton)
 
-	// code mirror editor
-	_cmInstance = CodeMirror.fromTextArea(textarea, {
-		mode: {name: "javascript"},
-		//mode: {name: "python"},
-		//keymap: "vim",
-		autoRefresh: true,
-		autofocus: true,
-		tabSize: 2,
-		indentUnit: 2,
-		lineNumbers: true,
-		placeholder: "Edit and send your code...",
-		theme: "tomorrow-night-bright"
-	})
+  // code mirror editor
+  _cmInstance = CodeMirror.fromTextArea(textarea, {
+    mode: {name: "javascript"},
+    //mode: {name: "python"},
+    //keymap: "vim",
+    autoRefresh: true,
+    autofocus: true,
+    tabSize: 2,
+    indentUnit: 2,
+    lineNumbers: true,
+    placeholder: "Edit and send your code...",
+    theme: "tomorrow-night-bright"
+  })
 
-	if (isDebug()) window._cmInstance = _cmInstance /* for debug */
+  if (isDebug()) window._cmInstance = _cmInstance /* for debug */
 
-	_cmInstance.execCommand("selectAll")
-	_cmInstance.addPanel(panel, { position : "bottom" })
+  _cmInstance.execCommand("selectAll")
+  _cmInstance.addPanel(panel, { position : "bottom" })
 
-	closeButton.addEventListener("click", evt => {
-		_window.classList.toggle("tw-hide")
-	})
+  closeButton.addEventListener("click", evt => {
+    _window.classList.toggle("tw-hide")
+  })
 
-	let twChatInput = TWChatInput()
-	let twChatSendButton = TWChatSendButton()
+  let twChatInput = TWChatInput()
+  let twChatSendButton = TWChatSendButton()
 
-	sendButton.addEventListener("click", evt => {
-		sendButton.disabled = true
-		postCode(hashLabel.innerHTML, {code : _cmInstance.getValue()}).then( json => {
-			hashLabel.innerHTML = json.newHash
-			_window.classList.toggle("tw-hide")
-			sendButton.disabled = false
-			twChatInput.focus()
-			twChatInput.select()
-			// the original hash is returned if the code was posted success
-			document.execCommand("insertText", true, "!pre " + json.hash) 
-			// copy to clipboard for Firefox which is strict to insertText support.
-			// <textarea> is not supported by insertText, <div> with contenteditable only.
-			navigator.clipboard.writeText("!pre " + json.hash).then(function() {
-				/* clipboard successfully set */
-				twChatSendButton.click()
-			}, function() {
-				/* clipboard write failed */
-				twChatSendButton.click()
-				console.error("write to clipboard failed")
-			})
-		}).catch( error => {
-			console.log(error)
-		})
-	})
+  sendButton.addEventListener("click", evt => {
+    sendButton.disabled = true
+    postCode(hashLabel.innerHTML, {code : _cmInstance.getValue()}).then( json => {
+      hashLabel.innerHTML = json.newHash
+      _window.classList.toggle("tw-hide")
+      sendButton.disabled = false
+      twChatInput.focus()
+      twChatInput.select()
+      // the original hash is returned if the code was posted success
+      document.execCommand("insertText", true, "!pre " + json.hash) 
+      // copy to clipboard for Firefox which is strict to insertText support.
+      // <textarea> is not supported by insertText, <div> with contenteditable only.
+      navigator.clipboard.writeText("!pre " + json.hash).then(function() {
+        /* clipboard successfully set */
+        twChatSendButton.click()
+      }, function() {
+        /* clipboard write failed */
+        twChatSendButton.click()
+        console.error("write to clipboard failed")
+      })
+    }).catch( error => {
+      console.log(error)
+    })
+  })
+
+  // Observe the theme change
+  let chatTheme = document.querySelector("[data-a-target=chat-theme-light]")
+  if (!chatTheme) chatTheme = document.querySelector("[data-a-target=chat-theme-dark]")
+  if (!chatTheme) 
+    console.log("failt to locate the chat theme section")
+  else {
+    updateTheme(chatTheme.getAttribute("data-a-target"))
+    let themeObserver = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if(mutation.attributeName == 'data-a-target') {
+          let theme = chatTheme.getAttribute('data-a-target')
+          updateTheme(theme)
+        }
+      })
+    })
+    themeObserver.observe(chatTheme, {attributes : true})
+  }
 }
 
 function popupButtonForEditor() {
 
-	let [buttonContainer, popupButton] = createPopupButton()
+  let [buttonContainer, popupButton] = createPopupButton()
 
-	// for development, new instance once popup is clicked.
-	if (isDebug()) {
-		popupButton.addEventListener("click", evt => {
-			if (_window) {
-				_window.parentNode.removeChild(_window)
-			}
-			codeEditor()
-			_window.classList.toggle("tw-hide")
-			_cmInstance.refresh()
-			_cmInstance.focus()
-		});
-		return buttonContainer
-	}
+  // for development, new instance once popup is clicked.
+  if (isDebug()) {
+    popupButton.addEventListener("click", evt => {
+      if (_window) {
+        _window.parentNode.removeChild(_window)
+      }
+      codeEditor()
+      _window.classList.toggle("tw-hide")
+      _cmInstance.refresh()
+      _cmInstance.focus()
+    });
+    return buttonContainer
+  }
 
-	// for deployment, single instance only.
-	codeEditor()
+  // for deployment, single instance only.
+  codeEditor()
 
-	popupButton.addEventListener("click", evt => {
-		_window.classList.toggle("tw-hide")
-		if(!_window.classList.contains("tw-hide")){
-			_cmInstance.focus()
-		}
-	})
-	return buttonContainer
+  popupButton.addEventListener("click", evt => {
+    _window.classList.toggle("tw-hide")
+    if(!_window.classList.contains("tw-hide")){
+      _cmInstance.focus()
+    }
+  })
+  return buttonContainer
 }
 
 export { popupButtonForEditor }
