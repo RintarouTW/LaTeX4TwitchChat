@@ -30,7 +30,8 @@
 }
 
 .l4t-panel {
-	background: #000 !important;
+  background-color: var(--color-background-base)!important;
+  border-bottom: var(--border-width-default) solid var(--color-border-base)!important;
 }
 
 .l4t-hash-label {
@@ -65,13 +66,21 @@
 }
 
 /* override tomorrow night bright's theme setup */
-.cm-s-tomorrow-night-bright.CodeMirror {
+.CodeMirror {
   min-height: 300px !important;
-  background: #191028 !important;
+  background-color:var(--color-background-base)!important;
 }
 
 .cm-s-tomorrow-night-bright .CodeMirror-cursor {
   border-left: 1px solid #fff !important;
+}
+
+.CodeMirror-gutters {
+  background-color:var(--color-background-base)!important;
+}
+
+.CodeMirror-linenumbers {
+  background-color:var(--color-background-base)!important;
 }
 
 /* wrap the line of code */
