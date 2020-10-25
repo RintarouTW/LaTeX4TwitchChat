@@ -7,6 +7,7 @@ import { renderMath, tex, cheat } from "./render_math.js"
 import { matrix, gauss } from "./matrix.js"
 import { dot, ddot, graph, digraph, plot } from "./graph.js"
 import { show_image } from "./show_image.js"
+import { yt_image } from "./yt_image.js"
 import { calc } from "./calc.js"
 import { sage } from "./sage.js"
 import { speak, say, shutup } from "./speech.js"
@@ -82,6 +83,7 @@ function help(textNode) {
           if (username) {
             username = username.innerText.replace(/[\( \)]/g, '')
             show_image(node, username)
+            yt_image(node, username)
           }
 
           let texts = node.getElementsByClassName("text-fragment")
