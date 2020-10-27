@@ -42,41 +42,48 @@ function hookL4TComponents() {
 	chatInput.addEventListener("keydown", evt => {
 		let target = evt.target
 		switch (evt.code) {
-			case 'Enter':
-				if (!evt.shiftKey) {
-					sendMessage(target.value)
-					previewBox.innerHTML = ""
-				}
-				break
-			case 'ArrowUp':
-				if (cursorLineNo(target) == 1) {
-					let msg = prevMessage()
-					if (msg != null) {
-						target.focus()
-						target.select()
-						document.execCommand("insertText", true, msg)
-					}
-				}
-				break
-			case 'ArrowDown':
-				if (cursorLineNo(target) == totalLines(target)) {
-					let msg = nextMessage()
-					if (msg != null) {
-						target.focus()
-						target.select()
-						document.execCommand("insertText", true, msg)
-					}
-				}
-				break
-		}
-	})
+      case 'KeyL':
+        if (evt.ctrlKey) {
+          target.focus()
+          target.select()
+          document.execCommand("insertText", true, '/clear ')
+        }
+        break
+      case 'Enter':
+        if (!evt.shiftKey) {
+          sendMessage(target.value)
+          previewBox.innerHTML = ""
+        }
+        break
+      case 'ArrowUp':
+        if (cursorLineNo(target) == 1) {
+          let msg = prevMessage()
+          if (msg != null) {
+            target.focus()
+            target.select()
+            document.execCommand("insertText", true, msg)
+          }
+        }
+        break
+      case 'ArrowDown':
+        if (cursorLineNo(target) == totalLines(target)) {
+          let msg = nextMessage()
+          if (msg != null) {
+            target.focus()
+            target.select()
+            document.execCommand("insertText", true, msg)
+          }
+        }
+        break
+    }
+  })
 
-	// the popup button of the code editor
-	let popupButton = popupButtonForEditor()
-	let chatButtonsContainer = TWChatButtonsContainer()
+  // the popup button of the code editor
+  let popupButton = popupButtonForEditor()
+  let chatButtonsContainer = TWChatButtonsContainer()
 
-	chatButtonsContainer.insertBefore(previewBox, chatButtonsContainer.childNodes[1])
-	chatButtonsContainer.insertBefore(popupButton, previewBox)
+  chatButtonsContainer.insertBefore(previewBox, chatButtonsContainer.childNodes[1])
+  chatButtonsContainer.insertBefore(popupButton, previewBox)
 }
 
 export { hookL4TComponents }
