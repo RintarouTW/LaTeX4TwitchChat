@@ -79,9 +79,11 @@ function help(textNode) {
       mutation.addedNodes.forEach(node => {
         if (node.className == "chat-line__message") {
           /* show image by URL directly, privileged users only */
-          let username = node.querySelector(".chat-author__intl-login")
+          // let username = node.querySelector(".chat-author__intl-login")
+          // username = username.innerText.replace(/[\( \)]/g, '')
+          let username = node.querySelector(".chat-author__display-name")
           if (username) {
-            username = username.innerText.replace(/[\( \)]/g, '')
+            username = username.getAttribute('data-a-user')
             show_image(node, username)
             yt_image(node, username)
           }
