@@ -11,7 +11,10 @@ function show_image(node, username) {
 	if (!url) return
   if(!/(https:)([/|.|\w|\s|%])*\.(?:jpeg|jpg|gif|png|svg)/i.test(url.innerText)) return
 
-	let g = document.createElement('img')
+  let g = document.createElement('br')
+  url.appendChild(g)
+
+	g = document.createElement('img')
 	g.setAttribute("style", "max-width: 300px;");
 	g.setAttribute("src", url.innerText);
 	g.onload = () => node.scrollIntoView()
