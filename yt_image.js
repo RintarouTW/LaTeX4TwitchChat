@@ -19,6 +19,8 @@ function yt_image(node, username) {
 
 	let url = node.querySelector('.tw-link')
   if (!url) return
+  if (!/^http(s)?:/.test(url.innerText)) return
+
   let videoId = parseVideoId(url.innerText)
   if (!videoId) return
 
