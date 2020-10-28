@@ -59,6 +59,25 @@
 	float: right;
 }
 
+.tw-link:link,
+.tw-link:visited,
+.tw-link:hover {
+  text-decoration: none !important;
+  color: cornsilk !important;
+}
+
+.l4t-yt-image {
+  width:300px;
+  height: 53px;
+  border-radius: 10px;
+  padding: 37px 3px 0px 10px;
+  font-size: xx-small;
+  color: cornsilk;
+  text-align: right;
+  text-shadow: -1px 1px #000;
+  text-decoration: none;
+}
+
 .l4t-speechable:hover {
   color: #ff7a59;
   border: #6d3535 solid 1px;
@@ -85,5 +104,6 @@
 
 /* wrap the line of code */
 pre, code {
+  border-radius: 4px;
   white-space: pre-wrap;
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-import { TWChatInput, TWChatButtonsContainer } from "./tw_elements_finder.js"
+import { TWChatInput, TWChatButtonsContainer, TWChatSendButton } from "./tw_elements_finder.js"
 import { popupButtonForEditor } from "./code_editor.js"
 import { previewMath } from "./render_math.js"
 import { updateBuffer, sendMessage, prevMessage, nextMessage } from "./history.js"
@@ -47,6 +47,7 @@ function hookL4TComponents() {
           target.focus()
           target.select()
           document.execCommand("insertText", true, '/clear ')
+          TWChatSendButton().click()
         }
         break
       case 'Enter':
