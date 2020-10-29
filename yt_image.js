@@ -24,12 +24,12 @@ function yt_image(node, username) {
   let videoId = parseVideoId(url.innerText)
   if (!videoId) return
 
-  let g = document.createElement('br')
-  url.appendChild(g)
+  // let g = document.createElement('br')
+  // url.appendChild(g)
 
   let imgLink = 'https://img.youtube.com/vi/' + videoId + '/0.jpg'
   let shortURL = 'https://youtu.be/' + videoId
-  g = document.createElement('div')
+  let g = document.createElement('div')
   g.setAttribute("class", "l4t-yt-image")
   g.setAttribute("style", `background: url(${imgLink}) no-repeat center center / cover;`)
   g.innerText = shortURL

@@ -62,7 +62,7 @@ function help(textNode) {
     // ["!sage", " Posets.DivisorLattice(30)", sage ],
     
     ["!im", "", say ],
-    ["!say", " zh 你好", say ],
+    ["!say", " hello", say ],
     ["!shutup", "", shutup ],
     ["!help", "", help ]
   ]

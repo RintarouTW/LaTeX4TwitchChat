@@ -73,7 +73,6 @@ function plot(textNode, text) {
 
 function dot(textNode, text) {
 	let g = document.createElement('div');
-	g.setAttribute("style", "width: 350px;");
 
 	let viz = new Viz()
 	viz.renderSVGElement(text)
