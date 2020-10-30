@@ -2,7 +2,10 @@
 
 let userOptions = {}
 
-function updateOptions(data) {
+function updateOptions(json) {
+
+  let data = JSON.parse(json)
+
 	for (const key in data) {
 		//if ( typeof (userOptions[key]) == typeof (data[key]) ) 
 		switch(key){
