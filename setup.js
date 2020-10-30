@@ -1,5 +1,7 @@
 'use strict';
 
+let platform = (typeof(browser) != 'undefined') ? browser : chrome
+
 function handleChange(evt) {
   let target = evt.target
 	let data = {}
@@ -12,7 +14,7 @@ function handleChange(evt) {
 			break
 	}
 	// save to the storage
-	chrome.storage.local.set(data, () => {
+	platform.storage.local.set(data, () => {
 		//console.log("saved")
 	})
 }
@@ -24,7 +26,7 @@ function langList() {
 		.map( x => x.lang)
 		.map( x => !langs.includes(x) && langs.push(x))
 
-	langs.sort().unshift("Auto", "Disabled")
+	langs.sort().unshift("Disabled", "Auto")
 	return langs
 }
 
@@ -53,7 +55,7 @@ function getSavedOptions() {
 		"showImageUserList"
 	];
 
-	chrome.storage.local.get(option_keys, data => {
+	platform.storage.local.get(option_keys, data => {
 		for (let key in data) {
 			let element = document.getElementById(key);
 			switch(element.type) {
@@ -71,3 +73,5 @@ function getSavedOptions() {
 
 speechSynthesis.onvoiceschanged = init
 
+if (typeof(browser) != 'undefined')
+  document.addEventListener("DOMContentLoaded", init) // for FireFox

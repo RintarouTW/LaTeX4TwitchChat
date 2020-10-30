@@ -70,4 +70,6 @@ function shutup(textNode, text) {
 
 speechSynthesis.onvoiceschanged = initAllVoices
 
+initAllVoices() // for FireFox
+
 export { speak, say, shutup }

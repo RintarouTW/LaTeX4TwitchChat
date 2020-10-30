@@ -39,7 +39,7 @@ function help(textNode) {
   `)
 }
 
-(function hookup() {  
+function hookup() {  
 
   let hooks = [
     ["!matrix" /* command */ , " [a,b,c; d,e,f]" /* usage example */, matrix /* handler */],
@@ -124,4 +124,6 @@ function help(textNode) {
   })
   observer.observe(container, {childList: true})
   hookL4TComponents()
-})()
+}
+
+hookup()

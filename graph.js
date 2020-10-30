@@ -16,7 +16,7 @@ function plot(textNode, text) {
 	let randID = makeid(10);
 	let g = document.createElement('div');
 	g.setAttribute("id", randID);
-	g.setAttribute("style", "width: 350px; height:350px");
+	g.setAttribute("style", "width: 300px; height:300px");
 	textNode.appendChild(g);
 
 	const board = JXG.JSXGraph.initBoard(randID, {
@@ -73,6 +73,7 @@ function plot(textNode, text) {
 
 function dot(textNode, text) {
 	let g = document.createElement('div');
+	g.setAttribute("style", "max-width: 300px");
 
 	let viz = new Viz()
 	viz.renderSVGElement(text)
