@@ -20,6 +20,10 @@ function stdGetHeader() {
   }
 }
 
+function getVideoInfo(videoId) {
+  return fetchURL(_serverURL + '/yt/' + videoId, stdGetHeader())
+}
+
 function isoFromText(text) {
   let params = { text : text }
   return fetchURL(_serverURL + '/isoFromText?' + new URLSearchParams(params), stdGetHeader())
@@ -41,4 +45,4 @@ function postCode(hash, codeObject) {
   })
 }
 
-export { getHash, postCode, getCode, isoFromText }
+export { getHash, postCode, getCode, isoFromText, getVideoInfo }

@@ -44,7 +44,7 @@ function newHashFromServer(hashLabel, sendButton) {
 		sendButton.disabled = false // enable send button
 	}).catch(error => {
 		console.error(error)
-		alert("Failed to connect the server, please reload and try again.")
+		console.error("Failed to connect the server, please reload and try again.")
 	})
 }
 

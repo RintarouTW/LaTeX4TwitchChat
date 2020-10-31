@@ -1,8 +1,9 @@
-
 .l4t-popup-button {
 	font-size: large !important;
 	font-weight: 100 !important;
 	min-width: 35px !important;
+	background-color: #2f2f2f !important;
+	color: cornsilk !important;
 }
 
 .l4t-send-button {
@@ -59,6 +60,60 @@
 	float: right;
 }
 
+button[data-a-target=chat-send-button] {
+	background-color: #2f2f2f !important;
+	color: cornsilk !important;
+}
+
+textarea[data-a-target=chat-input] {
+  border: 1px cornsilk !important; 
+}
+
+.chat-line__username,
+.chat-author__display-name {
+  font-weight: normal !important;
+  color: cornsilk;
+}
+
+.chat-line__username-container {
+  padding: 1px 1px 0px 2px;
+}
+ 
+.chat-line__username {
+  background-color: hsl(240deg 6% 18%);
+  padding: 2px 5px;
+  border-radius: 45px;
+  margin-top: 1px;
+}
+
+.chat-badge {
+  visibility: unset;
+  filter: invert(1);
+}
+
+.text-fragment[data-a-target=chat-message-text] {
+  color: cornsilk;
+}
+
+span[data-test-selector=chat-message-separator] {
+  visibility: hidden;
+}
+
+.mention-fragment--recipient {
+  background-color: hsl(183deg 51% 23%) !important;
+  padding: 2px 5px !important;
+  color: cornsilk !important;
+  border-radius: 45px !important;
+}
+
+.stream-chat-header {
+  height: 25px !important;
+}
+
+#chat-room-header-label {
+  color: cornsilk !important;
+}
+
 .tw-link:link,
 .tw-link:visited,
 .tw-link:hover {
@@ -75,6 +130,7 @@
   text-align: right;
   text-shadow: -1px 1px #000;
   text-decoration: none;
+  line-height: 1;
 }
 
 .l4t-yt-image {
@@ -84,6 +140,16 @@
   font-size: xx-small;
   color: cornsilk;
   text-align: right;
+  text-shadow: -1px 1px #000;
+  text-decoration: none;
+}
+
+.l4t-yt-title {
+  line-height: 1.2;
+  padding:0px 5px 0px 5px;
+  font-size: x-small;
+  color: cornsilk;
+  text-align: center;
   text-shadow: -1px 1px #000;
   text-decoration: none;
 }
