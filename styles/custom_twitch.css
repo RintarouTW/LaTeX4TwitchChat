@@ -5,6 +5,11 @@ button[data-a-target=chat-send-button] {
 }
 
 .tw-root--theme-dark 
+button[data-a-target=chat-send-button]:hover {
+  background-color: #6a6a6a !important;
+}
+
+.tw-root--theme-dark 
 .tw-button-icon {
   color: cornsilk !important;
 }
