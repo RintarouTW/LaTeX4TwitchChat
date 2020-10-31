@@ -1,33 +1,59 @@
 .l4t-popup-button {
-	font-size: large !important;
-	font-weight: 100 !important;
-	min-width: 35px !important;
-	background-color: #2f2f2f !important;
-	color: cornsilk !important;
+  font-size: large !important;
+  font-weight: 100 !important;
+  min-width: 35px !important;
+}
+
+.tw-root--theme-dark 
+.l4t-popup-button {
+  background-color: #2f2f2f !important;
+  color: cornsilk !important;
+}
+
+.tw-root--theme-dark 
+.l4t-popup-button:hover {
+  background-color: #6a6a6a !important;
 }
 
 .l4t-send-button {
-	font-size: x-large !important;
-	font-weight: 100 !important;
-	min-width: 40px !important;
-	margin: 5px 0px 5px 0px !important;
-	padding: 0px 5px 0px 5px !important;
+  font-size: x-large !important;
+  font-weight: 100 !important;
+  min-width: 40px !important;
+  margin: 5px 0px 5px 0px !important;
+  padding: 0px 5px 0px 5px !important;
 }
 
+.tw-root--theme-dark 
+.l4t-send-button {
+  color: cornsilk !important;
+  background-color: #2f2f2f !important;
+}
+
+.tw-root--theme-dark 
+.l4t-send-button:hover {
+  background-color: #6a6a6a !important;
+}
+
+.tw-root--theme-dark 
 .l4t-send-button:disabled {
-	filter: grayscale(1) !important;
-	font-size: x-large !important;
-	font-weight: 100 !important;
-	min-width: 40px !important;
-	margin: 5px 0px 5px 0px !important;
-	padding: 0px 5px 0px 5px !important;
+  filter: grayscale(1) !important;
+  font-size: x-large !important;
+  font-weight: 100 !important;
+  min-width: 40px !important;
+  margin: 5px 0px 5px 0px !important;
+  padding: 0px 5px 0px 5px !important;
 }
 
 .l4t-close-button {
-	font-size: large !important;
-	font-weight: 100 !important;
-	margin: 5px 0px 5px 0px !important;
-	padding: 0px 5px 0px 5px !important;
+  font-size: large !important;
+  font-weight: 100 !important;
+  margin: 5px 0px 5px 0px !important;
+  padding: 0px 5px 0px 5px !important;
+}
+
+.tw-root--theme-dark 
+.l4t-close-button {
+  color: cornsilk !important;
 }
 
 .l4t-panel {
@@ -37,88 +63,31 @@
 
 .l4t-hash-label {
   font-family: monospace !important;
-  color: #666666 !important;
   padding-top: 8px !important;
 }
 
+.tw-root--theme-dark 
+.l4t-hash-label {
+  color: #666666 !important;
+}
+
 .l4t-editor-window {
-	height: 300px;
+  height: 300px;
   min-height: 300px !important;
 }
 
 .l4t-copy-code-button {
-	float: right;
+  float: right;
 }
 
 .l4t-copy-code-button[show=true] {
-	float: right;
-	filter: invert(100%); 
+  float: right;
+  filter: invert(100%); 
 }
 
 .l4t-copy-code-button:active {
-	filter: invert(70%) !important;
-	float: right;
-}
-
-button[data-a-target=chat-send-button] {
-	background-color: #2f2f2f !important;
-	color: cornsilk !important;
-}
-
-textarea[data-a-target=chat-input] {
-  border: 1px cornsilk !important; 
-}
-
-.chat-line__username,
-.chat-author__display-name {
-  font-weight: normal !important;
-  color: cornsilk;
-}
-
-.chat-line__username-container {
-  padding: 1px 1px 0px 2px;
-}
- 
-.chat-line__username {
-  background-color: hsl(240deg 6% 18%);
-  padding: 2px 6px;
-  border-radius: 2px;
-  margin-top: 1px;
-}
-
-.chat-badge {
-  visibility: unset;
-  filter: invert(1);
-}
-
-.text-fragment[data-a-target=chat-message-text] {
-  color: cornsilk;
-}
-
-span[data-test-selector=chat-message-separator] {
-  visibility: hidden;
-}
-
-.mention-fragment--recipient {
-  background-color: hsl(183deg 51% 23%) !important;
-  padding: 2px 6px !important;
-  color: cornsilk !important;
-  border-radius: 2px !important;
-}
-
-.stream-chat-header {
-  height: 25px !important;
-}
-
-#chat-room-header-label {
-  color: cornsilk !important;
-}
-
-.tw-link:link,
-.tw-link:visited,
-.tw-link:hover {
-  text-decoration: none !important;
-  color: cornsilk !important;
+  filter: invert(70%) !important;
+  float: right;
 }
 
 .l4t-url-image {
@@ -148,10 +117,14 @@ span[data-test-selector=chat-message-separator] {
   line-height: 1.2;
   padding:0px 5px 0px 5px;
   font-size: x-small;
-  color: cornsilk;
   text-align: center;
   text-shadow: -1px 1px #000;
   text-decoration: none;
+}
+
+.tw-root--theme-dark 
+.l4t-yt-title {
+  color: cornsilk;
 }
 
 .l4t-speechable:hover {
@@ -166,6 +139,7 @@ span[data-test-selector=chat-message-separator] {
   background-color:var(--color-background-base)!important;
 }
 
+.tw-root--theme-dark 
 .cm-s-tomorrow-night-bright .CodeMirror-cursor {
   border-left: 1px solid #fff !important;
 }
