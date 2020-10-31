@@ -9,12 +9,14 @@ button[data-a-target=chat-send-button] {
   color: cornsilk !important;
 }
 
+.tw-root--theme-dark 
 textarea[data-a-target=chat-input] {
   border: 1px cornsilk !important; 
 }
 
 .tw-root--theme-dark 
 .chat-line__username,
+.tw-root--theme-dark 
 .chat-author__display-name {
   font-weight: normal !important;
   color: cornsilk;
@@ -68,7 +70,9 @@ span[data-test-selector=chat-message-separator] {
 
 .tw-root--theme-dark 
 .tw-link:link,
+.tw-root--theme-dark 
 .tw-link:visited,
+.tw-root--theme-dark 
 .tw-link:hover {
   text-decoration: none !important;
   color: cornsilk !important;
