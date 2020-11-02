@@ -17,6 +17,7 @@ I'm from Taiwan, sorry for my poor English. You may check [my Twitch channel](ht
   (default disabled, you can enable this in the option page of the extension)
 - <kbd>Up</kbd>/<kbd>Down</kbd> keys to traverse the history of messages your have sent.
 - Auto load the image below the link of URL for the white listed users which is configured in the extension options.
+- Search on Wikipedia
 
 ### Experimental
 
@@ -173,6 +174,14 @@ Stop the speech right away.
 
 ```
 !shutup
+```
+
+### Search
+
+Search on Wikipedia.
+
+```
+!wiki Taiwan
 ```
 
 ### SageMath (Experimental)

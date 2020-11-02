@@ -37,6 +37,8 @@ function help(textNode) {
   --[ Speech ]--
   !say : say the words in the specified language.
   !shutup : stop the speech right away.
+  --[ Search ]--
+  !wiki : search on wiki
   `)
 }
 
