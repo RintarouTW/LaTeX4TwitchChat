@@ -50,6 +50,8 @@ function init() {
   })
 
   loadCSS("./styles/latex4twitch.css")
+  loadCSS("./styles/custom_twitch.css")
+  loadCSS("./styles/wiki.css")
   loadScript("latex4twitch.js")
 }
 

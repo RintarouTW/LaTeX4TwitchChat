@@ -16,10 +16,10 @@ function show_image(node, username) {
   let g = document.createElement('br')
   url.appendChild(g)
 
-  let imgLink = url.innerText
+  let imgLink = url.innerText.replace(/\s/g, '')
   g = document.createElement('div')
   g.setAttribute("class", "l4t-url-image")
-  g.setAttribute("style", `background: url(${imgLink}) no-repeat center center / cover;`)
+  g.setAttribute("style", `background: url('${imgLink}') no-repeat center center / cover;`)
   g.innerText = imgLink
   url.innerText = ''
 	g.onload = () => node.scrollIntoView()

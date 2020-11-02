@@ -1,0 +1,71 @@
+.l4t-wiki-container {
+  border: 1px solid;
+}
+
+.tw-root--theme-dark 
+.l4t-wiki-container {
+  border: 1px solid #7d7c7c;
+}
+
+.l4t-wiki-desc {
+  margin: 2px;
+  padding: 5px;
+  max-height: 200px;
+  border: 1px solid;
+  white-space: pre-wrap;
+  text-align: justify;
+  overflow: scroll;
+}
+
+.tw-root--theme-dark 
+.l4t-wiki-desc {
+  border: 1px solid #777575;
+}
+
+.l4t-wiki-title-container {
+  display: flex;
+  margin-top: 4px;
+  justify-content: center;
+  text-align: center;
+}
+
+.l4t-wiki-title-before {
+  margin: 4px;
+  border: 0px;
+  width: 40px;
+  height: 15px;
+  background-image: url('/images/deco-left.svg');
+  background-size: cover;
+}
+.l4t-wiki-title-after {
+  margin: 4px;
+  border: 0px;
+  width: 40px;
+  height: 15px;
+  background-image: url('/images/deco-right.svg');
+  background-size: cover;
+}
+
+.tw-root--theme-dark 
+.l4t-wiki-title-before,
+.tw-root--theme-dark 
+.l4t-wiki-title-after {
+  filter: invert(1);
+}
+
+.l4t-wiki-title {
+  margin: 4px 10px 0px 10px;
+  justify-content: center;
+  text-align: center;
+}
+
+.l4t-wiki-link {
+  justify-content: center;
+  text-align: center;
+}
+
+.tw-root--theme-dark 
+.l4t-wiki-title,
+.l4t-wiki-link {
+  color: cornsilk;
+}

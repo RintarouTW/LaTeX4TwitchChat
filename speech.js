@@ -49,6 +49,7 @@ function speak(textNode, text) {
   if (speechLang == "Disabled") return
   let cmd = text.replace(/^\s*/,'').split(' ')[0]
   if (cmd == '!pre') return
+  if (cmd == '!wiki') return
   if (cmd[0] == '!') text = text.replace(cmd, '') /* do not speak commands */
   if (speechLang == "Auto") {
     autoSpeak(text)

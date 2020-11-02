@@ -11,6 +11,7 @@ import { yt_image } from "./yt_image.js"
 import { calc } from "./calc.js"
 import { sage } from "./sage.js"
 import { speak, say, shutup } from "./speech.js"
+import { wikiSearchText } from "./wiki.js"
 
 function help(textNode) {
 
@@ -36,6 +37,8 @@ function help(textNode) {
   --[ Speech ]--
   !say : say the words in the specified language.
   !shutup : stop the speech right away.
+  --[ Search ]--
+  !wiki : search on wiki
   `)
 }
 
@@ -62,6 +65,7 @@ function hookup() {
     // ["!sage", " Posets.DivisorLattice(30)", sage ],
     
     ["!im", "", say ],
+    ["!wiki", " Taiwan", wikiSearchText],
     ["!say", " hello", say ],
     ["!shutup", "", shutup ],
     ["!help", "", help ]

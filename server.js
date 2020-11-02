@@ -2,7 +2,6 @@
 
 import { fetchURL } from './common.js'
 
-// const _serverURL = "https://plaintext-code.glitch.me"
 const _serverURL = "https://fathomless-brushlands-18222.herokuapp.com"
 
 /*
@@ -22,6 +21,11 @@ function stdGetHeader() {
 
 function getVideoInfo(videoId) {
   return fetchURL(_serverURL + '/yt/' + videoId, stdGetHeader())
+}
+
+function wikiSearch(keyword) {
+  let params = { keyword }
+  return fetchURL(_serverURL + '/wiki?' + new URLSearchParams(params), stdGetHeader())
 }
 
 function isoFromText(text) {
@@ -45,4 +49,11 @@ function postCode(hash, codeObject) {
   })
 }
 
-export { getHash, postCode, getCode, isoFromText, getVideoInfo }
+export { 
+  getHash, 
+  postCode,
+  getCode,
+  isoFromText,
+  getVideoInfo,
+  wikiSearch
+}
