@@ -64,8 +64,9 @@ span[data-test-selector=chat-message-separator] {
   border-radius: 60px !important;
 }
 
+#root[data-a-page-loaded-name=PopoutChatPage] 
 .stream-chat-header {
-  /* height: 25px !important; */
+  height: 25px !important; 
 }
 
 .tw-root--theme-dark 
