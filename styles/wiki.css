@@ -20,6 +20,7 @@
 .tw-root--theme-dark 
 .l4t-wiki-desc {
   border: 1px solid #777575;
+  scrollbar-width: none;
 }
 
 .l4t-wiki-title-container {

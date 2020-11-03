@@ -31,7 +31,7 @@ function help(textNode) {
   !ddot : draw graph via dot language in dark mode
   !graph : undirected graph
   !digraph : directed graph
-  --[ Calculation ]-- 
+  --[ Calculator ]-- 
   !gauss : Gauss elimenates a matrix
   !mc : math calculator, (http://mathjs.org)
   --[ Speech ]--
