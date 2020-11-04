@@ -12,6 +12,7 @@ import { calc } from "./calc.js"
 import { sage } from "./sage.js"
 import { speak, say, shutup } from "./speech.js"
 import { wikiSearchText } from "./wiki.js"
+import { gisSearchText } from "./gis.js"
 
 function help(textNode) {
 
@@ -38,6 +39,7 @@ function help(textNode) {
   !say : say the words in the specified language.
   !shutup : stop the speech right away.
   --[ Search ]--
+  !im : google image search
   !wiki : search on wiki
   `)
 }
@@ -64,7 +66,7 @@ function hookup() {
     ["!mc", " m=[1,2,3;4,5,6]", calc ],
     // ["!sage", " Posets.DivisorLattice(30)", sage ],
     
-    ["!im", "", say ],
+    ["!im", " Taiwan", gisSearchText],
     ["!wiki", " Taiwan", wikiSearchText],
     ["!say", " hello", say ],
     ["!shutup", "", shutup ],
