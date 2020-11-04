@@ -90,6 +90,11 @@
   float: right;
 }
 
+@keyframes fade-in {
+  from { opacity : 0 }
+  to { opcitry : 1 }
+}
+
 .l4t-url-image {
   height: 183px;
   border-radius: 10px;
@@ -100,6 +105,7 @@
   text-shadow: -1px 1px #000;
   text-decoration: none;
   line-height: 1;
+  animation: fade-in 1s;
 }
 
 .l4t-yt-image {
@@ -111,6 +117,7 @@
   text-align: right;
   text-shadow: -1px 1px #000;
   text-decoration: none;
+  animation: fade-in 1s;
 }
 
 .tw-root--theme-dark 
@@ -127,6 +134,7 @@
   text-align: center;
   text-shadow: -1px 1px #000;
   text-decoration: none;
+  animation: fade-in 1s;
 }
 
 .tw-root--theme-dark 
