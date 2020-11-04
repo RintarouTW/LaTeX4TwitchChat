@@ -30,9 +30,9 @@ function gisSearchText(node, text) {
   let keyword = text.replace(/(^\s|\s$)*/, '') 
   if (!keyword) return
   // console.log(keyword)
-  say(node, text)
   gisSearch(keyword).then(img => {
     showImage(node, img)
+    say(node, text)
   }).catch(err => {
     console.log(err)
   })
