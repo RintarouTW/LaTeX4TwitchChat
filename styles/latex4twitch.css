@@ -72,10 +72,19 @@
 }
 
 .l4t-editor-window {
+  top: 0px;
   height: 300px;
   min-height: 300px !important;
+  font-size: 13px;
+  visibility: visible;
+  transition: top 0.1s cubic-bezier(0.02, 1.11, 0.57, 0.98)
 }
 
+.l4t-editor-window.l4t-hidden {
+  top: -300px;
+  visibility: hidden;
+}
+ 
 .l4t-copy-code-button {
   float: right;
 }
@@ -90,7 +99,7 @@
   float: right;
 }
 
-@keyframes fade-in {
+@keyframes l4t-fade-in {
   from { opacity : 0 }
   to { opcitry : 1 }
 }
@@ -105,7 +114,7 @@
   text-shadow: -1px 1px #000;
   text-decoration: none;
   line-height: 1;
-  animation: fade-in 1s;
+  animation: l4t-fade-in 1s;
 }
 
 .l4t-yt-image {
@@ -117,7 +126,7 @@
   text-align: right;
   text-shadow: -1px 1px #000;
   text-decoration: none;
-  animation: fade-in 1s;
+  animation: l4t-fade-in 1s;
 }
 
 .tw-root--theme-dark 
@@ -134,7 +143,7 @@
   text-align: center;
   text-shadow: -1px 1px #000;
   text-decoration: none;
-  animation: fade-in 1s;
+  animation: l4t-fade-in 1s;
 }
 
 .tw-root--theme-dark 
