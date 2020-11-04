@@ -58,7 +58,7 @@ function createHashLabel() {
 // the window of the editor
 function createEditorWindow() {
 	let editorWindow = document.createElement("div")
-	editorWindow.setAttribute("class", "l4t-editor-window tw-absolute tw-full-width tw-z-above tw-hide")
+	editorWindow.setAttribute("class", "l4t-editor-window tw-absolute tw-full-width tw-z-above l4t-hidden")
 	return editorWindow
 }
 // create the popup button in the chat buttons container

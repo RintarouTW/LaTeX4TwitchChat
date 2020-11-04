@@ -95,7 +95,7 @@ function codeEditor() {
   _cmInstance.execCommand("selectAll")
   _cmInstance.addPanel(panel, { position : "bottom" })
 
-  closeButton.addEventListener("click", evt => _window.classList.toggle("tw-hide"))
+  closeButton.addEventListener("click", evt => _window.classList.toggle("l4t-hidden"))
 
   let twChatInput = TWChatInput()
   let twChatSendButton = TWChatSendButton()
@@ -104,7 +104,7 @@ function codeEditor() {
     sendButton.disabled = true
     postCode(hashLabel.innerHTML, {code : _cmInstance.getValue()}).then( json => {
       hashLabel.innerHTML = json.newHash
-      _window.classList.toggle("tw-hide")
+      _window.classList.toggle("l4t-hidden")
       sendButton.disabled = false
       twChatInput.focus()
       twChatInput.select()
@@ -151,7 +151,7 @@ function popupButtonForEditor() {
         _window.parentNode.removeChild(_window)
       }
       codeEditor()
-      _window.classList.toggle("tw-hide")
+      _window.classList.toggle("l4t-hidden")
       _cmInstance.refresh()
       _cmInstance.focus()
     });
@@ -162,8 +162,8 @@ function popupButtonForEditor() {
   codeEditor()
 
   popupButton.addEventListener("click", evt => {
-    _window.classList.toggle("tw-hide")
-    if(!_window.classList.contains("tw-hide")){
+    _window.classList.toggle("l4t-hidden")
+    if(!_window.classList.contains("l4-hidden")){
       _cmInstance.focus()
     }
   })
