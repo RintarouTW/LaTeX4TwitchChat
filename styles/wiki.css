@@ -17,6 +17,11 @@
   overflow: scroll;
 }
 
+/* hide the scrollbar of chrome on linux */
+.l4t-wiki-desc::-webkit-scrollbar {
+  display: none;
+}
+
 .tw-root--theme-dark 
 .l4t-wiki-desc {
   border: 1px solid #777575;
