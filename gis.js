@@ -6,6 +6,7 @@ import { say } from './speech.js'
 function showImage(node, {url, width, height, description}) {
 
   let link = document.createElement('a')
+  link.target = '_blank'
   link.href = url
   link.setAttribute("class", "l4t-link")
 
