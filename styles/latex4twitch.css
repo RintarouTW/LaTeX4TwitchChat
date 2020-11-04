@@ -113,6 +113,13 @@
   text-decoration: none;
 }
 
+.tw-root--theme-dark 
+.l4t-link, 
+.l4t-link:hover {
+  text-decoration: none;
+}
+
+.l4t-gis-desc,
 .l4t-yt-title {
   line-height: 1.2;
   padding:0px 5px 0px 5px;
@@ -122,6 +129,8 @@
   text-decoration: none;
 }
 
+.tw-root--theme-dark 
+.l4t-gis-desc,
 .tw-root--theme-dark 
 .l4t-yt-title {
   color: cornsilk;

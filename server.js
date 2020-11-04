@@ -23,6 +23,11 @@ function getVideoInfo(videoId) {
   return fetchURL(_serverURL + '/yt/' + videoId, stdGetHeader())
 }
 
+function gisSearch(keyword) {
+  let params = { keyword }
+  return fetchURL(_serverURL + '/gis?' + new URLSearchParams(params), stdGetHeader())
+}
+
 function wikiSearch(keyword) {
   let params = { keyword }
   return fetchURL(_serverURL + '/wiki?' + new URLSearchParams(params), stdGetHeader())
@@ -55,5 +60,6 @@ export {
   getCode,
   isoFromText,
   getVideoInfo,
-  wikiSearch
+  wikiSearch,
+  gisSearch
 }
