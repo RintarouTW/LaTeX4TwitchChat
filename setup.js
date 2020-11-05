@@ -38,7 +38,7 @@ function init() {
 	langs.map( lang => {
 		let opt = document.createElement('option')
 		opt.value = lang
-		opt.innerHTML = lang
+		opt.innerText = lang
 		speech.appendChild(opt)
 	})
 
