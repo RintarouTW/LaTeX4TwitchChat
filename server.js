@@ -28,6 +28,11 @@ function gisSearch(keyword) {
   return fetchURL(_serverURL + '/gis?' + new URLSearchParams(params), stdGetHeader())
 }
 
+function disSearch(keyword) {
+  let params = { keyword }
+  return fetchURL(_serverURL + '/dis?' + new URLSearchParams(params), stdGetHeader())
+}
+
 function wikiSearch(keyword) {
   let params = { keyword }
   return fetchURL(_serverURL + '/wiki?' + new URLSearchParams(params), stdGetHeader())
@@ -61,5 +66,6 @@ export {
   isoFromText,
   getVideoInfo,
   wikiSearch,
-  gisSearch
+  gisSearch,
+  disSearch
 }
