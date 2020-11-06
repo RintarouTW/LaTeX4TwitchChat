@@ -31,10 +31,10 @@ function hookL4TComponents() {
 	chatInput.addEventListener("input", evt => {
 		updateBuffer(evt.target.value)
 		if (!(/\$.*\$/.test(chatInput.value))) {
-			previewBox.innerHTML = ""
+			previewBox.innerText = ""
 			return
 		}
-		previewBox.innerHTML = chatInput.value
+		previewBox.innerText = chatInput.value
 		previewMath(previewBox)
 	})
 

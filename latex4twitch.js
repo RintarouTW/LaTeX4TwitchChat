@@ -13,6 +13,7 @@ import { sage } from "./sage.js"
 import { speak, say, shutup } from "./speech.js"
 import { wikiSearchText } from "./wiki.js"
 import { gisSearchText } from "./gis.js"
+import { disSearchText } from "./dis.js"
 
 function help(textNode) {
 
@@ -66,7 +67,7 @@ function hookup() {
     ["!mc", " m=[1,2,3;4,5,6]", calc ],
     // ["!sage", " Posets.DivisorLattice(30)", sage ],
     
-    ["!im", " Taiwan", gisSearchText],
+    ["!im", " Taiwan", disSearchText],
     ["!wiki", " Taiwan", wikiSearchText],
     ["!say", " hello", say ],
     ["!shutup", "", shutup ],

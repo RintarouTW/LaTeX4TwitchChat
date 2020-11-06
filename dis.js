@@ -1,6 +1,6 @@
 'use strict'
 
-import { gisSearch } from './server.js'
+import { disSearch } from './server.js'
 import { say } from './speech.js'
 
 function showImage(node, {url, width, height, description}) {
@@ -32,6 +32,7 @@ function showImage(node, {url, width, height, description}) {
   img.addEventListener('error', () => {
     spinner.remove()
   })
+  // console.log(url)
   img.src = url
 
   let desc = document.createElement('div')
@@ -43,12 +44,12 @@ function showImage(node, {url, width, height, description}) {
   node.scrollIntoView()
 }
 
-function gisSearchText(node, text) {
+function disSearchText(node, text) {
   
   let keyword = text.replace(/(^\s|\s$)*/, '') 
   if (!keyword) return
   // console.log(keyword)
-  gisSearch(keyword).then(img => {
+  disSearch(keyword).then(img => {
     showImage(node, img)
     say(node, text)
   }).catch(err => {
@@ -56,4 +57,4 @@ function gisSearchText(node, text) {
   })
 }
 
-export { gisSearchText }
+export { disSearchText }

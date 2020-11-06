@@ -40,7 +40,7 @@ var _window
 
 function newHashFromServer(hashLabel, sendButton) {
 	getHash().then( json => {
-		hashLabel.innerHTML = json.hash
+		hashLabel.innerText = json.hash
 		sendButton.disabled = false // enable send button
 	}).catch(error => {
 		console.error(error)
@@ -102,8 +102,8 @@ function codeEditor() {
 
   sendButton.addEventListener("click", evt => {
     sendButton.disabled = true
-    postCode(hashLabel.innerHTML, {code : _cmInstance.getValue()}).then( json => {
-      hashLabel.innerHTML = json.newHash
+    postCode(hashLabel.innerText, {code : _cmInstance.getValue()}).then( json => {
+      hashLabel.innerText = json.newHash
       _window.classList.toggle("l4t-hidden")
       sendButton.disabled = false
       twChatInput.focus()
