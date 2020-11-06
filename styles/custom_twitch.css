@@ -23,7 +23,7 @@ textarea[data-a-target=chat-input] {
 .chat-line__username,
 .tw-root--theme-dark 
 .chat-author__display-name {
-  font-weight: normal !important;
+  /* font-weight: normal !important; */
   /* color: #cef490 !important; */
 }
 .tw-root--theme-dark 
@@ -38,7 +38,6 @@ textarea[data-a-target=chat-input] {
 
 .tw-root--theme-dark
 .chat-line__username {
-  /* background-color: hsl(0deg 0% 19%); */
   background-color: #000;
   padding: 2px 6px;
   border-radius: 60px;
@@ -48,12 +47,12 @@ textarea[data-a-target=chat-input] {
 .tw-root--theme-dark 
 .chat-badge {
   visibility: unset;
-  filter: invert(1);
+  filter: hue-rotate(20deg) invert(1);
 }
 
 .tw-root--theme-dark 
 .text-fragment[data-a-target=chat-message-text] {
-  color: cornsilk;
+  color: white;
 }
 
 .tw-root--theme-dark

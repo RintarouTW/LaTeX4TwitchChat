@@ -1,6 +1,6 @@
 {
   "name": "LaTeX for Twitch Chat Extension",
-  "version": "1.0",
+  "version": "1.0.2",
   "description": "Support LaTeX, plotting, graph, math calculation, highlight source, .. within Twitch Chat",
 
   "permissions": ["https://*.twitch.tv/*", "clipboardRead", "clipboardWrite", "storage"],
