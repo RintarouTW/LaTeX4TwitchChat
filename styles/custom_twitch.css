@@ -45,6 +45,7 @@ textarea[data-a-target=chat-input] {
 .tw-root--theme-dark
 .chat-line__username-container {
   padding: 1px 1px 0px 2px;
+  height: 22.3px;
 }
 
 .tw-root--theme-dark
@@ -52,7 +53,7 @@ textarea[data-a-target=chat-input] {
   background-color: #000;
   padding: 2px 6px;
   border-radius: var(--round-border-radius);
-  margin-top: 1px;
+  margin-top: 1.3px;
 }
 
 .tw-root--theme-dark 
