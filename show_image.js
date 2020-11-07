@@ -5,6 +5,7 @@ import { userOptions } from "./options.js"
 function show_image(node, username) {
 
   const userlist = userOptions.showImageUserList;
+  if (!userlist) return
   if (!userlist.includes('*') && (userlist.indexOf(username) == -1)) return
 
 	let url = node.querySelector('.tw-link')
