@@ -1,12 +1,12 @@
 'use strict'
 
-/* - workaround
- * duplicate from default.js for Firefox which 
- * won't support import within content script
- */
+// - workaround
+// duplicate from default.js for Firefox which 
+// won't support import within content script
+
 const defaultOptions = { 
-	speechLang : "Disabled",
-	showImageUserList : "",
+  speechLang : "Disabled",
+  showImageUserList : "",
   theme : "default"
 }
 
@@ -16,7 +16,7 @@ const LOAD_OPTIONS_EVENT = "LoadOptions"
 let platform = (typeof(browser) != 'undefined') ? browser : chrome
 
 function loadScript(src) {
-  /* Insert the final install script to the head */
+  // Insert the final install script to the head
   let s = document.createElement('script');
   s.type = "module";
   s.src = platform.runtime.getURL(src);
@@ -40,20 +40,20 @@ function updateOptions(data) {
 function init() {
 
   document.addEventListener(LOAD_OPTIONS_EVENT, (evt) => {
-/* import within content script just won't work in Firefox, 
- * the workaround is to duplicate from default.js
- */
-//  import('./default.js').then(module => {
-//      const defaultOptions = module.defaultOptions */
-      platform.storage.local.get(Object.keys(defaultOptions), (data) => {
-        let options = Object.assign({}, defaultOptions)
-        for (let key in data) options[key] = data[key]
-        updateOptions(options)
-      })
-//    })
+    // import within content script just won't work in Firefox, 
+    // the workaround is to duplicate from default.js
+
+    // import('./default.js').then(module => {
+    // const defaultOptions = module.defaultOptions */
+    platform.storage.local.get(Object.keys(defaultOptions), (data) => {
+      let options = Object.assign({}, defaultOptions)
+      for (let key in data) options[key] = data[key]
+      updateOptions(options)
+    })
+    // })
   })
 
-  /* Config changed by Popup/Option page */
+  // Config changed by Popup/Option page
   platform.storage.onChanged.addListener((changes, namespace) => {
     if(namespace != "local") return
 

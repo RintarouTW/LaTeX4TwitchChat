@@ -9,35 +9,35 @@ let currentIndex = 0
 let history = []
 
 function messageByIndex(index) {
-	if (currentIndex == history.length) return unsentBuffer 
-	return history[index]
+  if (currentIndex == history.length) return unsentBuffer 
+  return history[index]
 }
 
 /* exports */
 function prevMessage() {
-	if (currentIndex == 0) return null
-	return messageByIndex(--currentIndex)
+  if (currentIndex == 0) return null
+  return messageByIndex(--currentIndex)
 }
 
 function nextMessage() {
-	if (currentIndex == history.length) return null
-	return messageByIndex(++currentIndex)
+  if (currentIndex == history.length) return null
+  return messageByIndex(++currentIndex)
 }
 
 function updateBuffer(msg) {
-	if (currentIndex < history.length) return
-	unsentBuffer = msg
+  if (currentIndex < history.length) return
+  unsentBuffer = msg
 }
 
 function sendMessage(msg) {
-	updateBuffer('')
-	history.push(msg)
-	currentIndex = history.length
+  updateBuffer('')
+  history.push(msg)
+  currentIndex = history.length
 }
 
 export {
-	updateBuffer,
-	sendMessage,
-	prevMessage,
-	nextMessage
+  updateBuffer,
+  sendMessage,
+  prevMessage,
+  nextMessage
 }

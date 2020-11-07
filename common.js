@@ -12,21 +12,21 @@ function isExperimental() {
 }
 
 function fetchURL(url, init) {
-	return new Promise((resolve, reject) => {
-		fetch(url, init).then(response => {
-			return response.json()
-		}).then(json => { // response from server
-			if (json.error) {
-				//console.log(json)
-				reject(json.error)
-				return
-			}
-			resolve(json)
-		}).catch( error => {
-			//console.error(error)
-			reject(error)
-		})
-	})
+  return new Promise((resolve, reject) => {
+    fetch(url, init).then(response => {
+      return response.json()
+    }).then(json => { // response from server
+      if (json.error) {
+        //console.log(json)
+        reject(json.error)
+        return
+      }
+      resolve(json)
+    }).catch( error => {
+      //console.error(error)
+      reject(error)
+    })
+  })
 }
 
 function loadCSS(url) {

@@ -19,7 +19,7 @@ function yt_image(node, username) {
   if (!userlist) return
   if (!userlist.includes('*') && (userlist.indexOf(username) == -1)) return
 
-	let url = node.querySelector('.tw-link')
+  let url = node.querySelector('.tw-link')
   if (!url) return
   if (!/^http(s)?:/.test(url.innerText)) return
 
