@@ -45,14 +45,33 @@ function init() {
 	speech.onchange = handleChange
 	document.getElementById('showImageUserList').onchange = handleChange
 
+  const themeList = [
+    'default' ,
+    'rintaroutw-modern',
+    'rintaroutw-luxury',
+    'adianta',
+    'uunnxx'
+  ]
+
+	let theme = document.getElementById('theme')
+	theme.innerHTML = "" // remove all children first
+	themeList.map( name => {
+		let opt = document.createElement('option')
+		opt.value = name
+		opt.innerText = name
+		theme.appendChild(opt)
+	})
+	theme.onchange = handleChange
+
 	getSavedOptions()
 }
 
 function getSavedOptions() {
 
-	let option_keys = [
+	const option_keys = [
 		"speechLang",
-		"showImageUserList"
+		"showImageUserList",
+    "theme"
 	];
 
 	platform.storage.local.get(option_keys, data => {

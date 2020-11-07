@@ -2,7 +2,8 @@
 
 const defaultOptions = { 
 	speechLang : "Disabled",
-	showImageUserList : ""
+	showImageUserList : "",
+  theme : "default"
 }
 
 export { defaultOptions }

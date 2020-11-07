@@ -1,6 +1,11 @@
 'use strict'
 
+import { setTheme } from './themes.js'
+
 let userOptions = {}
+
+const UPDATE_OPTIONS_EVENT = "UpdateOptions"
+const LOAD_OPTIONS_EVENT = "LoadOptions"
 
 function updateOptions(json) {
 
@@ -15,15 +20,21 @@ function updateOptions(json) {
 			case 'showImageUserList':
 				userOptions[key] = data[key].replace(/\s/g, '').split(',')
 				break
+      case 'theme':
+        userOptions[key] = data[key];
+        setTheme(data[key]);
+        break
 		}
 	}
 	// console.log(userOptions)
 }
 
+function loadOptions() {
+  /* Ask content script to load options from local storage */
+  document.dispatchEvent(new CustomEvent(LOAD_OPTIONS_EVENT))
+}
+
 /* Handle options changed event from content script */
-document.addEventListener("UpdateOptions", event =>	updateOptions(event.detail) )
+document.addEventListener(UPDATE_OPTIONS_EVENT, event =>	updateOptions(event.detail) )
 
-/* Ask content script to load options from local storage */
-document.dispatchEvent(new CustomEvent("LoadOptions"))
-
-export { userOptions }
+export { userOptions, loadOptions }

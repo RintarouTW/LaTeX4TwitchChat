@@ -1,7 +1,17 @@
+.tw-root--theme-dark { /* default theme */
+  --text-base-color: white;
+  --badge-filter: none;
+  --round-border-radius: none;
+  --username-font-weight: bold; 
+  --username-filter: none;
+  --mention-background-color: #507c6a;
+  --mention-border: none;
+}
+
 .tw-root--theme-dark 
 button[data-a-target=chat-send-button] {
   background-color: #2f2f2f !important;
-  color: cornsilk !important;
+  color: var(--text-base-color) !important;
 }
 
 .tw-root--theme-dark 
@@ -11,19 +21,20 @@ button[data-a-target=chat-send-button]:hover {
 
 .tw-root--theme-dark 
 .tw-button-icon {
-  color: cornsilk !important;
+  color: var(--text-base-color) !important;
 }
 
 .tw-root--theme-dark 
 textarea[data-a-target=chat-input] {
-  border: 1px cornsilk !important; 
+  border: 1px var(--text-base-color) !important; 
 }
 
 .tw-root--theme-dark 
 .chat-line__username,
 .tw-root--theme-dark 
 .chat-author__display-name {
-  /* font-weight: normal !important; */
+  font-weight: var(--username-font-weight) !important;
+  filter: var(--username-filter);
   /* color: #cef490 !important; */
 }
 .tw-root--theme-dark 
@@ -34,25 +45,26 @@ textarea[data-a-target=chat-input] {
 .tw-root--theme-dark
 .chat-line__username-container {
   padding: 1px 1px 0px 2px;
+  height: 22.3px;
 }
 
 .tw-root--theme-dark
 .chat-line__username {
   background-color: #000;
   padding: 2px 6px;
-  border-radius: 60px;
-  margin-top: 1px;
+  border-radius: var(--round-border-radius);
+  margin-top: 1.3px;
 }
 
 .tw-root--theme-dark 
 .chat-badge {
   visibility: unset;
-  filter: hue-rotate(20deg) invert(1);
+  filter: var(--badge-filter);
 }
 
 .tw-root--theme-dark 
 .text-fragment[data-a-target=chat-message-text] {
-  color: white;
+  color: var(--text-base-color);
 }
 
 .tw-root--theme-dark
@@ -62,10 +74,11 @@ span[data-test-selector=chat-message-separator] {
 
 .tw-root--theme-dark 
 .mention-fragment--recipient {
-  background-color: hsl(183deg 51% 23%) !important;
+  background-color: var(--mention-background-color) !important;
   padding: 2px 6px !important;
-  color: cornsilk !important;
-  border-radius: 60px !important;
+  color: var(--text-base-color) !important;
+  border-radius: var(--round-border-radius) !important;
+  border: var(--mention-border);
 }
 
 #root[data-a-page-loaded-name=PopoutChatPage] 
@@ -75,7 +88,7 @@ span[data-test-selector=chat-message-separator] {
 
 .tw-root--theme-dark 
 #chat-room-header-label {
-  color: cornsilk !important;
+  color: var(--text-base-color) !important;
 }
 
 .tw-root--theme-dark 
@@ -85,10 +98,14 @@ span[data-test-selector=chat-message-separator] {
 .tw-root--theme-dark 
 .tw-link:hover {
   text-decoration: none !important;
-  color: cornsilk !important;
+  color: var(--text-base-color) !important;
 }
 
 .tw-root--theme-dark 
 .chat-viewers-list__button {
-  color: cornsilk !important;
+  color: var(--text-base-color) !important;
+}
+/* for the scrollbar issue on linux and windows */
+.simplebar-content {
+  overflow-x: hidden !important;
 }
