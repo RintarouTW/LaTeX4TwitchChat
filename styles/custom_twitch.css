@@ -73,7 +73,7 @@ span[data-test-selector=chat-message-separator] {
 
 .tw-root--theme-dark 
 .mention-fragment--recipient {
-  background-color: var(--mention-background-color);
+  background-color: var(--mention-background-color) !important;
   padding: 2px 6px !important;
   color: var(--text-base-color) !important;
   border-radius: var(--round-border-radius) !important;

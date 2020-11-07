@@ -10,7 +10,6 @@ const LOAD_OPTIONS_EVENT = "LoadOptions"
 function updateOptions(json) {
 
   let data = JSON.parse(json)
-  console.log(data)
 
 	for (const key in data) {
 		//if ( typeof (userOptions[key]) == typeof (data[key]) ) 
@@ -30,10 +29,12 @@ function updateOptions(json) {
 	// console.log(userOptions)
 }
 
+function loadOptions() {
+  /* Ask content script to load options from local storage */
+  document.dispatchEvent(new CustomEvent(LOAD_OPTIONS_EVENT))
+}
+
 /* Handle options changed event from content script */
 document.addEventListener(UPDATE_OPTIONS_EVENT, event =>	updateOptions(event.detail) )
 
-/* Ask content script to load options from local storage */
-document.dispatchEvent(new CustomEvent(LOAD_OPTIONS_EVENT))
-
-export { userOptions }
+export { userOptions, loadOptions }

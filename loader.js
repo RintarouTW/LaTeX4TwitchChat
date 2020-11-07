@@ -1,5 +1,15 @@
 'use strict'
 
+/* - workaround
+ * duplicate from default.js for Firefox which 
+ * won't support import within content script
+ */
+const defaultOptions = { 
+	speechLang : "Disabled",
+	showImageUserList : "",
+  theme : "default"
+}
+
 const UPDATE_OPTIONS_EVENT = "UpdateOptions"
 const LOAD_OPTIONS_EVENT = "LoadOptions"
 
@@ -30,13 +40,17 @@ function updateOptions(data) {
 function init() {
 
   document.addEventListener(LOAD_OPTIONS_EVENT, (evt) => {
-    import('./default.js').then(({defaultOptions}) => {
+/* import within content script just won't work in Firefox, 
+ * the workaround is to duplicate from default.js
+ */
+//  import('./default.js').then(module => {
+//      const defaultOptions = module.defaultOptions */
       platform.storage.local.get(Object.keys(defaultOptions), (data) => {
         let options = Object.assign({}, defaultOptions)
         for (let key in data) options[key] = data[key]
         updateOptions(options)
       })
-    })
+//    })
   })
 
   /* Config changed by Popup/Option page */

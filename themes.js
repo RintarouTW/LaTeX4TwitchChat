@@ -50,11 +50,10 @@ const themes = {
 
 function setTheme(themeName) {
   const root = document.querySelector('.tw-root--theme-dark')
+  if (!root) return
   const theme = themes[themeName]
-  for (let key in theme) {
-    // console.log(key)
+  for (let key in theme) 
     root.style.setProperty(key, theme[key])
-  }
 }
 
 // window.setTheme = setTheme // for test

@@ -168,7 +168,7 @@
 /* override tomorrow night bright's theme setup */
 .CodeMirror {
   min-height: 300px !important;
-  background-color:var(--color-background-base)!important;
+  background-color:var(--color-background-base) !important;
 }
 
 .tw-root--theme-dark 
@@ -177,15 +177,16 @@
 }
 
 .CodeMirror-gutters {
-  background-color:var(--color-background-base)!important;
+  background-color:var(--color-background-base) !important;
 }
 
 .CodeMirror-linenumbers {
-  background-color:var(--color-background-base)!important;
+  background-color:var(--color-background-base) !important;
 }
 
 /* wrap the line of code */
 pre, code {
+  margin-top: 3px !important;
   border-radius: 4px;
   white-space: pre-wrap;
 }

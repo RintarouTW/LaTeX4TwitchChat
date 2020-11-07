@@ -1,6 +1,7 @@
 'use strict';
 
 import { wait, loadCSS, loadScript } from "./common.js"
+import { loadOptions } from "./options.js"
 import { hookL4TComponents } from "./components.js"
 import { code, html, css, highlightText, pre } from "./highlight.js"
 import { renderMath, tex, cheat } from "./render_math.js"
@@ -73,6 +74,15 @@ function hookup() {
     ["!shutup", "", shutup ],
     ["!help", "", help ]
   ]
+
+  let root = document.querySelector(".tw-root--theme-dark")
+  if (!root) {
+    wait(300).then(hookup)
+    return
+  }
+
+  /* load the user options from the storage */
+  loadOptions()
 
   let container = document.querySelector(".chat-scrollable-area__message-container")
 
