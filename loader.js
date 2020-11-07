@@ -1,9 +1,7 @@
 'use strict'
 
-const defaultOptions = { 
-	speechLang : "Disabled",
-	showImageUserList : ""
-}
+const UPDATE_OPTIONS_EVENT = "UpdateOptions"
+const LOAD_OPTIONS_EVENT = "LoadOptions"
 
 let platform = (typeof(browser) != 'undefined') ? browser : chrome
 
@@ -25,17 +23,19 @@ function loadCSS(src) {
 
 function updateOptions(data) {
   const json = JSON.stringify(data)
-  let evt = new CustomEvent("UpdateOptions", { detail: json });
+  let evt = new CustomEvent(UPDATE_OPTIONS_EVENT, { detail: json });
   document.dispatchEvent(evt);
 }
 
 function init() {
 
-  document.addEventListener("LoadOptions", (evt) => {
-    platform.storage.local.get(Object.keys(defaultOptions), (data) => {
-      let options = Object.assign({}, defaultOptions)
-      for (let key in data) options[key] = data[key]
-      updateOptions(options)
+  document.addEventListener(LOAD_OPTIONS_EVENT, (evt) => {
+    import('./default.js').then(({defaultOptions}) => {
+      platform.storage.local.get(Object.keys(defaultOptions), (data) => {
+        let options = Object.assign({}, defaultOptions)
+        for (let key in data) options[key] = data[key]
+        updateOptions(options)
+      })
     })
   })
 
@@ -52,6 +52,7 @@ function init() {
   loadCSS("./styles/latex4twitch.css")
   loadCSS("./styles/custom_twitch.css")
   loadCSS("./styles/wiki.css")
+  loadScript("themes.js")
   loadScript("latex4twitch.js")
 }
 
