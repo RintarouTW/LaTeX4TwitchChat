@@ -4,13 +4,8 @@ import { fetchURL } from './common.js'
 
 const _serverURL = "https://fathomless-brushlands-18222.herokuapp.com"
 
-/*
- * resolve({ code: "function..." })
- * reject({ error : {
- *            code : integer,
- *            message : string
- *         }})
- */
+// resolve({ code: "function..." })
+// reject({ error : { code : integer, message : string } })
 
 function stdGetHeader() {
   return {

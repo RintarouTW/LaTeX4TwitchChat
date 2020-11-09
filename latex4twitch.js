@@ -19,31 +19,31 @@ import { disSearchText } from "./dis.js"
 function help(textNode) {
 
   highlightText(textNode, String.raw`
-  --[ LaTeX ]-- 
-  $\LaTeX$ : inline mode; $$\LaTeX$$ : display mode
-  !matrix : fast way to present a matrix
-  !tex : show the parse error of ur tex string.
-  !cheat : some used often symbols
-  --[ Code ]-- 
-  !code : beautify and highlight ur code
-  !css : present css source
-  !html : present html source
-  --[ Plotting and Graph ]-- 
-  !plot : plotting ur function (JSXGraph)
-  !dot : draw graph via dot language (Graphviz)
-  !ddot : draw graph via dot language in dark mode
-  !graph : undirected graph
-  !digraph : directed graph
-  --[ Calculator ]-- 
-  !gauss : Gauss elimenates a matrix
-  !mc : math calculator, (http://mathjs.org)
-  --[ Speech ]--
-  !say : say the words in the specified language.
-  !shutup : stop the speech right away.
-  --[ Search ]--
-  !im : google image search
-  !wiki : search on wiki
-  `)
+    --[ LaTeX ]-- 
+    $\LaTeX$ : inline mode; $$\LaTeX$$ : display mode
+    !matrix : fast way to present a matrix
+    !tex : show the parse error of ur tex string.
+    !cheat : some used often symbols
+    --[ Code ]-- 
+    !code : beautify and highlight ur code
+    !css : present css source
+    !html : present html source
+    --[ Plotting and Graph ]-- 
+    !plot : plotting ur function (JSXGraph)
+    !dot : draw graph via dot language (Graphviz)
+    !ddot : draw graph via dot language in dark mode
+    !graph : undirected graph
+    !digraph : directed graph
+    --[ Calculator ]-- 
+    !gauss : Gauss elimenates a matrix
+    !mc : math calculator, (http://mathjs.org)
+    --[ Speech ]--
+    !say : say the words in the specified language.
+    !shutup : stop the speech right away.
+    --[ Search ]--
+    !im : google image search
+    !wiki : search on wiki
+    `)
 }
 
 function hookup() {  
@@ -67,7 +67,7 @@ function hookup() {
     ["!gauss", " [1,2,3; 4,5,6]", gauss ],
     ["!mc", " m=[1,2,3;4,5,6]", calc ],
     // ["!sage", " Posets.DivisorLattice(30)", sage ],
-    
+
     ["!im", " Taiwan", disSearchText],
     ["!wiki", " Taiwan", wikiSearchText],
     ["!say", " hello", say ],
@@ -81,7 +81,7 @@ function hookup() {
     return
   }
 
-  /* load the user options from the storage */
+  // load the user options from the storage
   loadOptions()
 
   let container = document.querySelector(".chat-scrollable-area__message-container")
@@ -95,7 +95,7 @@ function hookup() {
     mutations.forEach(mutation => {
       mutation.addedNodes.forEach(node => {
         if (node.className == "chat-line__message") {
-          /* show image by URL directly, privileged users only */
+          // show image by URL directly, privileged users only 
           // let username = node.querySelector(".chat-author__intl-login")
           // username = username.innerText.replace(/[\( \)]/g, '')
           let username = node.querySelector(".chat-author__display-name")
@@ -107,11 +107,11 @@ function hookup() {
 
           let texts = node.getElementsByClassName("text-fragment")
           let cmd = texts[0]
-          if (cmd) { /* commands handling */
-            let tokens = cmd.textContent.split(" ")
+          if (cmd) { // commands handling
+              let tokens = cmd.textContent.split(" ")
             hooks.map( h => {
               if (tokens[0] == h[0]) {
-                /* get the user command payload */
+                // get the user command payload 
                 let payload = cmd.textContent.replace(h[0], '') 
                 if (payload.length == 0) {
                   payload = h[1]
@@ -123,12 +123,12 @@ function hookup() {
           }
 
           for (let textNode of texts) {
-            /* LaTeX rendering in chat messages */
+            // LaTeX rendering in chat messages 
             if (textNode && textNode.textContent && katex) 
               renderMath(textNode)
 
-            /* TTS */
-            if (textNode.childElementCount == 0) { /* speech for pure text only */
+            // TTS 
+            if (textNode.childElementCount == 0) { // speech for pure text only
               textNode.addEventListener("click", () => {
                 speak(textNode, textNode.innerHTML)
               })

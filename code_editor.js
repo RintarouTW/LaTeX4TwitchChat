@@ -4,12 +4,12 @@ import { isDebug, loadCSS, loadScript } from "./common.js"
 import { TWChatInput, TWChatSendButton } from "./tw_elements_finder.js"
 import { getHash, postCode } from "./server.js"
 import {
-	createPanel,
-	createSendButton,
-	createCloseButton,
-	createHashLabel,
-	createEditorWindow,
-	createPopupButton
+  createPanel,
+  createSendButton,
+  createCloseButton,
+  createHashLabel,
+  createEditorWindow,
+  createPopupButton
 } from "./code_editor_view.js"
 
 /* Core, Theme, addons */
@@ -39,13 +39,13 @@ var _window
  */
 
 function newHashFromServer(hashLabel, sendButton) {
-	getHash().then( json => {
-		hashLabel.innerText = json.hash
-		sendButton.disabled = false // enable send button
-	}).catch(error => {
-		console.error(error)
-		console.error("Failed to connect the server, please reload and try again.")
-	})
+  getHash().then( json => {
+    hashLabel.innerText = json.hash
+    sendButton.disabled = false // enable send button
+  }).catch(error => {
+    console.error(error)
+    console.error("Failed to connect the server, please reload and try again.")
+  })
 }
 
 function updateTheme(themeName) {

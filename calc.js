@@ -10,22 +10,22 @@ var parser
 
 function calc(text, fnStr) {
 
-	if (!parser) parser = math.parser()
+  if (!parser) parser = math.parser()
 
-	if (fnStr.replace(/\s*/g, '') == "clear") {
-		parser.clear()
-		text.textContent += "$$\\mathrm{cleared}$$"
-		return
-	}
+  if (fnStr.replace(/\s*/g, '') == "clear") {
+    parser.clear()
+    text.textContent += "$$\\mathrm{cleared}$$"
+    return
+  }
 
-	try {
-		let res = parser.evaluate(fnStr)
-		let resStr = math.format(res, { precision: 14 })
-		let tex = math.parse(resStr).toTex()
-		text.textContent += "$$" + tex + "$$"
-	}	catch (err) {
-		highlightText(text, err.toString())
-	}
+  try {
+    let res = parser.evaluate(fnStr)
+    let resStr = math.format(res, { precision: 14 })
+    let tex = math.parse(resStr).toTex()
+    text.textContent += "$$" + tex + "$$"
+  }	catch (err) {
+    highlightText(text, err.toString())
+  }
 }
 
 export { calc }

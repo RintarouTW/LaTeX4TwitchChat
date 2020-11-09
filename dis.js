@@ -21,7 +21,7 @@ function showImage(node, {url, width, height, description}) {
 
   let g = document.createElement('div')
   g.setAttribute("class", "l4t-url-image")
-	link.appendChild(g)
+  link.appendChild(g)
 
   let img = new Image()
   img.addEventListener('load', () => {
@@ -45,7 +45,7 @@ function showImage(node, {url, width, height, description}) {
 }
 
 function disSearchText(node, text) {
-  
+
   let keyword = text.replace(/(^\s|\s$)*/, '') 
   if (!keyword) return
   // console.log(keyword)

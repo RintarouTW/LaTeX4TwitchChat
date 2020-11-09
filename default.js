@@ -1,8 +1,8 @@
 'use strict'
 
 const defaultOptions = { 
-	speechLang : "Disabled",
-	showImageUserList : "",
+  speechLang : "Disabled",
+  showImageUserList : "",
   theme : "default"
 }
 

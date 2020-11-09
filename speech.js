@@ -6,26 +6,26 @@ import { isoFromText } from './server.js'
 var allVoices = []
 
 function initAllVoices() {
-	speechSynthesis.cancel()
-	allVoices = speechSynthesis.getVoices()
+  speechSynthesis.cancel()
+  allVoices = speechSynthesis.getVoices()
 }
 
 function voicesBy(lang) {
-	let result = []
-	for(const [index, voice] of allVoices.entries()) {
-		if (voice.lang == lang) 
-			result.push( {voice: voice, index: index} )
-	}
-	return result
+  let result = []
+  for(const [index, voice] of allVoices.entries()) {
+    if (voice.lang == lang) 
+      result.push( {voice: voice, index: index} )
+  }
+  return result
 }
 
 function voicesByIso(iso) {
-	let result = []
-	for(const [index, voice] of allVoices.entries()) {
-		if (voice.lang.substr(0,2) == iso) 
-			result.push( {voice: voice, index: index} )
-	}
-	return result
+  let result = []
+  for(const [index, voice] of allVoices.entries()) {
+    if (voice.lang.substr(0,2) == iso) 
+      result.push( {voice: voice, index: index} )
+  }
+  return result
 }
 
 function queueSpeech(voiceIndex, text) {
@@ -35,13 +35,13 @@ function queueSpeech(voiceIndex, text) {
 }
 
 function autoSpeak(text) {
-    isoFromText(text).then( json => {
-      let iso = json.from.substr(0, 2)
-      let voices = voicesByIso(iso.toLowerCase())
-      if(voices.length == 0) return
-      let voiceIndex = voices[0].index
-      queueSpeech(voiceIndex, text)
-    }).catch(error => console.log(error))
+  isoFromText(text).then( json => {
+    let iso = json.from.substr(0, 2)
+    let voices = voicesByIso(iso.toLowerCase())
+    if(voices.length == 0) return
+    let voiceIndex = voices[0].index
+    queueSpeech(voiceIndex, text)
+  }).catch(error => console.log(error))
 }
 
 function speak(textNode, text) {
@@ -52,10 +52,10 @@ function speak(textNode, text) {
   if (cmd == '!wiki') return
   if (cmd == '!im') return
   if (cmd[0] == '!') text = text.replace(cmd, '') /* do not speak commands */
-  if (speechLang == "Auto") {
-    autoSpeak(text)
-    return
-  }
+    if (speechLang == "Auto") {
+      autoSpeak(text)
+      return
+    }
   let voiceIndex = voicesBy(speechLang)[0].index
   queueSpeech(voiceIndex, text)
 }
