@@ -3,10 +3,17 @@
 import { TWChatInput, TWChatButtonsContainer, TWChatSendButton } from "./tw_elements_finder.js"
 import { popupButtonForEditor } from "./code_editor.js"
 import { previewMath } from "./math/render_math.js"
-import { updateBuffer, sendMessage, prevMessage, nextMessage } from "./history.js"
+import { 
+  setHistoryBuffer,
+  sendHistoryMessage,
+  prevHistoryMessage,
+  nextHistoryMessage 
+} from "./history.js"
+
+let previewBox
 
 function createPreviewBox() {
-  let previewBox = document.createElement("div")
+  previewBox = document.createElement("div")
   previewBox.setAttribute("class", "tw-align-items-center tw-overflow-hidden tw-flex")
   /* don't wrap on white space, also prevent the flex box eating the white spaces */
   previewBox.setAttribute("style", "white-space: pre; margin-left: .7em;") 
@@ -23,13 +30,54 @@ function cursorLineNo(textarea) {
   return textarea.value.substr(0, textarea.selectionStart).split('\n').length
 }
 
+function keyBinding(evt) {
+  let target = evt.target
+  switch (evt.code) {
+    case 'KeyL': // clear chat with ctrl + l
+      if (evt.ctrlKey) {
+        target.focus()
+        target.select()
+        document.execCommand("insertText", true, '/clear ')
+        TWChatSendButton().click()
+      }
+      break
+    case 'Enter':
+      if (!evt.shiftKey) {
+        sendHistoryMessage(target.value)
+        // document.dispatchEvent(new CustomEvent('test', {detail:'reset'}))
+        previewBox.innerHTML = ''
+      }
+      break
+    case 'ArrowUp': // history traverse
+      if (cursorLineNo(target) == 1) {
+        let msg = prevHistoryMessage()
+        if (msg != null) {
+          target.focus()
+          target.select()
+          document.execCommand("insertText", true, msg)
+        }
+      }
+      break
+    case 'ArrowDown': // history traverse
+      if (cursorLineNo(target) == totalLines(target)) {
+        let msg = nextHistoryMessage()
+        if (msg != null) {
+          target.focus()
+          target.select()
+          document.execCommand("insertText", true, msg)
+        }
+      }
+      break
+  }
+}
+
 function hookL4TComponents() {
-  /* Preview the user input for LaTeX locally */
-  let previewBox = createPreviewBox()
+  // Preview the user input for LaTeX locally 
+  previewBox = createPreviewBox()
   let chatInput = TWChatInput()
 
   chatInput.addEventListener("input", evt => {
-    updateBuffer(evt.target.value)
+    setHistoryBuffer(evt.target.value)
     if (!(/\$.*\$/.test(chatInput.value))) {
       previewBox.innerText = ""
       return
@@ -38,46 +86,8 @@ function hookL4TComponents() {
     previewMath(previewBox)
   })
 
-  /* consider autocomplete the commands and history just like the shell */
-  chatInput.addEventListener("keydown", evt => {
-    let target = evt.target
-    switch (evt.code) {
-      case 'KeyL':
-        if (evt.ctrlKey) {
-          target.focus()
-          target.select()
-          document.execCommand("insertText", true, '/clear ')
-          TWChatSendButton().click()
-        }
-        break
-      case 'Enter':
-        if (!evt.shiftKey) {
-          sendMessage(target.value)
-          previewBox.innerHTML = ""
-        }
-        break
-      case 'ArrowUp':
-        if (cursorLineNo(target) == 1) {
-          let msg = prevMessage()
-          if (msg != null) {
-            target.focus()
-            target.select()
-            document.execCommand("insertText", true, msg)
-          }
-        }
-        break
-      case 'ArrowDown':
-        if (cursorLineNo(target) == totalLines(target)) {
-          let msg = nextMessage()
-          if (msg != null) {
-            target.focus()
-            target.select()
-            document.execCommand("insertText", true, msg)
-          }
-        }
-        break
-    }
-  })
+  // consider autocomplete the commands and history just like the shell
+  chatInput.addEventListener("keydown", keyBinding)
 
   // the popup button of the code editor
   let popupButton = popupButtonForEditor()
