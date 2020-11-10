@@ -1,7 +1,7 @@
 'use strict';
 
-import { isExperimental, loadScript, loadCSS, makeid } from "./common.js"
-import { highlightText } from "./highlight.js"
+import { isExperimental, loadScript, loadCSS, makeid } from "../common.js"
+import { highlightText } from "../highlight.js"
 
 if (isExperimental()) {
   loadCSS("https://sagecell.sagemath.org/static/sagecell_embed.css")

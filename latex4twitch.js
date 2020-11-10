@@ -4,16 +4,19 @@ import { wait, loadCSS, loadScript } from "./common.js"
 import { loadOptions } from "./options.js"
 import { hookL4TComponents } from "./components.js"
 import { code, html, css, highlightText, pre } from "./highlight.js"
-import { renderMath, tex, cheat } from "./render_math.js"
-import { matrix, gauss } from "./matrix.js"
-import { dot, ddot, graph, digraph, plot } from "./graph.js"
+// math
+import { renderMath, tex, cheat } from "./math/render_math.js"
+import { matrix, gauss } from "./math/matrix.js"
+import { dot, ddot, graph, digraph, plot } from "./math/graph.js"
+import { calc } from "./math/calc.js"
+import { sage } from "./math/sage.js"
+// auto show image
 import { show_image } from "./show_image.js"
 import { yt_image } from "./yt_image.js"
-import { calc } from "./calc.js"
-import { sage } from "./sage.js"
+// speech
 import { speak, say, shutup } from "./speech.js"
+// search
 import { wikiSearchText } from "./wiki.js"
-import { gisSearchText } from "./gis.js"
 import { disSearchText } from "./dis.js"
 
 function help(textNode) {

@@ -1,7 +1,7 @@
 'use strict';
 
-import { loadScript } from "./common.js"
-import { highlightText } from "./highlight.js"
+import { loadScript } from "../common.js"
+import { highlightText } from "../highlight.js"
 
 // mathjs
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.2.0/math.min.js")
