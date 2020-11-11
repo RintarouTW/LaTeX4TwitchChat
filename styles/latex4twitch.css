@@ -117,9 +117,9 @@
   text-decoration: none;
   line-height: 1;
   animation: l4t-fade-in 1s;
-  background-repeat: no-repeat; 
-  background-position: center; 
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .l4t-yt-image {
