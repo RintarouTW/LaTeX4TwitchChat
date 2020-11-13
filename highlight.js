@@ -40,11 +40,30 @@ const option = {
   "indent_empty_lines": false
 }
 
-function highlightText(textNode, text) {
+function highlightHelp(textNode, text) {
   let g = document.createElement('code')
   g.innerText = text
 
   let pre = document.createElement('pre')
+  pre.setAttribute('style', 'font-size: x-small; padding-top : 0px; padding-bottom : 0px; line-height: 16px;')
+  pre.setAttribute('class', 'yaml')
+
+  pre.appendChild(g)
+  textNode.appendChild(pre)
+
+  hljs.highlightBlock(pre)
+  textNode.scrollIntoView()
+}
+
+function highlightText(textNode, text, style) {
+  let g = document.createElement('code')
+  g.innerText = text
+
+  let pre = document.createElement('pre')
+  if (style) {
+    pre.setAttribute('style', style)
+    pre.setAttribute('class', 'yaml')
+  }
 
   pre.appendChild(g)
   textNode.appendChild(pre)
@@ -134,4 +153,4 @@ function css(textNode) {
   beautify(textNode, "css")
 }
 
-export { code, html, css, highlightText, highlightCode, pre }
+export { code, html, css, highlightText, highlightCode, highlightHelp, pre }

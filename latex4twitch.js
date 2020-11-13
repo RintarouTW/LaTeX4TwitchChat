@@ -3,7 +3,7 @@
 import { wait, loadCSS, loadScript } from "./common.js"
 import { loadOptions } from "./options.js"
 import { hookL4TComponents } from "./components.js"
-import { code, html, css, highlightText, pre } from "./highlight.js"
+import { code, html, css, highlightText, highlightHelp, pre } from "./highlight.js"
 // math
 import { renderMath, tex, cheat } from "./math/render_math.js"
 import { matrix, gauss } from "./math/matrix.js"
@@ -22,29 +22,29 @@ import { disSearchText } from "./dis.js"
 
 function help(textNode) {
 
-  highlightText(textNode, String.raw`
-    --[ LaTeX ]-- 
+  highlightHelp(textNode, String.raw`
+    [ LaTeX ]
     $\LaTeX$ : inline mode; $$\LaTeX$$ : display mode
     !matrix : fast way to present a matrix
     !tex : show the parse error of ur tex string.
     !cheat : some used often symbols
-    --[ Code ]-- 
+    [ Code ]
     !code : beautify and highlight ur code
     !css : present css source
     !html : present html source
-    --[ Plotting and Graph ]-- 
+    [ Plotting and Graph ]
     !plot : plotting ur function (JSXGraph)
     !dot : draw graph via dot language (Graphviz)
     !ddot : draw graph via dot language in dark mode
     !graph : undirected graph
     !digraph : directed graph
-    --[ Calculator ]-- 
+    [ Calculator ]
     !gauss : Gauss elimenates a matrix
     !mc : math calculator, (http://mathjs.org)
-    --[ Speech ]--
+    [ Speech ]
     !say : say the words in the specified language.
     !shutup : stop the speech right away.
-    --[ Search ]--
+    [ Search ]
     !im : google image search
     !wiki : search on wiki
     `)
