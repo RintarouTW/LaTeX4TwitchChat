@@ -13,6 +13,7 @@ import { sage } from "./math/sage.js"
 // auto show image
 import { show_image } from "./show_image.js"
 import { yt_image } from "./yt_image.js"
+import { show_note } from "./show_note.js"
 // speech
 import { speak, say, shutup } from "./speech.js"
 // search
@@ -104,6 +105,7 @@ function hookup() {
           let username = node.querySelector(".chat-author__display-name")
           if (username) {
             username = username.getAttribute('data-a-user')
+            if (username == 'rintwbot') show_note(node)
             show_image(node, username)
             yt_image(node, username)
           }

@@ -256,3 +256,17 @@ animation-delay: 0.2s; }
     transform: scale3D(0, 0, 1);
   }
 }
+
+.l4t-note {
+ text-decoration:none;
+  color:#000 !important;
+  /* background:#ffc; */
+  background:#ffb;
+  display:block;
+  padding:1em;
+  margin:1em;
+  -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+  -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+}
+
