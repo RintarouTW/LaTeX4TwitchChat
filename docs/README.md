@@ -197,15 +197,5 @@ You may enable it by changing the isExperimental() return value to true.
 
 check https://sagemath.org for more usages.
 
-<script src="./assets/latex_render.js"></script>
-
-<script src="https://embed.twitch.tv/embed/v1.js"></script>
-<script type="text/javascript">
-new Twitch.Embed("twitch-embed", {
-  width: 320,
-  height: 180,
-  channel: "rintaroutw",
-  parent: ["rintaroutw.github.io"]
-})
-</script>
+<script src="./assets/init.js"></script>
 
