@@ -60,4 +60,4 @@ loadScript("https://embed.twitch.tv/embed/v1.js", () => {
     channel: "rintaroutw",
     parent: ["rintaroutw.github.io"]
   })
-}
+})
