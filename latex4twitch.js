@@ -13,7 +13,9 @@ import { sage } from "./math/sage.js"
 // auto show image
 import { show_image } from "./show_image.js"
 import { yt_image } from "./yt_image.js"
+// decoration
 import { show_note } from "./show_note.js"
+import { show_quote } from "./show_quote.js"
 // speech
 import { speak, say, shutup } from "./speech.js"
 // search
@@ -108,6 +110,7 @@ function hookup() {
             if (username == 'rintwbot') show_note(node)
             show_image(node, username)
             yt_image(node, username)
+            show_quote(node, username)
           }
 
           let texts = node.getElementsByClassName("text-fragment")
