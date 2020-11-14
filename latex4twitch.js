@@ -3,44 +3,50 @@
 import { wait, loadCSS, loadScript } from "./common.js"
 import { loadOptions } from "./options.js"
 import { hookL4TComponents } from "./components.js"
-import { code, html, css, highlightText, pre } from "./highlight.js"
-import { renderMath, tex, cheat } from "./render_math.js"
-import { matrix, gauss } from "./matrix.js"
-import { dot, ddot, graph, digraph, plot } from "./graph.js"
+import { code, html, css, highlightText, highlightHelp, pre } from "./highlight.js"
+// math
+import { renderMath, tex, cheat } from "./math/render_math.js"
+import { matrix, gauss } from "./math/matrix.js"
+import { dot, ddot, graph, digraph, plot } from "./math/graph.js"
+import { calc } from "./math/calc.js"
+import { sage } from "./math/sage.js"
+// auto show image
 import { show_image } from "./show_image.js"
 import { yt_image } from "./yt_image.js"
-import { calc } from "./calc.js"
-import { sage } from "./sage.js"
+// decoration
+import { show_note } from "./show_note.js"
+import { show_quote } from "./show_quote.js"
+// speech
 import { speak, say, shutup } from "./speech.js"
+// search
 import { wikiSearchText } from "./wiki.js"
-import { gisSearchText } from "./gis.js"
 import { disSearchText } from "./dis.js"
 
 function help(textNode) {
 
-  highlightText(textNode, String.raw`
-    --[ LaTeX ]-- 
+  highlightHelp(textNode, String.raw`
+    [ LaTeX ]
     $\LaTeX$ : inline mode; $$\LaTeX$$ : display mode
     !matrix : fast way to present a matrix
     !tex : show the parse error of ur tex string.
     !cheat : some used often symbols
-    --[ Code ]-- 
+    [ Code ]
     !code : beautify and highlight ur code
     !css : present css source
     !html : present html source
-    --[ Plotting and Graph ]-- 
+    [ Plotting and Graph ]
     !plot : plotting ur function (JSXGraph)
     !dot : draw graph via dot language (Graphviz)
     !ddot : draw graph via dot language in dark mode
     !graph : undirected graph
     !digraph : directed graph
-    --[ Calculator ]-- 
+    [ Calculator ]
     !gauss : Gauss elimenates a matrix
     !mc : math calculator, (http://mathjs.org)
-    --[ Speech ]--
+    [ Speech ]
     !say : say the words in the specified language.
     !shutup : stop the speech right away.
-    --[ Search ]--
+    [ Search ]
     !im : google image search
     !wiki : search on wiki
     `)
@@ -101,8 +107,10 @@ function hookup() {
           let username = node.querySelector(".chat-author__display-name")
           if (username) {
             username = username.getAttribute('data-a-user')
+            if (username == 'rintwbot') show_note(node)
             show_image(node, username)
             yt_image(node, username)
+            show_quote(node, username)
           }
 
           let texts = node.getElementsByClassName("text-fragment")

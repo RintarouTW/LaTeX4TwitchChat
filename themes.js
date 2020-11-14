@@ -17,7 +17,7 @@ const themes = {
     '--username-font-weight': 'normal',
     '--username-filter': 'none',
     '--mention-background-color': '#000',
-    '--mention-border': '1px dashed #666'
+    '--mention-border': '1px solid #666'
   },
   'rintaroutw-modern' : {
     '--text-base-color': 'white',
@@ -26,7 +26,7 @@ const themes = {
     '--username-font-weight': 'normal',
     '--username-filter': 'hue-rotate(160deg)',
     '--mention-background-color': '#507c6a',
-    '--mention-border': '1px dashed #363636'
+    '--mention-border': '1px solid #363636'
   },
   'adianta' : {
     '--text-base-color': 'white',

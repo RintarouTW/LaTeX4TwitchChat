@@ -14,30 +14,30 @@ function messageByIndex(index) {
 }
 
 /* exports */
-function prevMessage() {
+function prevHistoryMessage() {
   if (currentIndex == 0) return null
   return messageByIndex(--currentIndex)
 }
 
-function nextMessage() {
+function nextHistoryMessage() {
   if (currentIndex == history.length) return null
   return messageByIndex(++currentIndex)
 }
 
-function updateBuffer(msg) {
+function setHistoryBuffer(msg) {
   if (currentIndex < history.length) return
   unsentBuffer = msg
 }
 
-function sendMessage(msg) {
-  updateBuffer('')
+function sendHistoryMessage(msg) {
+  setHistoryBuffer('')
   history.push(msg)
   currentIndex = history.length
 }
 
 export {
-  updateBuffer,
-  sendMessage,
-  prevMessage,
-  nextMessage
+  setHistoryBuffer,
+  sendHistoryMessage,
+  prevHistoryMessage,
+  nextHistoryMessage
 }
