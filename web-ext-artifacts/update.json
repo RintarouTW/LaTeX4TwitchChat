@@ -4,23 +4,27 @@
       "updates": [
         {
           "version": "1.0.4",
-          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/master/web-ext-artifacts/latex_for_twitch_chat_extension-1.0.4-an+fx.xpi"
+          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/release/web-ext-artifacts/latex_for_twitch_chat_extension-1.0.4-an+fx.xpi"
         },
         {
           "version": "1.0.5",
-          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/master/web-ext-artifacts/latex_for_twitch_chat_extension-1.0.5-an+fx.xpi"
+          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/release/web-ext-artifacts/latex_for_twitch_chat_extension-1.0.5-an+fx.xpi"
         },
         {
           "version": "1.0.6",
-          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/master/web-ext-artifacts/latex_for_twitch_chat_extension-1.0.6-an+fx.xpi"
+          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/release/web-ext-artifacts/latex_for_twitch_chat_extension-1.0.6-an+fx.xpi"
         },
         {
           "version": "1.0.7",
-          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/master/web-ext-artifacts/latex_for_twitch_chat_extension-1.0.7-an+fx.xpi"
+          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/release/web-ext-artifacts/latex_for_twitch_chat_extension-1.0.7-an+fx.xpi"
         },
         {
           "version": "1.0.8",
-          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/master/web-ext-artifacts/latex_for_twitch_chat_extension-1.0.8-an+fx.xpi"
+          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/release/web-ext-artifacts/latex_for_twitch_chat_extension-1.0.8-an+fx.xpi"
+        },
+        {
+          "version": "1.0.9",
+          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/release/web-ext-artifacts/latex_for_twitch_chat_extension-1.0.9-an+fx.xpi"
         }
       ]
     }
