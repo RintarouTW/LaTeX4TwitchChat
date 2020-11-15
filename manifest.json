@@ -1,6 +1,6 @@
 {
   "name": "LaTeX for Twitch Chat Extension",
-  "version": "1.0.5",
+  "version": "1.0.9",
   "description": "Support LaTeX, plotting, graph, math calculation, highlight source, .. within Twitch Chat",
 
   "permissions": ["https://*.twitch.tv/*", "clipboardRead", "clipboardWrite", "storage"],
@@ -26,6 +26,12 @@
     "32": "images/logo-32.png",
     "48": "images/logo-48.png",
     "128": "images/logo-128.png"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "update_url": "https://github.com/RintarouTW/LaTeX4TwitchChat/raw/release/web-ext-artifacts/update.json"
+    }
   },
 
   "manifest_version": 2
