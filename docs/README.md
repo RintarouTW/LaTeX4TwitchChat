@@ -3,6 +3,8 @@
 A simple Chrome extension to render and copy $\LaTeX$ in Twitch Chat messages.
 Some functions via commands, ex: plotting a function, draw graphs, matrix calculation, etc.
 
+Firefox users may check [here](https://github.com/RintarouTW/LaTeX4TwitchChat/wiki/For-Firefox).
+
 I'm from Taiwan, sorry for my poor English. You may check [my Twitch channel](https://twitch.tv/RintarouTW) to see the live demo.
 
 <div id="twitch-embed"></div>
@@ -20,6 +22,7 @@ I'm from Taiwan, sorry for my poor English. You may check [my Twitch channel](ht
 - <kbd>Up</kbd>/<kbd>Down</kbd> keys to traverse the history of messages your have sent.
 - Auto load the image below the link of URL for the white listed users which is configured in the extension options.
 - Search on Wikipedia
+- 5 Themes
 
 ### Experimental
 
