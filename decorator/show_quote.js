@@ -1,7 +1,5 @@
 'user strict';
 
-import { userOptions } from "./options.js"
-
 function show_quote(node) {
 
   let fragments = node.getElementsByClassName('text-fragment')

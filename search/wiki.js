@@ -1,6 +1,6 @@
 'use strict'
 
-import { wikiSearch } from './server.js'
+import { wikiSearch } from '../server.js'
 
 function wikiSearchText(node, text) {
 

@@ -1,7 +1,7 @@
 'user strict';
 
-import { userOptions } from "./options.js"
-import { getVideoInfo } from "./server.js"
+import { userOptions } from "../options.js"
+import { getVideoInfo } from "../server.js"
 
 function parseVideoId(link) {
   let videoId = link
