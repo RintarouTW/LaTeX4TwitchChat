@@ -1,26 +1,25 @@
 'use strict';
 
-import { wait, loadCSS, loadScript } from "./common.js"
-import { loadOptions } from "./options.js"
-import { hookL4TComponents } from "./components.js"
-import { code, html, css, highlightText, highlightHelp, pre } from "./highlight.js"
+import { wait, loadCSS, loadScript } from "./lib/common.js"
+import { loadOptions } from "./lib/options.js"
+import { code, html, css, highlightText, highlightHelp, pre } from "./lib/highlight.js"
+import { hookL4TComponents } from "./lib/components.js"
+import { speak, say, shutup } from "./lib/speech.js"
 // math
 import { renderMath, tex, cheat } from "./math/render_math.js"
 import { matrix, gauss } from "./math/matrix.js"
 import { dot, ddot, graph, digraph, plot } from "./math/graph.js"
 import { calc } from "./math/calc.js"
 import { sage } from "./math/sage.js"
+// decorator
+import { show_note } from "./decorator/show_note.js"
+import { show_quote } from "./decorator/show_quote.js"
 // auto show image
-import { show_image } from "./show_image.js"
-import { yt_image } from "./yt_image.js"
-// decoration
-import { show_note } from "./show_note.js"
-import { show_quote } from "./show_quote.js"
-// speech
-import { speak, say, shutup } from "./speech.js"
+import { show_image } from "./decorator/show_image.js"
+import { yt_image } from "./decorator/yt_image.js"
 // search
-import { wikiSearchText } from "./wiki.js"
-import { disSearchText } from "./dis.js"
+import { wikiSearchText } from "./search/wiki.js"
+import { disSearchText } from "./search/dis.js"
 
 function help(textNode) {
 

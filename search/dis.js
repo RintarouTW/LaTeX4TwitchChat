@@ -1,7 +1,7 @@
 'use strict'
 
-import { disSearch } from './server.js'
-import { say } from './speech.js'
+import { disSearch } from '../lib/server.js'
+import { say } from '../lib/speech.js'
 
 function showImage(node, {url, width, height, description}) {
 

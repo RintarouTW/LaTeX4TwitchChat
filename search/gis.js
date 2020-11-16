@@ -1,7 +1,7 @@
 'use strict'
 
-import { gisSearch } from './server.js'
-import { say } from './speech.js'
+import { gisSearch } from '../lib/server.js'
+import { say } from '../lib/speech.js'
 
 function showImage(node, {url, width, height, description}) {
 

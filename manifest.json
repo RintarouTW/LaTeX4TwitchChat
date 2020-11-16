@@ -1,6 +1,6 @@
 {
   "name": "LaTeX for Twitch Chat Extension",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Support LaTeX, plotting, graph, math calculation, highlight source, .. within Twitch Chat",
 
   "permissions": ["https://*.twitch.tv/*", "clipboardRead", "clipboardWrite", "storage"],
@@ -19,7 +19,14 @@
     }
   ],
 
-  "web_accessible_resources": [ "*.js", "/math/*", "/styles/*.css", "/images/*"],
+  "web_accessible_resources": [ 
+    "*.js",
+    "/math/*",
+    "/search/*",
+    "/decorator/*",
+    "/styles/*.css",
+    "/images/*"
+  ],
 
   "icons": {
     "16": "images/logo-16.png",
