@@ -16,12 +16,13 @@
 }
 
 .l4t-preview-window {
+  /* don't wrap on white space, also prevent the flex box eating the white spaces */
+  /* white-space: pre; */
+  /* opacity: 0.9; */
   position: absolute;
-  white-space: pre; /* don't wrap on white space, also prevent the flex box eating the white spaces */
+  bottom: 150px;
   margin: 1em;
-  bottom: 100px;
   font-size: 13px;
-  opacity: 0.9;
   visibility: visible;
   background-color: #000;
   color: #fff;
@@ -97,12 +98,27 @@
   text-decoration:none;
   color:#000 !important;
   background:#ffb;
-  display:block;
+  display: block;
+  width: 100%;
   padding:0.5em;
   margin:0.5em;
   -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
   -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
   box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+}
+
+.l4t-copy-note-button {
+  align-self: flex-end;
+  visibility: hidden;
+}
+
+.l4t-copy-note-button[show=true] {
+  visibility: visible;
+  filter: invert(100%); 
+}
+
+.l4t-copy-note-button:active {
+  filter: invert(70%) !important;
 }
 
 .l4t-quote {
