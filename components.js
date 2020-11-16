@@ -14,10 +14,7 @@ let previewBox
 
 function createPreviewBox() {
   previewBox = document.createElement("div")
-  // previewBox.setAttribute("class", "tw-align-items-center tw-overflow-hidden tw-flex")
   previewBox.setAttribute("class", "l4t-preview-window")
-  /* don't wrap on white space, also prevent the flex box eating the white spaces */
-  previewBox.setAttribute("style", "white-space: pre; margin-left: .7em;") 
   return previewBox
 }
 
@@ -94,7 +91,6 @@ function hookL4TComponents() {
   let popupButton = popupButtonForEditor()
   let chatButtonsContainer = TWChatButtonsContainer()
 
-  // chatButtonsContainer.insertBefore(popupButton, chatButtonsContainer.childNodes[1])
   chatButtonsContainer.insertBefore(previewBox, chatButtonsContainer.childNodes[1])
   chatButtonsContainer.insertBefore(popupButton, previewBox)
 }
