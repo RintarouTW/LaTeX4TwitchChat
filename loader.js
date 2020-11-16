@@ -69,7 +69,7 @@ function init() {
   loadCSS("./styles/custom_twitch.css")
   loadCSS("./styles/wiki.css")
   loadScript("themes.js")
-  loadScript("latex4twitch.js")
+  loadScript("main.js")
 }
 
 init()
