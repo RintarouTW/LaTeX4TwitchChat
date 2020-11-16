@@ -25,6 +25,10 @@
         {
           "version": "1.0.9",
           "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/release/web-ext-artifacts/latex_for_twitch_chat_extension-1.0.9-an+fx.xpi"
+        },
+        {
+          "version": "1.1.0",
+          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/release/web-ext-artifacts/latex_for_twitch_chat_extension-1.1.0-an+fx.xpi"
         }
       ]
     }
