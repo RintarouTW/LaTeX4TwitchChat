@@ -1,6 +1,6 @@
 'user strict';
 
-import { userOptions } from "../options.js"
+import { userOptions } from "../lib/options.js"
 
 function show_image(node, username) {
 

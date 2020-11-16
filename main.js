@@ -1,9 +1,10 @@
 'use strict';
 
-import { wait, loadCSS, loadScript } from "./common.js"
-import { loadOptions } from "./options.js"
-import { hookL4TComponents } from "./components.js"
-import { code, html, css, highlightText, highlightHelp, pre } from "./highlight.js"
+import { wait, loadCSS, loadScript } from "./lib/common.js"
+import { loadOptions } from "./lib/options.js"
+import { code, html, css, highlightText, highlightHelp, pre } from "./lib/highlight.js"
+import { hookL4TComponents } from "./lib/components.js"
+import { speak, say, shutup } from "./lib/speech.js"
 // math
 import { renderMath, tex, cheat } from "./math/render_math.js"
 import { matrix, gauss } from "./math/matrix.js"
@@ -19,8 +20,6 @@ import { yt_image } from "./decorator/yt_image.js"
 // search
 import { wikiSearchText } from "./search/wiki.js"
 import { disSearchText } from "./search/dis.js"
-// speech
-import { speak, say, shutup } from "./speech.js"
 
 function help(textNode) {
 
