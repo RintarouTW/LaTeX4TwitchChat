@@ -24,8 +24,38 @@ function TWChatSendButton() {
   return null
 }
 
+function TWChatRoomContentContainer() {
+  let target = document.querySelector(".chat-room__content")
+  if (target) return target
+
+  console.error("chat-room__content not found")
+  return null
+}
+
+function TWObserveThemeChange(updateTheme) {
+  // Observe the theme change
+  let chatTheme = document.querySelector("[data-a-target=chat-theme-light]")
+  if (!chatTheme) chatTheme = document.querySelector("[data-a-target=chat-theme-dark]")
+  if (!chatTheme) {
+    console.log("failt to locate the chat theme section")
+    return
+  }
+  updateTheme(chatTheme.getAttribute("data-a-target"))
+  let themeObserver = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      if(mutation.attributeName == 'data-a-target') {
+        let theme = chatTheme.getAttribute('data-a-target')
+        updateTheme(theme)
+      }
+    })
+  })
+  themeObserver.observe(chatTheme, {attributes : true})
+}
+
 export {
+  TWChatRoomContentContainer,
   TWChatButtonsContainer,
   TWChatInput,
-  TWChatSendButton
+  TWChatSendButton,
+  TWObserveThemeChange
 }
