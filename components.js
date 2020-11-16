@@ -1,6 +1,6 @@
 'use strict';
 
-import { TWChatInput, TWChatButtonsContainer, TWChatSendButton } from "./tw_elements_finder.js"
+import { TWChatInput, TWChatButtonsContainer, TWChatSendButton } from "./tw_elements.js"
 import { popupButtonForEditor } from "./code_editor.js"
 import { previewMath } from "./math/render_math.js"
 import { 

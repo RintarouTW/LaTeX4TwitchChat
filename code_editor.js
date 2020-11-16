@@ -1,7 +1,7 @@
 'use strict';
 
 import { isDebug, loadCSS, loadScript } from "./common.js"
-import { TWChatInput, TWChatSendButton } from "./tw_elements_finder.js"
+import { TWChatInput, TWChatSendButton } from "./tw_elements.js"
 import { getHash, postCode } from "./server.js"
 import {
   createPanel,
