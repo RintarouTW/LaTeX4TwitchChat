@@ -58,7 +58,7 @@
   top: 0px;
   height: 300px;
   min-height: 300px !important;
-  font-size: 13px;
+  font-size: 13px !important;
   visibility: visible;
   transition: top 0.1s cubic-bezier(0.02, 1.11, 0.57, 0.98)
 }
@@ -103,7 +103,6 @@
 
 /* wrap the line of code */
 pre, code {
-  margin-top: 3px !important;
   border-radius: 4px;
   white-space: pre-wrap;
 }
