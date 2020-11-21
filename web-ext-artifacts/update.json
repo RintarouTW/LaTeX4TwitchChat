@@ -3,8 +3,8 @@
     "{6055403e-a534-4bc4-96ef-ec8bc86a4cbe}": {
       "updates": [
         {
-          "version": "1.1.0",
-          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/release/web-ext-artifacts/latex_for_twitch_chat_extension-1.1.0-an+fx.xpi"
+          "version": "1.1.1",
+          "update_link": "https://raw.githubusercontent.com/RintarouTW/LaTeX4TwitchChat/release/web-ext-artifacts/latex_for_twitch_chat_extension-1.1.1-an+fx.xpi"
         }
       ]
     }
