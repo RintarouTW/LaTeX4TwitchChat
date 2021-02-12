@@ -11,6 +11,8 @@ const themes = {
     '--mention-border': 'none'
   },
   'rintaroutw-luxury' : {
+    // '--font-base': 'cursive',
+    // 'font-weight': '600',
     '--text-base-color': 'cornsilk',
     '--badge-filter': 'hue-rotate(10deg) invert(1)',
     '--round-border-radius': '60px',

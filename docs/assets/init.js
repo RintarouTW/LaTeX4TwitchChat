@@ -53,6 +53,7 @@ loadScript("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.
 })
 
 // load Twitch
+/*
 loadScript("https://embed.twitch.tv/embed/v1.js", () => {
   new Twitch.Embed("twitch-embed", {
     width: 854,
@@ -61,3 +62,4 @@ loadScript("https://embed.twitch.tv/embed/v1.js", () => {
     parent: ["rintaroutw.github.io"]
   })
 })
+*/
